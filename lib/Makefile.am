@@ -1,7 +1,7 @@
 lib_LTLIBRARIES = \
-	libgnome-pomodoro.la
+	libgnome-extimer.la
 
-libgnome_pomodoro_la_VALASOURCES = \
+libgnome_extimer_la_VALASOURCES = \
 	about-dialog.vala \
 	accelerator.vala \
 	aggregated-entry.vala \
@@ -30,28 +30,28 @@ libgnome_pomodoro_la_VALASOURCES = \
 	utils.vala \
 	window.vala
 
-libgnome_pomodoro_la_SOURCES = \
-	$(libgnome_pomodoro_la_VALASOURCES) \
+libgnome_extimer_la_SOURCES = \
+	$(libgnome_extimer_la_VALASOURCES) \
 	resources.c
 
-libgnome_pomodoro_la_VALAFLAGS = \
+libgnome_extimer_la_VALAFLAGS = \
 	$(GNOME_POMODORO_VALAFLAGS) \
-	--library=gnome-pomodoro \
-	--header=gnome-pomodoro.h \
-	--vapi=gnome-pomodoro.vapi \
+	--library=gnome-extimer \
+	--header=gnome-extimer.h \
+	--vapi=gnome-extimer.vapi \
 	--gresources $(top_srcdir)/data/resources/resources.xml
 
-libgnome_pomodoro_la_CPPFLAGS = \
+libgnome_extimer_la_CPPFLAGS = \
 	$(GNOME_POMODORO_CPPFLAGS) \
 	-DGETTEXT_PACKAGE=\"$(GETTEXT_PACKAGE)\" \
 	-DPACKAGE_LOCALE_DIR=\""$(localedir)"\" \
 	-DPACKAGE_DATA_DIR=\""$(pkgdatadir)"\"
 
-libgnome_pomodoro_la_CFLAGS = \
+libgnome_extimer_la_CFLAGS = \
 	$(GNOME_POMODORO_CFLAGS) \
 	-w
 
-libgnome_pomodoro_la_LIBADD = \
+libgnome_extimer_la_LIBADD = \
 	$(GNOME_POMODORO_LIBS)
 
 resources = \
@@ -60,25 +60,25 @@ resources_deps = \
 	$(shell $(GLIB_COMPILE_RESOURCES) --generate-dependencies --sourcedir=$(top_srcdir)/data/resources $(resources))
 
 resources.c: $(resources) $(resources_deps)
-	$(AM_V_GEN) $(GLIB_COMPILE_RESOURCES) --generate-source --c-name="pomodoro" --sourcedir=$(top_srcdir)/data/resources --target=$@ $<
+	$(AM_V_GEN) $(GLIB_COMPILE_RESOURCES) --generate-source --c-name="extimer" --sourcedir=$(top_srcdir)/data/resources --target=$@ $<
 
 BUILT_SOURCES = \
 	resources.c
 
 CLEANFILES = \
 	$(BUILT_SOURCES) \
-	$(libgnome_pomodoro_la_SOURCES:.vala=.c) \
-	gnome-pomodoro.h \
-	gnome-pomodoro.vapi \
-	libgnome-pomodoro.la \
-	libgnome_pomodoro_la_vala.stamp
+	$(libgnome_extimer_la_SOURCES:.vala=.c) \
+	gnome-extimer.h \
+	gnome-extimer.vapi \
+	libgnome-extimer.la \
+	libgnome_extimer_la_vala.stamp
 
 EXTRA_DIST = \
 	$(resources) \
 	$(resources_deps) \
-	gnome-pomodoro.h \
-	gnome-pomodoro.deps \
-	gnome-pomodoro.vapi
+	gnome-extimer.h \
+	gnome-extimer.deps \
+	gnome-extimer.vapi
 
 -include $(top_srcdir)/git.mk
 

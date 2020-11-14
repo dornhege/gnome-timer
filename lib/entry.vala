@@ -21,7 +21,7 @@
 using GLib;
 
 
-namespace Pomodoro
+namespace ExTimer
 {
     internal class Entry : Gom.Resource
     {
@@ -50,7 +50,7 @@ namespace Pomodoro
             set_notnull ("datetime-local-string");
         }
 
-        public Entry.from_state (Pomodoro.TimerState state)
+        public Entry.from_state (ExTimer.TimerState state)
         {
             var datetime = new GLib.DateTime.from_unix_utc (
                 (int64) Math.floor (state.timestamp));

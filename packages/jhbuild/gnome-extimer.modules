@@ -4,8 +4,8 @@
 <moduleset>
   <repository type="git" name="github.com" href="git://github.com/"/>
 
-  <autotools id="gnome-pomodoro">
-    <branch repo="github.com" module="codito/gnome-pomodoro.git"/>
+  <autotools id="gnome-extimer">
+    <branch repo="github.com" module="codito/gnome-extimer.git"/>
     <dep package="vala"/>
     <dep package="glib"/>
     <dep package="gobject-introspection"/>
@@ -19,9 +19,9 @@
     <dep package="gsettings-desktop-schemas"/>
   </autotools>
 
-  <metamodule id="meta-gnome-pomodoro">
+  <metamodule id="meta-gnome-extimer">
     <dependencies>
-      <dep package="gnome-pomodoro"/>
+      <dep package="gnome-extimer"/>
     </dependencies>
   </metamodule>
 </moduleset>

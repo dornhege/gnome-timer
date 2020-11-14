@@ -1,5 +1,5 @@
 icondir = $(datadir)/icons/hicolor/scalable/apps
-icon_DATA = gnome-pomodoro-symbolic.svg
+icon_DATA = gnome-extimer-symbolic.svg
 
 EXTRA_DIST = \
 	$(icon_DATA)

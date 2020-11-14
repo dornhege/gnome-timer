@@ -21,7 +21,7 @@
 using GLib;
 
 
-namespace Pomodoro.Widgets
+namespace ExTimer.Widgets
 {
     public class LogScale : Gtk.Scale
     {

@@ -21,13 +21,13 @@
 using GLib;
 
 
-namespace Pomodoro
+namespace ExTimer
 {
     public class CapabilityGroup : GLib.Object
     {
         public string name { get; construct set; }
 
-        private GLib.HashTable<string,Pomodoro.Capability> capabilities;
+        private GLib.HashTable<string,ExTimer.Capability> capabilities;
 
         public CapabilityGroup (string? name = null)
         {
@@ -36,7 +36,7 @@ namespace Pomodoro
 
         construct
         {
-            this.capabilities = new GLib.HashTable<string, Pomodoro.Capability> (str_hash, str_equal);
+            this.capabilities = new GLib.HashTable<string, ExTimer.Capability> (str_hash, str_equal);
         }
 
         public bool contains (string capability_name)
@@ -44,17 +44,17 @@ namespace Pomodoro
             return this.capabilities.contains (capability_name);
         }
 
-        public unowned Pomodoro.Capability lookup (string capability_name)
+        public unowned ExTimer.Capability lookup (string capability_name)
         {
-            return this.capabilities.lookup (capability_name) as Pomodoro.Capability;
+            return this.capabilities.lookup (capability_name) as ExTimer.Capability;
         }
 
-        public void @foreach (GLib.HFunc<string, Pomodoro.Capability> func)
+        public void @foreach (GLib.HFunc<string, ExTimer.Capability> func)
         {
             this.capabilities.@foreach (func);
         }
 
-        public bool add (Pomodoro.Capability capability)
+        public bool add (ExTimer.Capability capability)
         {
             var existing_capability = this.capabilities.lookup (capability.name);
 
@@ -71,7 +71,7 @@ namespace Pomodoro
             return true;
         }
 
-        public void replace (Pomodoro.Capability capability)
+        public void replace (ExTimer.Capability capability)
         {
             var existing_capability = this.capabilities.lookup (capability.name);
 
@@ -116,8 +116,8 @@ namespace Pomodoro
             }
         }
 
-        public signal void capability_added (Pomodoro.Capability capability);
+        public signal void capability_added (ExTimer.Capability capability);
 
-        public signal void capability_removed (Pomodoro.Capability capability);
+        public signal void capability_removed (ExTimer.Capability capability);
     }
 }

@@ -1,0 +1,3 @@
+[D-BUS Service]
+Name=org.gnome.ExTimer
+Exec=@bindir@/gnome-extimer --no-default-window

@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schemalist gettext-domain="gnome-pomodoro">
-  <schema id="org.gnome.pomodoro" path="/org/gnome/pomodoro/">
-    <child name="preferences" schema="org.gnome.pomodoro.preferences"/>
-    <child name="state" schema="org.gnome.pomodoro.state"/>
+<schemalist gettext-domain="gnome-extimer">
+  <schema id="org.gnome.extimer" path="/org/gnome/extimer/">
+    <child name="preferences" schema="org.gnome.extimer.preferences"/>
+    <child name="state" schema="org.gnome.extimer.state"/>
   </schema>
 
-  <schema id="org.gnome.pomodoro.preferences" path="/org/gnome/pomodoro/preferences/">
-    <key name="pomodoro-duration" type="d">
+  <schema id="org.gnome.extimer.preferences" path="/org/gnome/extimer/preferences/">
+    <key name="extimer-duration" type="d">
       <default>1500</default>
       <range min="1" max="36000"/>
-      <summary>Pomodoro duration</summary>
+      <summary>ExTimer duration</summary>
       <description>Time in seconds you are supposed to be working.</description>
     </key>
     <key name="short-break-duration" type="d">
@@ -27,7 +27,7 @@
     <key name="long-break-interval" type="d">
       <default>4</default>
       <summary>Long pause interval</summary>
-      <description>Number of pomodoros to a long break.</description>
+      <description>Number of extimers to a long break.</description>
     </key>
     <key name="toggle-timer-key" type="as">
       <default><![CDATA[["<Ctrl><Alt>p"]]]></default>
@@ -42,7 +42,7 @@
     <key name="pause-when-idle" type="b">
       <default>true</default>
       <summary>Wait after a break</summary>
-      <description>Postpone pomodoro until there is some activity.</description>
+      <description>Postpone extimer until there is some activity.</description>
     </key>
     <key name="enabled-plugins" type="as">
       <default>["sounds"]</default>
@@ -51,11 +51,11 @@
     </key>
   </schema>
 
-  <schema id="org.gnome.pomodoro.state" path="/org/gnome/pomodoro/state/">
+  <schema id="org.gnome.extimer.state" path="/org/gnome/extimer/state/">
     <key name="timer-state" type="s">
       <choices>
         <choice value="null"/>
-        <choice value="pomodoro"/>
+        <choice value="extimer"/>
         <choice value="short-break"/>
         <choice value="long-break"/>
       </choices>

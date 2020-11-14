@@ -21,7 +21,7 @@
 using GLib;
 
 
-namespace Pomodoro
+namespace ExTimer
 {
     const double TIMER_SCALE_LOWER = 60.0;
     const double TIMER_SCALE_UPPER = 60.0 * 120.0;
@@ -93,9 +93,9 @@ namespace Pomodoro
 
     public interface PreferencesPage : Gtk.Widget
     {
-        public unowned Pomodoro.PreferencesDialog get_preferences_dialog ()
+        public unowned ExTimer.PreferencesDialog get_preferences_dialog ()
         {
-            return this.get_toplevel () as Pomodoro.PreferencesDialog;
+            return this.get_toplevel () as ExTimer.PreferencesDialog;
         }
 
         public virtual void configure_header_bar (Gtk.HeaderBar header_bar)
@@ -103,10 +103,10 @@ namespace Pomodoro
         }
     }
 
-    [GtkTemplate (ui = "/org/gnome/pomodoro/preferences-keyboard-shortcut-page.ui")]
-    public class PreferencesKeyboardShortcutPage : Gtk.Box, Gtk.Buildable, Pomodoro.PreferencesPage
+    [GtkTemplate (ui = "/org/gnome/extimer/preferences-keyboard-shortcut-page.ui")]
+    public class PreferencesKeyboardShortcutPage : Gtk.Box, Gtk.Buildable, ExTimer.PreferencesPage
     {
-        private Pomodoro.Accelerator accelerator { get; set; }
+        private ExTimer.Accelerator accelerator { get; set; }
 
         [GtkChild]
         private Gtk.Box preview_box;
@@ -122,10 +122,10 @@ namespace Pomodoro
 
         construct
         {
-            this.accelerator = new Pomodoro.Accelerator ();
+            this.accelerator = new ExTimer.Accelerator ();
             this.accelerator.changed.connect (this.on_accelerator_changed);
 
-            this.settings = Pomodoro.get_settings ()
+            this.settings = ExTimer.get_settings ()
                                     .get_child ("preferences");
             this.settings.delay ();
 
@@ -151,9 +151,9 @@ namespace Pomodoro
 
                 is_valid = true;
             }
-            catch (Pomodoro.AcceleratorError error)
+            catch (ExTimer.AcceleratorError error)
             {
-                if (error is Pomodoro.AcceleratorError.TYPING_COLLISION)
+                if (error is ExTimer.AcceleratorError.TYPING_COLLISION)
                 {
                     this.error_label.label = _("Using \"%s\" as shortcut will interfere with typing. Try adding another key, such as Control, Alt or Shift.").printf (this.accelerator.display_name);
                     this.error_label.show ();
@@ -254,7 +254,7 @@ namespace Pomodoro
 
                     this.settings.apply ();
                 }
-                catch (Pomodoro.AcceleratorError error)
+                catch (ExTimer.AcceleratorError error)
                 {
                     this.settings.revert ();
                 }
@@ -292,7 +292,7 @@ namespace Pomodoro
                 this.focus_out_event_id = toplevel.focus_out_event.connect (this.on_focus_out_event);
             }
 
-            var application = Pomodoro.Application.get_default ();
+            var application = ExTimer.Application.get_default ();
             application.capabilities.disable ("accelerator");
         }
 
@@ -317,13 +317,13 @@ namespace Pomodoro
                 this.focus_out_event_id != 0;
             }
 
-            var application = Pomodoro.Application.get_default ();
+            var application = ExTimer.Application.get_default ();
             application.capabilities.enable ("accelerator");
         }
     }
 
-    [GtkTemplate (ui = "/org/gnome/pomodoro/preferences-plugins-page.ui")]
-    public class PreferencesPluginsPage : Gtk.ScrolledWindow, Gtk.Buildable, Pomodoro.PreferencesPage
+    [GtkTemplate (ui = "/org/gnome/extimer/preferences-plugins-page.ui")]
+    public class PreferencesPluginsPage : Gtk.ScrolledWindow, Gtk.Buildable, ExTimer.PreferencesPage
     {
         [GtkChild]
         private Gtk.ListBox plugins_listbox;
@@ -334,13 +334,13 @@ namespace Pomodoro
 
         construct
         {
-            this.settings = Pomodoro.get_settings ()
+            this.settings = ExTimer.get_settings ()
                                     .get_child ("preferences");
             this.settings.changed["enabled-plugins"].connect (this.on_settings_changed);
 
             this.engine = Peas.Engine.get_default ();
 
-            this.plugins_listbox.set_header_func (Pomodoro.list_box_separator_func);
+            this.plugins_listbox.set_header_func (ExTimer.list_box_separator_func);
             this.plugins_listbox.set_sort_func (list_box_sort_func);
 
             this.toggles = new GLib.HashTable<string, unowned Gtk.Switch> (str_hash, str_equal);
@@ -420,12 +420,12 @@ namespace Pomodoro
         private Gtk.ListBoxRow create_row (Peas.PluginInfo plugin_info)
         {
             var name_label = new Gtk.Label (plugin_info.get_name ());
-            name_label.get_style_context ().add_class ("pomodoro-plugin-name");
+            name_label.get_style_context ().add_class ("extimer-plugin-name");
             name_label.halign = Gtk.Align.START;
 
             var description_label = new Gtk.Label (plugin_info.get_description ());
             description_label.get_style_context ().add_class ("dim-label");
-            description_label.get_style_context ().add_class ("pomodoro-plugin-description");
+            description_label.get_style_context ().add_class ("extimer-plugin-description");
             description_label.halign = Gtk.Align.START;
 
             var toggle = new Gtk.Switch ();
@@ -476,8 +476,8 @@ namespace Pomodoro
         }
     }
 
-    [GtkTemplate (ui = "/org/gnome/pomodoro/preferences-main-page.ui")]
-    public class PreferencesMainPage : Gtk.ScrolledWindow, Gtk.Buildable, Pomodoro.PreferencesPage
+    [GtkTemplate (ui = "/org/gnome/extimer/preferences-main-page.ui")]
+    public class PreferencesMainPage : Gtk.ScrolledWindow, Gtk.Buildable, ExTimer.PreferencesPage
     {
         [GtkChild]
         public Gtk.Box box;
@@ -498,16 +498,16 @@ namespace Pomodoro
         private Gtk.ListBoxRow listboxrow_idle_monitor;
 
         private GLib.Settings settings;
-        private Pomodoro.Accelerator accelerator;
+        private ExTimer.Accelerator accelerator;
 
         construct
         {
-            this.timer_listbox.set_header_func (Pomodoro.list_box_separator_func);
-            this.notifications_listbox.set_header_func (Pomodoro.list_box_separator_func);
-            this.desktop_listbox.set_header_func (Pomodoro.list_box_separator_func);
-            this.plugins_listbox.set_header_func (Pomodoro.list_box_separator_func);
+            this.timer_listbox.set_header_func (ExTimer.list_box_separator_func);
+            this.notifications_listbox.set_header_func (ExTimer.list_box_separator_func);
+            this.desktop_listbox.set_header_func (ExTimer.list_box_separator_func);
+            this.plugins_listbox.set_header_func (ExTimer.list_box_separator_func);
 
-            var application = Pomodoro.Application.get_default ();
+            var application = ExTimer.Application.get_default ();
             application.capabilities.capability_enabled.connect (this.on_capability_enabled);
             application.capabilities.capability_disabled.connect (this.on_capability_disabled);
 
@@ -548,10 +548,10 @@ namespace Pomodoro
 
         private void setup_timer_section (Gtk.Builder builder)
         {
-            var pomodoro_scale = this.setup_time_scale
+            var extimer_scale = this.setup_time_scale
                                        (builder,
-                                        "pomodoro_grid",
-                                        "pomodoro_label");
+                                        "extimer_grid",
+                                        "extimer_label");
             var short_break_scale = this.setup_time_scale
                                        (builder,
                                         "short_break_grid",
@@ -567,8 +567,8 @@ namespace Pomodoro
                                        ("accelerator_label")
                                        as Gtk.Label;
 
-            this.settings.bind ("pomodoro-duration",
-                                pomodoro_scale.base_adjustment,
+            this.settings.bind ("extimer-duration",
+                                extimer_scale.base_adjustment,
                                 "value",
                                 GLib.SettingsBindFlags.DEFAULT);
             this.settings.bind ("short-break-duration",
@@ -584,7 +584,7 @@ namespace Pomodoro
                                 "value",
                                 GLib.SettingsBindFlags.DEFAULT);
 
-            this.accelerator = new Pomodoro.Accelerator ();
+            this.accelerator = new ExTimer.Accelerator ();
             this.accelerator.changed.connect(() => {
                 accelerator_label.label = this.accelerator.display_name != ""
                         ? this.accelerator.display_name : _("Off");
@@ -625,7 +625,7 @@ namespace Pomodoro
 
         private void parser_finished (Gtk.Builder builder)
         {
-            this.settings = Pomodoro.get_settings ()
+            this.settings = ExTimer.get_settings ()
                                     .get_child ("preferences");
 
             base.parser_finished (builder);
@@ -659,7 +659,7 @@ namespace Pomodoro
 
         private void update_capabilities ()
         {
-            var application  = Pomodoro.Application.get_default ();
+            var application  = ExTimer.Application.get_default ();
             var capabilities = application.capabilities;
 
             this.listboxrow_accelerator.visible = capabilities.has_enabled ("accelerator");
@@ -742,7 +742,7 @@ namespace Pomodoro
 
         public override void dispose ()
         {
-            var application = Pomodoro.Application.get_default ();
+            var application = ExTimer.Application.get_default ();
             application.capabilities.capability_enabled.disconnect (this.on_capability_enabled);
             application.capabilities.capability_disabled.disconnect (this.on_capability_disabled);
 
@@ -750,7 +750,7 @@ namespace Pomodoro
         }
     }
 
-    [GtkTemplate (ui = "/org/gnome/pomodoro/preferences.ui")]
+    [GtkTemplate (ui = "/org/gnome/extimer/preferences.ui")]
     public class PreferencesDialog : Gtk.ApplicationWindow, Gtk.Buildable
     {
         private const int DEFAULT_WIDTH = 600;
@@ -760,7 +760,7 @@ namespace Pomodoro
             { "back", on_back_activate }
         };
 
-        private static unowned Pomodoro.PreferencesDialog instance;
+        private static unowned ExTimer.PreferencesDialog instance;
 
         [GtkChild]
         private Gtk.HeaderBar header_bar;
@@ -798,15 +798,15 @@ namespace Pomodoro
 
             this.add_page ("main",
                            _("Preferences"),
-                           typeof (Pomodoro.PreferencesMainPage));
+                           typeof (ExTimer.PreferencesMainPage));
 
             this.add_page ("plugins",
                           _("Plugins"),
-                          typeof (Pomodoro.PreferencesPluginsPage));
+                          typeof (ExTimer.PreferencesPluginsPage));
 
             this.add_page ("keyboard-shortcut",
                           _("Keyboard Shortcut"),
-                          typeof (Pomodoro.PreferencesKeyboardShortcutPage));
+                          typeof (ExTimer.PreferencesKeyboardShortcutPage));
 
             this.add_action_entries (PreferencesDialog.ACTION_ENTRIES, this);
 
@@ -816,7 +816,7 @@ namespace Pomodoro
 
             /* let page be modified by extensions */
             this.extensions = new Peas.ExtensionSet (Peas.Engine.get_default (),
-                                                     typeof (Pomodoro.PreferencesDialogExtension));
+                                                     typeof (ExTimer.PreferencesDialogExtension));
 
             this.stack.notify["visible-child"].connect (this.on_visible_child_notify);
 
@@ -838,7 +838,7 @@ namespace Pomodoro
             base.parser_finished (builder);
         }
 
-        private void on_page_notify (Pomodoro.PreferencesPage page)
+        private void on_page_notify (ExTimer.PreferencesPage page)
         {
             string name;
             string title;
@@ -867,7 +867,7 @@ namespace Pomodoro
             var window_height = 0;
             var header_bar_height = 0;
             var page_height = 0;
-            var page = this.stack.visible_child as Pomodoro.PreferencesPage;
+            var page = this.stack.visible_child as ExTimer.PreferencesPage;
 
             this.on_page_notify (page);
 
@@ -898,25 +898,25 @@ namespace Pomodoro
             this.history_pop ();
         }
 
-        public unowned Pomodoro.PreferencesPage? get_page (string name)
+        public unowned ExTimer.PreferencesPage? get_page (string name)
         {
             if (this.stack != null) {
                 var page_widget = this.stack.get_child_by_name (name);
 
                 if (page_widget != null) {
-                    return page_widget as Pomodoro.PreferencesPage;
+                    return page_widget as ExTimer.PreferencesPage;
                 }
             }
 
             if (this.pages != null && this.pages.contains (name)) {
                 var meta = this.pages.lookup (name);
-                var page = GLib.Object.new (meta.type) as Pomodoro.PreferencesPage;
+                var page = GLib.Object.new (meta.type) as ExTimer.PreferencesPage;
 
                 this.stack.add_titled (page as Gtk.Widget,
                                        meta.name,
                                        meta.title);
 
-                return page as Pomodoro.PreferencesPage;
+                return page as ExTimer.PreferencesPage;
             }
 
             return null;
@@ -977,7 +977,7 @@ namespace Pomodoro
         public void add_page (string    name,
                               string    title,
                               GLib.Type type)
-                    requires (type.is_a (typeof (Pomodoro.PreferencesPage)))
+                    requires (type.is_a (typeof (ExTimer.PreferencesPage)))
         {
             var meta = PageMeta () {
                 name = name,

@@ -21,55 +21,55 @@ SUBST=sed \
 	-e "s|@pkgdatadir[@]|$(pkgdatadir)|g"
 
 
-gnome_pomodoro_debian_in_files = \
+gnome_extimer_debian_in_files = \
 	debian/changelog.in \
 	debian/compat.in \
 	debian/control.in \
 	debian/rules.in
-gnome_pomodoro_debian = $(gnome_pomodoro_debian_in_files:.in=)
+gnome_extimer_debian = $(gnome_extimer_debian_in_files:.in=)
 
-gnome_pomodoro_orig_tar_gz = \
+gnome_extimer_orig_tar_gz = \
 	$(PACKAGE_NAME)_$(PACKAGE_VERSION).orig.tar.gz
 
-gnome_pomodoro_debian_tar_gz = \
+gnome_extimer_debian_tar_gz = \
 	$(PACKAGE_NAME)_$(PACKAGE_VERSION)-$(DEB_RELEASE).debian.tar.gz
 
-gnome_pomodoro_dsc_in_files = \
-	gnome-pomodoro.dsc.in
-gnome_pomodoro_dsc_deps = \
-	$(gnome_pomodoro_orig_tar_gz) \
-	$(gnome_pomodoro_debian_tar_gz)
-gnome_pomodoro_dsc = \
+gnome_extimer_dsc_in_files = \
+	gnome-extimer.dsc.in
+gnome_extimer_dsc_deps = \
+	$(gnome_extimer_orig_tar_gz) \
+	$(gnome_extimer_debian_tar_gz)
+gnome_extimer_dsc = \
 	$(PACKAGE_NAME)_$(PACKAGE_VERSION)-$(DEB_RELEASE).dsc
 
 
 deb-src:
-	for file in $(gnome_pomodoro_debian_in_files); do \
+	for file in $(gnome_extimer_debian_in_files); do \
 		$(AM_V_GEN) $(SUBST) $$file > $${file%.*}; \
 	done
-	$(AM_V_GEN) tar -cvzf $(gnome_pomodoro_debian_tar_gz) $(gnome_pomodoro_debian);
+	$(AM_V_GEN) tar -cvzf $(gnome_extimer_debian_tar_gz) $(gnome_extimer_debian);
 	\
 	cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) dist-gzip;
-	$(AM_V_GEN) cp $(top_builddir)/$(PACKAGE_TARNAME)-$(PACKAGE_VERSION).tar.gz $(gnome_pomodoro_orig_tar_gz);
+	$(AM_V_GEN) cp $(top_builddir)/$(PACKAGE_TARNAME)-$(PACKAGE_VERSION).tar.gz $(gnome_extimer_orig_tar_gz);
 	\
-	$(AM_V_GEN) $(SUBST) $(gnome_pomodoro_dsc_in_files) > $(gnome_pomodoro_dsc);
-	echo "Files:" >> $(gnome_pomodoro_dsc);
-	for file in $(gnome_pomodoro_dsc_deps); do \
+	$(AM_V_GEN) $(SUBST) $(gnome_extimer_dsc_in_files) > $(gnome_extimer_dsc);
+	echo "Files:" >> $(gnome_extimer_dsc);
+	for file in $(gnome_extimer_dsc_deps); do \
 		file_md5=`md5sum $$file | cut -d " " -f 1`; \
 		file_size=`stat -c%s $$file`; \
-		echo " $$file_md5 $$file_size $$file" >> $(gnome_pomodoro_dsc); \
+		echo " $$file_md5 $$file_size $$file" >> $(gnome_extimer_dsc); \
 	done
 
 
 EXTRA_DIST = \
-	$(gnome_pomodoro_debian_in_files) \
-	$(gnome_pomodoro_dsc_in_files)
+	$(gnome_extimer_debian_in_files) \
+	$(gnome_extimer_dsc_in_files)
 
 CLEANFILES = \
-	$(gnome_pomodoro_orig_tar_gz) \
-	$(gnome_pomodoro_debian_tar_gz) \
-	$(gnome_pomodoro_debian) \
-	$(gnome_pomodoro_dsc)
+	$(gnome_extimer_orig_tar_gz) \
+	$(gnome_extimer_debian_tar_gz) \
+	$(gnome_extimer_debian) \
+	$(gnome_extimer_dsc)
 
 .PHONY: all deb-src
 

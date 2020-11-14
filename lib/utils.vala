@@ -20,7 +20,7 @@
 using GLib;
 
 
-namespace Pomodoro
+namespace ExTimer
 {
     private string format_time (int seconds)
     {

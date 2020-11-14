@@ -28,6 +28,6 @@ Architecture: any
 Depends: ${misc:Depends},
          ${shlibs:Depends}
 Description: A time management utility for GNOME
- A GNOME utility that helps managing time according to Pomodoro Technique. It
+ A GNOME utility that helps managing time according to ExTimer Technique. It
  intends to improve productivity and focus by taking short breaks after every
  25 minutes of work.

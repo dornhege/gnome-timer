@@ -24,32 +24,32 @@ SUBST=sed \
 	-e "s|@pkgdatadir[@]|$(pkgdatadir)|g"
 
 
-gnome_pomodoro_spec_in_files = \
+gnome_extimer_spec_in_files = \
 	$(PACKAGE_NAME).spec.in
 
-gnome_pomodoro_spec = \
+gnome_extimer_spec = \
 	$(PACKAGE_NAME)-$(PACKAGE_VERSION).spec
 
-gnome_pomodoro_tar_gz = \
+gnome_extimer_tar_gz = \
 	$(PACKAGE_NAME)-$(PACKAGE_VERSION).tar.xz
 
 
 rpm-src:
 	cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) dist-xz;
-	cp $(top_builddir)/$(PACKAGE_TARNAME)-$(PACKAGE_VERSION).tar.xz $(gnome_pomodoro_tar_gz);
+	cp $(top_builddir)/$(PACKAGE_TARNAME)-$(PACKAGE_VERSION).tar.xz $(gnome_extimer_tar_gz);
 	\
-	$(SUBST) $(gnome_pomodoro_spec_in_files) > $(gnome_pomodoro_spec)
+	$(SUBST) $(gnome_extimer_spec_in_files) > $(gnome_extimer_spec)
 
 rpm: rpm-src
 	env -i PATH=/usr/bin/:/bin SHELL=$(SHELL) HOSTNAME=$${HOSTNAME} HOME=$${HOME} \
-	rpmbuild $(RPM_DEFINES) -ba $(gnome_pomodoro_spec)
+	rpmbuild $(RPM_DEFINES) -ba $(gnome_extimer_spec)
 
 EXTRA_DIST = \
-	$(gnome_pomodoro_spec_in_files)
+	$(gnome_extimer_spec_in_files)
 
 CLEANFILES = \
-	$(gnome_pomodoro_tar_gz) \
-	$(gnome_pomodoro_spec)
+	$(gnome_extimer_tar_gz) \
+	$(gnome_extimer_spec)
 
 .PHONY: all rpm rpm-src
 

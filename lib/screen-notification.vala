@@ -18,7 +18,7 @@
  *
  */
 
-namespace Pomodoro
+namespace ExTimer
 {
     /**
      * A fullscreen notification.
@@ -27,7 +27,7 @@ namespace Pomodoro
      * Otherwise, delay blocking until window is shown.
      *
      */
-    [GtkTemplate (ui = "/org/gnome/pomodoro/screen-notification.ui")]
+    [GtkTemplate (ui = "/org/gnome/extimer/screen-notification.ui")]
     public class ScreenNotification : Gtk.Window, Gtk.Buildable
     {
         private const uint IDLE_TIME_TO_CLOSE = 600;
@@ -64,7 +64,7 @@ namespace Pomodoro
 
         private uint                   fade_in_timeout_id   = 0;
         private uint                   fade_out_timeout_id  = 0;
-        private unowned Pomodoro.Timer timer;
+        private unowned ExTimer.Timer timer;
         private ulong                  timer_elapsed_id     = 0;
         private uint                   close_on_activity_id = 0;
         private uint32                 last_event_time      = 0;
@@ -74,7 +74,7 @@ namespace Pomodoro
 
         construct
         {
-            this.timer = Pomodoro.Timer.get_default ();
+            this.timer = ExTimer.Timer.get_default ();
             this.timer.state_changed.connect (this.on_timer_state_changed);
 
             this.on_timer_state_changed ();
@@ -139,7 +139,7 @@ namespace Pomodoro
             }
 
             // TODO: connect to elapsed signal when this widget is visible
-            if (this.timer.state is Pomodoro.BreakState) {
+            if (this.timer.state is ExTimer.BreakState) {
                 this.timer_elapsed_id = this.timer.notify["elapsed"].connect_after (this.on_timer_elapsed_notify);
 
                 this.on_timer_elapsed_notify ();

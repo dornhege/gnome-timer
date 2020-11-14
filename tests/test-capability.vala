@@ -1,5 +1,5 @@
 /*
- * This file is part of GNOME Pomodoro
+ * This file is part of GNOME ExTimer
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,9 +18,9 @@
  *
  */
 
-namespace Pomodoro
+namespace ExTimer
 {
-    public class CapabilityTest : Pomodoro.TestSuite
+    public class CapabilityTest : ExTimer.TestSuite
     {
         private int enable_count;
         private int disable_count;
@@ -47,22 +47,22 @@ namespace Pomodoro
         {
         }
 
-        private void handle_capability_enable (Pomodoro.Capability capability)
+        private void handle_capability_enable (ExTimer.Capability capability)
         {
             this.enable_count++;
         }
 
-        private void handle_capability_disable (Pomodoro.Capability capability)
+        private void handle_capability_disable (ExTimer.Capability capability)
         {
             this.disable_count++;
         }
 
         /**
-         * Unit test for Pomodoro.Capability.enable() method.
+         * Unit test for ExTimer.Capability.enable() method.
          */
         public void test_enable ()
         {
-            var capability = new Pomodoro.Capability ("anti-gravity",
+            var capability = new ExTimer.Capability ("anti-gravity",
                                                       this.handle_capability_enable,
                                                       this.handle_capability_disable);
 
@@ -74,11 +74,11 @@ namespace Pomodoro
         }
 
         /**
-         * Unit test for Pomodoro.Capability.disable() method.
+         * Unit test for ExTimer.Capability.disable() method.
          */
         public void test_disable ()
         {
-            var capability = new Pomodoro.Capability ("anti-gravity",
+            var capability = new ExTimer.Capability ("anti-gravity",
                                                       this.handle_capability_enable,
                                                       this.handle_capability_disable);
             capability.enable ();
@@ -90,11 +90,11 @@ namespace Pomodoro
         }
 
         /**
-         * Unit test for Pomodoro.Capability.dispose() method.
+         * Unit test for ExTimer.Capability.dispose() method.
          */
         public void test_dispose ()
         {
-            var capability = new Pomodoro.Capability ("anti-gravity",
+            var capability = new ExTimer.Capability ("anti-gravity",
                                                       this.handle_capability_enable,
                                                       this.handle_capability_disable);
             capability.enable ();

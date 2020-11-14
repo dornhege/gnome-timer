@@ -1,11 +1,11 @@
 {
-    "app-id": "org.gnome.Pomodoro",
+    "app-id": "org.gnome.ExTimer",
     "runtime": "org.gnome.Platform",
     "runtime-version": "master",
     "sdk": "org.gnome.Sdk",
-    "command": "gnome-pomodoro",
+    "command": "gnome-extimer",
     "copy-icon": true,
-    "rename-icon": "gnome-pomodoro",
+    "rename-icon": "gnome-extimer",
     "finish-args": [
         "--share=ipc",
         "--socket=x11",
@@ -84,7 +84,7 @@
             ]
         },
         {
-            "name": "gnome-pomodoro",
+            "name": "gnome-extimer",
             "buildsystem": "autotools",
             "sources": [
                 {
@@ -94,7 +94,7 @@
                 {
                     "type": "git",
                     "branch": "master",
-                    "url": "https://github.com/codito/gnome-pomodoro.git"
+                    "url": "https://github.com/codito/gnome-extimer.git"
                 }
             ]
         }

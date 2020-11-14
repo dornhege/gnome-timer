@@ -19,9 +19,9 @@
  */
 
 
-namespace Pomodoro
+namespace ExTimer
 {
-    [GtkTemplate (ui = "/org/gnome/pomodoro/window.ui")]
+    [GtkTemplate (ui = "/org/gnome/extimer/window.ui")]
     public class Window : Gtk.ApplicationWindow, Gtk.Buildable
     {
         private const int MIN_WIDTH = 500;
@@ -41,7 +41,7 @@ namespace Pomodoro
 
         private const Name[] STATE_NAMES = {
             { "null", "" },
-            { "pomodoro", N_("Pomodoro") },
+            { "extimer", N_("ExTimer") },
             { "short-break", N_("Short Break") },
             { "long-break", N_("Long Break") }
         };
@@ -61,7 +61,7 @@ namespace Pomodoro
             }
         }
 
-        private unowned Pomodoro.Timer timer;
+        private unowned ExTimer.Timer timer;
 
         [GtkChild]
         private Gtk.Stack stack;
@@ -80,7 +80,7 @@ namespace Pomodoro
         [GtkChild]
         private Gtk.Image pause_button_image;
 
-        private Pomodoro.Animation blink_animation;
+        private ExTimer.Animation blink_animation;
         private string default_page;
 
         construct
@@ -94,10 +94,10 @@ namespace Pomodoro
             this.set_geometry_hints (this, geometry, Gdk.WindowHints.MIN_SIZE);
 
             // this.stack.add_titled (this.timer_stack, "timer", _("Timer"));
-            this.stack.add_titled (new Pomodoro.StatsView (), "stats", _("Stats"));
+            this.stack.add_titled (new ExTimer.StatsView (), "stats", _("Stats"));
 
             // TODO: this.default_page should be set from application.vala
-            var application = Pomodoro.Application.get_default ();
+            var application = ExTimer.Application.get_default ();
 
             // if (application.capabilities.has_enabled ("task-list")) {  // TODO
             //     this.default_page = "task-list";
@@ -118,7 +118,7 @@ namespace Pomodoro
 
         public void parser_finished (Gtk.Builder builder)
         {
-            this.timer = Pomodoro.Timer.get_default ();
+            this.timer = ExTimer.Timer.get_default ();
             this.insert_action_group ("timer", this.timer.get_action_group ());
 
             base.parser_finished (builder);
@@ -144,7 +144,7 @@ namespace Pomodoro
         private void on_timer_state_notify ()
         {
             this.timer_stack.visible_child_name = 
-                    (this.timer.state is Pomodoro.DisabledState) ? "disabled" : "enabled";
+                    (this.timer.state is ExTimer.DisabledState) ? "disabled" : "enabled";
 
             foreach (var mapping in STATE_NAMES)
             {
@@ -157,7 +157,7 @@ namespace Pomodoro
 
         private void on_timer_elapsed_notify ()
         {
-            if (!(this.timer.state is Pomodoro.DisabledState))
+            if (!(this.timer.state is ExTimer.DisabledState))
             {
                 var remaining = (uint) double.max (Math.ceil (this.timer.remaining), 0.0);
                 var minutes   = remaining / 60;
@@ -182,7 +182,7 @@ namespace Pomodoro
                 this.pause_button.action_name     = "timer.resume";
                 this.pause_button.tooltip_text    = _("Resume");
 
-                this.blink_animation = new Pomodoro.Animation (Pomodoro.AnimationMode.BLINK,
+                this.blink_animation = new ExTimer.Animation (ExTimer.AnimationMode.BLINK,
                                                                2500,
                                                                25);
                 this.blink_animation.add_property (this.timer_box,
@@ -196,7 +196,7 @@ namespace Pomodoro
                 this.pause_button.action_name     = "timer.pause";
                 this.pause_button.tooltip_text    = _("Pause");
 
-                this.blink_animation = new Pomodoro.Animation (Pomodoro.AnimationMode.EASE_OUT,
+                this.blink_animation = new ExTimer.Animation (ExTimer.AnimationMode.EASE_OUT,
                                                                200,
                                                                50);
                 this.blink_animation.add_property (this.timer_box,
@@ -210,7 +210,7 @@ namespace Pomodoro
         private bool on_timer_box_draw (Gtk.Widget    widget,
                                         Cairo.Context context)
         {
-            if (!(this.timer.state is Pomodoro.DisabledState))
+            if (!(this.timer.state is ExTimer.DisabledState))
             {
                 var style_context = widget.get_style_context ();
                 var color         = style_context.get_color (widget.get_state_flags ());

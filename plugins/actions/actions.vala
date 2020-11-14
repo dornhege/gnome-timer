@@ -21,7 +21,7 @@ using GLib;
 
 namespace Actions
 {
-    private const string ACTION_PATH_PREFIX = "/org/gnome/pomodoro/plugins/actions/action";
+    private const string ACTION_PATH_PREFIX = "/org/gnome/extimer/plugins/actions/action";
     private const string ACTION_PATH_SUFFIX = "/";
 
 
@@ -47,7 +47,7 @@ namespace Actions
         {
             Actions.ActionManager.instance = this;
 
-            this.settings = new GLib.Settings ("org.gnome.pomodoro.plugins.actions");
+            this.settings = new GLib.Settings ("org.gnome.extimer.plugins.actions");
             this.settings.changed.connect (this.on_settings_changed);
 
             this.actions_hash = new GLib.HashTable<string, unowned Actions.Action> (str_hash, str_equal);
@@ -163,7 +163,7 @@ namespace Actions
                          int            position = -1)
         {
             if (action.path == null) {
-                action.path = "/org/gnome/pomodoro/plugins/actions/action%u/".printf (this.get_next_id ());
+                action.path = "/org/gnome/extimer/plugins/actions/action%u/".printf (this.get_next_id ());
             }
 
             this.add_internal (action, position);
@@ -234,7 +234,7 @@ namespace Actions
         private GLib.AsyncQueue<Actions.Context?> jobs_queue;
         private GLib.Thread<bool> jobs_thread;
         private Actions.ActionManager actions_manager;
-        private Pomodoro.Timer timer;
+        private ExTimer.Timer timer;
 
         construct
         {
@@ -243,12 +243,12 @@ namespace Actions
             this.jobs_queue = new GLib.AsyncQueue<Actions.Context?> ();
             this.jobs_thread = new GLib.Thread<bool> ("actions-queue", this.jobs_thread_func);
 
-            this.timer = Pomodoro.Timer.get_default ();
+            this.timer = ExTimer.Timer.get_default ();
             this.timer.state_changed.connect (this.on_timer_state_changed);
             this.timer.notify["is-paused"].connect (this.on_timer_is_paused_notify);
 
-            if (!(this.timer.state is Pomodoro.DisabledState)) {
-                this.on_timer_state_changed (this.timer.state, new Pomodoro.DisabledState ());
+            if (!(this.timer.state is ExTimer.DisabledState)) {
+                this.on_timer_state_changed (this.timer.state, new ExTimer.DisabledState ());
             }
             else {
                 this.on_timer_state_changed (this.timer.state, this.timer.state);
@@ -304,8 +304,8 @@ namespace Actions
             }
         }
 
-        private void on_timer_state_changed (Pomodoro.TimerState state,
-                                             Pomodoro.TimerState previous_state)
+        private void on_timer_state_changed (ExTimer.TimerState state,
+                                             ExTimer.TimerState previous_state)
         {
             var actions    = Actions.ActionManager.get_instance ().get_actions ();
             var states_a   = Actions.State.from_timer_state (previous_state);
@@ -313,11 +313,11 @@ namespace Actions
             var triggers_a = Actions.Trigger.NONE;
             var triggers_b = Actions.Trigger.NONE;
 
-            if (previous_state is Pomodoro.DisabledState) {
+            if (previous_state is ExTimer.DisabledState) {
                 triggers_b |= Actions.Trigger.ENABLE;
             }
 
-            if (state is Pomodoro.DisabledState) {
+            if (state is ExTimer.DisabledState) {
                 triggers_a |= Actions.Trigger.DISABLE;
             }
             else {
@@ -370,7 +370,7 @@ namespace Actions
 
         public override void dispose ()
         {
-            this.on_timer_state_changed (new Pomodoro.DisabledState (), this.timer.state);
+            this.on_timer_state_changed (new ExTimer.DisabledState (), this.timer.state);
 
             this.jobs_queue.push (Actions.Context () {
                 triggers = Actions.Trigger.NONE
@@ -381,7 +381,7 @@ namespace Actions
     }
 
 
-    public class ApplicationExtension : Peas.ExtensionBase, Pomodoro.ApplicationExtension
+    public class ApplicationExtension : Peas.ExtensionBase, ExTimer.ApplicationExtension
     {
         private Gtk.CssProvider css_provider;
         private Actions.ApplicationExtensionInternals internals;
@@ -389,7 +389,7 @@ namespace Actions
         construct
         {
             this.css_provider = new Gtk.CssProvider ();
-            this.css_provider.load_from_resource ("/org/gnome/pomodoro/plugins/actions/style.css");
+            this.css_provider.load_from_resource ("/org/gnome/extimer/plugins/actions/style.css");
 
             Gtk.StyleContext.add_provider_for_screen (
                                          Gdk.Screen.get_default (),
@@ -410,14 +410,14 @@ namespace Actions
     }
 
 
-    public class PreferencesDialogExtension : Peas.ExtensionBase, Pomodoro.PreferencesDialogExtension
+    public class PreferencesDialogExtension : Peas.ExtensionBase, ExTimer.PreferencesDialogExtension
     {
-        private Pomodoro.PreferencesDialog dialog;
+        private ExTimer.PreferencesDialog dialog;
         private GLib.List<Gtk.ListBoxRow> rows;
 
         construct
         {
-            this.dialog = Pomodoro.PreferencesDialog.get_default ();
+            this.dialog = ExTimer.PreferencesDialog.get_default ();
 
             this.dialog.add_page ("actions",
                                   _("Actions"),
@@ -446,7 +446,7 @@ namespace Actions
 
         private void setup_main_page ()
         {
-            var main_page = this.dialog.get_page ("main") as Pomodoro.PreferencesMainPage;
+            var main_page = this.dialog.get_page ("main") as ExTimer.PreferencesMainPage;
             main_page.plugins_listbox.row_activated.connect (this.on_row_activated);
 
             var row = this.create_row (_("Custom actions…"), "actions");
@@ -489,9 +489,9 @@ public void peas_register_types (GLib.TypeModule module)
 {
     var object_module = module as Peas.ObjectModule;
 
-    object_module.register_extension_type (typeof (Pomodoro.ApplicationExtension),
+    object_module.register_extension_type (typeof (ExTimer.ApplicationExtension),
                                            typeof (Actions.ApplicationExtension));
 
-    object_module.register_extension_type (typeof (Pomodoro.PreferencesDialogExtension),
+    object_module.register_extension_type (typeof (ExTimer.PreferencesDialogExtension),
                                            typeof (Actions.PreferencesDialogExtension));
 }

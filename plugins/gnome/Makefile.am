@@ -14,7 +14,7 @@ libgnome_la_VALASOURCES = \
 	gnome-idle-monitor.vala \
 	gnome-plugin.vala \
 	gnome-shell-extension.vala \
-	$(top_builddir)/lib/gnome-pomodoro.vapi
+	$(top_builddir)/lib/gnome-extimer.vapi
 
 libgnome_la_SOURCES = \
 	$(libgnome_la_VALASOURCES)
@@ -40,10 +40,10 @@ libgnome_la_LDFLAGS = \
 libgnome_la_LIBADD = \
 	$(PLUGIN_LIBS) \
 	$(GNOME_PLUGIN_LIBS) \
-	$(top_builddir)/lib/libgnome-pomodoro.la
+	$(top_builddir)/lib/libgnome-extimer.la
 
 gsettings_SCHEMAS = \
-	org.gnome.pomodoro.plugins.gnome.gschema.xml
+	org.gnome.extimer.plugins.gnome.gschema.xml
 @GSETTINGS_RULES@
 
 

@@ -84,8 +84,8 @@
                 <property name="can_focus">False</property>
                 <property name="homogeneous">True</property>
                 <child>
-                  <object class="GtkToggleButton" id="pomodoro_state_togglebutton">
-                    <property name="label" translatable="yes">_Pomodoro</property>
+                  <object class="GtkToggleButton" id="extimer_state_togglebutton">
+                    <property name="label" translatable="yes">_ExTimer</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>

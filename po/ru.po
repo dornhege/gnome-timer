@@ -1,14 +1,14 @@
-# Russian translation for gnome-pomodoro
+# Russian translation for gnome-extimer
 # Copyright (c) 2012 gnome-pomodoro contributors
-# This file is distributed under the same license as the gnome-pomodoro package.
+# This file is distributed under the same license as the gnome-extimer package.
 # liberumed <liberumed@gmail.com>, 2013.
 # Max Vetrov 'tigertv' <maxvetrov555@yandex.ru>, 2018
 # Roman Kaverin <roman.kaverin@gmail.com>, 2020
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gnome-pomodoro\n"
-"Report-Msgid-Bugs-To: https://github.com/codito/gnome-pomodoro/issues\n"
+"Project-Id-Version: gnome-extimer\n"
+"Report-Msgid-Bugs-To: https://github.com/codito/gnome-extimer/issues\n"
 "POT-Creation-Date: 2020-05-07 01:35+0300\n"
 "PO-Revision-Date: 2020-05-07 15:17+0300\n"
 "Last-Translator: Roman Kaverin <roman.kaverin@gmail.com>\n"
@@ -21,8 +21,8 @@ msgstr ""
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: Poedit 2.3\n"
 
-#: data/org.gnome.Pomodoro.appdata.xml.in:8
-#: data/org.gnome.Pomodoro.desktop.in:3 data/resources/menus.ui:28
+#: data/org.gnome.ExTimer.appdata.xml.in:8
+#: data/org.gnome.ExTimer.desktop.in:3 data/resources/menus.ui:28
 #: data/resources/window.ui:379 lib/about-dialog.vala:31
 #: lib/notifications-capability.vala:129 lib/stats-page.vala:527
 #: lib/window.vala:44 plugins/actions/enums.vala:91
@@ -31,136 +31,136 @@ msgstr ""
 #: plugins/gnome/extension/notifications.js:225
 #: plugins/gnome/extension/notifications.js:260
 #: plugins/gnome/extension/timer.js:40 src/main.vala:50
-msgid "Pomodoro"
+msgid "ExTimer"
 msgstr "Помодоро"
 
-#: data/org.gnome.Pomodoro.appdata.xml.in:9
+#: data/org.gnome.ExTimer.appdata.xml.in:9
 msgid "A time management utility for GNOME"
 msgstr "Инструмент тайм-менеджмента для GNOME"
 
-#: data/org.gnome.Pomodoro.appdata.xml.in:11
+#: data/org.gnome.ExTimer.appdata.xml.in:11
 msgid ""
-"A GNOME utility that helps managing time according to Pomodoro Technique. It "
+"A GNOME utility that helps managing time according to ExTimer Technique. It "
 "intends to improve productivity and focus by taking short breaks after every "
 "25 minutes of work."
 msgstr ""
-"Утилита GNOME для управления временем в соответствии с техникой Pomodoro. "
+"Утилита GNOME для управления временем в соответствии с техникой ExTimer. "
 "Она помогает повысить производительность и сосредоточенность с помощью "
 "коротких перерывов после каждых 25 минут работы."
 
-#: data/org.gnome.Pomodoro.appdata.xml.in:23
+#: data/org.gnome.ExTimer.appdata.xml.in:23
 msgid "Timer window"
 msgstr "Окно таймера"
 
-#: data/org.gnome.Pomodoro.appdata.xml.in:27 lib/preferences-dialog.vala:800
+#: data/org.gnome.ExTimer.appdata.xml.in:27 lib/preferences-dialog.vala:800
 #: plugins/gnome/extension/indicator.js:178
 msgid "Preferences"
 msgstr "Настройки"
 
-#: data/org.gnome.Pomodoro.appdata.xml.in:31
+#: data/org.gnome.ExTimer.appdata.xml.in:31
 msgid "Indicator for GNOME Shell"
 msgstr "Индикатор"
 
-#: data/org.gnome.Pomodoro.appdata.xml.in:36
+#: data/org.gnome.ExTimer.appdata.xml.in:36
 msgid "Kamil Prusko"
 msgstr "Kamil Prusko"
 
-#: data/org.gnome.Pomodoro.appdata.xml.in:49
-msgid "Overview of changes in gnome-pomodoro 0.17.0"
-msgstr "Изменения в gnome-pomodoro 0.17.0"
+#: data/org.gnome.ExTimer.appdata.xml.in:49
+msgid "Overview of changes in gnome-extimer 0.17.0"
+msgstr "Изменения в gnome-extimer 0.17.0"
 
-#: data/org.gnome.Pomodoro.appdata.xml.in:51
+#: data/org.gnome.ExTimer.appdata.xml.in:51
 msgid "Support for GNOME Shell 3.36"
 msgstr "Поддержка GNOME Shell 3.36"
 
-#: data/org.gnome.Pomodoro.appdata.xml.in:52
+#: data/org.gnome.ExTimer.appdata.xml.in:52
 msgid "Updated Catalan translation (@antoniofsm)"
 msgstr "Обновлен перевод на каталанский (@antoniofsm)"
 
-#: data/org.gnome.Pomodoro.appdata.xml.in:58
-msgid "Overview of changes in gnome-pomodoro 0.16.0"
-msgstr "Изменения в gnome-pomodoro 0.16.0"
+#: data/org.gnome.ExTimer.appdata.xml.in:58
+msgid "Overview of changes in gnome-extimer 0.16.0"
+msgstr "Изменения в gnome-extimer 0.16.0"
 
-#: data/org.gnome.Pomodoro.appdata.xml.in:60
+#: data/org.gnome.ExTimer.appdata.xml.in:60
 msgid "Support for GNOME Shell 3.34 only"
 msgstr "Поддержка GNOME Shell 3.34"
 
-#: data/org.gnome.Pomodoro.appdata.xml.in:61
+#: data/org.gnome.ExTimer.appdata.xml.in:61
 msgid "Added esperanto translation (@SeZuo)"
 msgstr "Добавлен перевод на эсперанто (@SeZuo)"
 
-#: data/org.gnome.Pomodoro.appdata.xml.in:62
+#: data/org.gnome.ExTimer.appdata.xml.in:62
 msgid "Moved app-menu to main window"
 msgstr "Меню приложения перенесено в главное окно"
 
-#: data/org.gnome.Pomodoro.appdata.xml.in:68
-msgid "Overview of changes in gnome-pomodoro 0.15.1"
-msgstr "Изменения в gnome-pomodoro 0.15.1"
+#: data/org.gnome.ExTimer.appdata.xml.in:68
+msgid "Overview of changes in gnome-extimer 0.15.1"
+msgstr "Изменения в gnome-extimer 0.15.1"
 
-#: data/org.gnome.Pomodoro.appdata.xml.in:70
+#: data/org.gnome.ExTimer.appdata.xml.in:70
 msgid "Minor code cleanups"
 msgstr "Минорные правки кода"
 
-#: data/org.gnome.Pomodoro.appdata.xml.in:76
-msgid "Overview of changes in gnome-pomodoro 0.15.0"
-msgstr "Изменения в gnome-pomodoro 0.15.0"
+#: data/org.gnome.ExTimer.appdata.xml.in:76
+msgid "Overview of changes in gnome-extimer 0.15.0"
+msgstr "Изменения в gnome-extimer 0.15.0"
 
-#: data/org.gnome.Pomodoro.appdata.xml.in:78
+#: data/org.gnome.ExTimer.appdata.xml.in:78
 msgid "Minor code cleanups to support ES6 syntax"
 msgstr "Минорные правки кода для поддержки синтаксиса ES6"
 
-#: data/org.gnome.Pomodoro.appdata.xml.in:79
+#: data/org.gnome.ExTimer.appdata.xml.in:79
 msgid "Support for GNOME Shell 3.32 (@demokritos)"
 msgstr "Поддержка GNOME Shell 3.32 (@demokritos)"
 
-#: data/org.gnome.Pomodoro.appdata.xml.in:80
+#: data/org.gnome.ExTimer.appdata.xml.in:80
 msgid "Fix for build with vala 0.44.1 (@snizovtsev)"
 msgstr "Фикс для компиляции на vala 0.44.1 (@snizovtsev)"
 
-#: data/org.gnome.Pomodoro.appdata.xml.in:81
+#: data/org.gnome.ExTimer.appdata.xml.in:81
 msgid "Updated German translation (@c7hm4r)"
 msgstr "Обновлен перевод на немецкий (@c7hm4r)"
 
-#: data/org.gnome.Pomodoro.appdata.xml.in:82
+#: data/org.gnome.ExTimer.appdata.xml.in:82
 msgid "Fix for handle error recreating existing folder (@Rj7)"
 msgstr "Исправлена обработка ошибки при пересоздании существующей папки (@Rj7)"
 
-#: data/org.gnome.Pomodoro.appdata.xml.in:88
-msgid "Overview of changes in gnome-pomodoro 0.14.0"
-msgstr "Изменения в gnome-pomodoro 0.14.0"
+#: data/org.gnome.ExTimer.appdata.xml.in:88
+msgid "Overview of changes in gnome-extimer 0.14.0"
+msgstr "Изменения в gnome-extimer 0.14.0"
 
-#: data/org.gnome.Pomodoro.appdata.xml.in:90
+#: data/org.gnome.ExTimer.appdata.xml.in:90
 msgid "Support for GNOME Shell 3.28 and 3.30 (@aerostitch)"
 msgstr "Поддержка GNOME Shell 3.28 и 3.30 (@aerostitch)"
 
-#: data/org.gnome.Pomodoro.appdata.xml.in:91 lib/window.vala:97
+#: data/org.gnome.ExTimer.appdata.xml.in:91 lib/window.vala:97
 #: plugins/gnome/extension/indicator.js:179
 msgid "Stats"
 msgstr "Статистика"
 
-#: data/org.gnome.Pomodoro.appdata.xml.in:92
+#: data/org.gnome.ExTimer.appdata.xml.in:92
 msgid "Background blur under the dialog during breaks"
 msgstr "Фоновое размытие экрана во время перерыва"
 
-#: data/org.gnome.Pomodoro.appdata.xml.in:93
+#: data/org.gnome.ExTimer.appdata.xml.in:93
 msgid "Updated German translation (@tsabsch)"
 msgstr "Обновлен перевод на немецкий (@tsabsch)"
 
-#: data/org.gnome.Pomodoro.appdata.xml.in:94
+#: data/org.gnome.ExTimer.appdata.xml.in:94
 msgid "Updated Russian translation (@tigertv)"
 msgstr "Обновлен русский перевод (@tigertv)"
 
-#: data/org.gnome.Pomodoro.desktop.in:4 lib/about-dialog.vala:32
+#: data/org.gnome.ExTimer.desktop.in:4 lib/about-dialog.vala:32
 msgid "A simple time management utility"
 msgstr "Простой инструмент для тайм-менеджмента"
 
-#: data/org.gnome.Pomodoro.desktop.in:5
+#: data/org.gnome.ExTimer.desktop.in:5
 msgid "timer;"
 msgstr "таймер;"
 
-#: data/org.gnome.Pomodoro.desktop.in:7
-msgid "gnome-pomodoro"
-msgstr "gnome-pomodoro"
+#: data/org.gnome.ExTimer.desktop.in:7
+msgid "gnome-extimer"
+msgstr "gnome-extimer"
 
 #: data/resources/menus.ui:6 lib/application.vala:88
 #: plugins/actions/enums.vala:185 plugins/actions/resources/action-page.ui:155
@@ -221,7 +221,7 @@ msgid "Timer"
 msgstr "Таймер"
 
 #: data/resources/preferences-main-page.ui:108
-msgid "Pomodoro duration"
+msgid "ExTimer duration"
 msgstr "Продолжительность помодоро"
 
 #: data/resources/preferences-main-page.ui:160
@@ -233,7 +233,7 @@ msgid "Long break duration"
 msgstr "Продолжительность длинного перерыва"
 
 #: data/resources/preferences-main-page.ui:245
-msgid "Pomodoros before a long break"
+msgid "ExTimers before a long break"
 msgstr "Количество помодоро до длинного перерыва"
 
 #: data/resources/preferences-main-page.ui:294
@@ -307,7 +307,7 @@ msgid "Today"
 msgstr "Сегодня"
 
 #: data/resources/window.ui:74
-msgid "Start Pomodoro"
+msgid "Start ExTimer"
 msgstr "Запустить Помодоро"
 
 #: data/resources/window.ui:321
@@ -315,7 +315,7 @@ msgid "_About"
 msgstr "_О Помодоро"
 
 #: lib/about-dialog.vala:30
-msgid "About Pomodoro"
+msgid "About ExTimer"
 msgstr "О Помодоро"
 
 #: lib/about-dialog.vala:41
@@ -384,7 +384,7 @@ msgid "Shorten it"
 msgstr "Короткий перерыв"
 
 #: lib/notifications-capability.vala:189
-msgid "Start pomodoro"
+msgid "Start extimer"
 msgstr "Начать новый помодоро"
 
 #: lib/preferences-dialog.vala:158
@@ -502,7 +502,7 @@ msgid "Name"
 msgstr "Название"
 
 #: plugins/actions/resources/action-page.ui:88
-msgid "_Pomodoro"
+msgid "_ExTimer"
 msgstr "Помодоро"
 
 #: plugins/actions/resources/action-page.ui:102
@@ -536,7 +536,7 @@ msgstr "Прошло"
 #: plugins/gnome/extension/indicator.js:124
 #: plugins/gnome/extension/notifications.js:72
 #: plugins/gnome/extension/notifications.js:628
-msgid "Pomodoro Timer"
+msgid "ExTimer Timer"
 msgstr "Помодоро Таймер"
 
 #: plugins/gnome/extension/indicator.js:131
@@ -593,7 +593,7 @@ msgid "+1 Minute"
 msgstr "+1 минута"
 
 #: plugins/gnome/extension/notifications.js:408
-msgid "Pomodoro is about to end"
+msgid "ExTimer is about to end"
 msgstr "Помодоро завершается"
 
 #: plugins/gnome/extension/notifications.js:456
@@ -700,20 +700,20 @@ msgstr "Звук окончания перерыва"
 #~ msgstr "Расширение удалено"
 
 #, fuzzy
-#~ msgid "A new pomodoro is starting"
+#~ msgid "A new extimer is starting"
 #~ msgstr "Пауза завершена, начало нового помодоро!"
 
 #~ msgid "Hey, you're missing out on a break"
 #~ msgstr "Эй, вы пропускаете перерыв"
 
-#~ msgid "Could not run pomodoro"
+#~ msgid "Could not run extimer"
 #~ msgstr "Не удалось запустить Помодоро"
 
 #~ msgid "Something went badly wrong..."
 #~ msgstr "Что-то пошло не так..."
 
-#~ msgid "Looks like gnome-pomodoro is not installed"
-#~ msgstr "Похоже, gnome-pomodoro не установлен"
+#~ msgid "Looks like gnome-extimer is not installed"
+#~ msgstr "Похоже, gnome-extimer не установлен"
 
 #~ msgid "Install"
 #~ msgstr "Установить"
@@ -734,13 +734,13 @@ msgstr "Звук окончания перерыва"
 #~ msgstr "Выберите звук для начала перерыва"
 
 #, fuzzy
-#~ msgid "Select sound for pomodoro start"
+#~ msgid "Select sound for extimer start"
 #~ msgstr "Звуковой файл для проигрывания при старте или завершении помодоро"
 
 #~ msgid "Presence"
 #~ msgstr "Наличие"
 
-#~ msgid "Status during pomodoro"
+#~ msgid "Status during extimer"
 #~ msgstr "Статус во время помодоро"
 
 #~ msgid "Status during break"
@@ -749,7 +749,7 @@ msgstr "Звук окончания перерыва"
 #, fuzzy
 #~ msgid ""
 #~ "System notifications including chat messages won't show up during "
-#~ "pomodoro."
+#~ "extimer."
 #~ msgstr ""
 #~ "Изменить онлайн статус и отключить уведомления, включая сообщения чата"
 
@@ -812,10 +812,10 @@ msgstr "Звук окончания перерыва"
 #~ msgid "Show Dialog Messages"
 #~ msgstr "Показывать Уведомления"
 
-#~ msgid "Show a dialog message at the end of pomodoro session"
+#~ msgid "Show a dialog message at the end of extimer session"
 #~ msgstr "Показывать уведомления в конце помодоро сессии"
 
-#~ msgid "Play a sound at start of pomodoro session"
+#~ msgid "Play a sound at start of extimer session"
 #~ msgstr "Проигрывать звук в начале помодоро сессии"
 
 #~ msgid "%d Completed Session"
@@ -824,7 +824,7 @@ msgstr "Звук окончания перерыва"
 #~ msgstr[1] "%d Завершенные Сессии"
 #~ msgstr[2] "%d Завершенных Сессий"
 
-#~ msgid "Pomodoro Finished!"
+#~ msgid "ExTimer Finished!"
 #~ msgstr "Помодоро Завершен!"
 
 #~ msgid "Hide"

@@ -21,7 +21,7 @@ using GLib;
 
 namespace DarkThemePlugin
 {
-    public class ApplicationExtension : Peas.ExtensionBase, Pomodoro.ApplicationExtension
+    public class ApplicationExtension : Peas.ExtensionBase, ExTimer.ApplicationExtension
     {
         construct
         {
@@ -49,6 +49,6 @@ public void peas_register_types (GLib.TypeModule module)
 {
     var object_module = module as Peas.ObjectModule;
 
-    object_module.register_extension_type (typeof (Pomodoro.ApplicationExtension),
+    object_module.register_extension_type (typeof (ExTimer.ApplicationExtension),
                                            typeof (DarkThemePlugin.ApplicationExtension));
 }

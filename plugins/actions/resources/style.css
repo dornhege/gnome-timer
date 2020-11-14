@@ -1,13 +1,13 @@
-.pomodoro-list > .pomodoro-action-row {
+.extimer-list > .extimer-action-row {
     padding: 12px;
 }
 
-.pomodoro-action-name {
+.extimer-action-name {
     margin-left: 6px;
     margin-bottom: 3px;
 }
 
-.pomodoro-action-keywords label {
+.extimer-action-keywords label {
     font-size: 9px;
     text-shadow: none;
     border-radius: 3px;

@@ -21,9 +21,9 @@
 using GLib;
 
 
-namespace Pomodoro
+namespace ExTimer
 {
-    [GtkTemplate (ui = "/org/gnome/pomodoro/stats-page.ui")]
+    [GtkTemplate (ui = "/org/gnome/extimer/stats-page.ui")]
     private abstract class StatsPage : Gtk.Box, Gtk.Buildable
     {
         private const double GUIDES_OFFSET = 5.0;
@@ -44,7 +44,7 @@ namespace Pomodoro
 
         struct Data
         {
-            public int64 pomodoro_elapsed;
+            public int64 extimer_elapsed;
             public int64 break_elapsed;
         }
 
@@ -343,7 +343,7 @@ namespace Pomodoro
             var chart_height    = height - LABEL_OFFSET - LABEL_HEIGHT;
 
             var days_count      = (int) (this.date_end.difference (this.date) / GLib.TimeSpan.DAY);
-            var pomodoro_values = new double[days_count];
+            var extimer_values = new double[days_count];
             var total_values    = new double[days_count];
             var reference_value = double.max (this.daily_reference_value, 3600.0);
             var draw_chart_func = (DrawChartFunc) draw_bar_chart;
@@ -380,11 +380,11 @@ namespace Pomodoro
                 var day  = this.days.lookup (date.format ("%Y-%m-%d"));
 
                 if (day != null) {
-                    pomodoro_values[index] = day.pomodoro_elapsed / reference_value;
-                    total_values[index] = (day.pomodoro_elapsed + day.break_elapsed) / reference_value;
+                    extimer_values[index] = day.extimer_elapsed / reference_value;
+                    total_values[index] = (day.extimer_elapsed + day.break_elapsed) / reference_value;
                 }
                 else {
-                    pomodoro_values[index] = 0.0;
+                    extimer_values[index] = 0.0;
                     total_values[index] = 0.0;
                 }
 
@@ -430,14 +430,14 @@ namespace Pomodoro
                              chart_height);
             context.fill ();
 
-            /* pomodoro chart */
+            /* extimer chart */
             context.set_source_rgba
                     (theme_selected_bg_color.red,
                      theme_selected_bg_color.green,
                      theme_selected_bg_color.blue,
                      theme_selected_bg_color.alpha);
             draw_chart_func (context,
-                             pomodoro_values,
+                             extimer_values,
                              chart_x,
                              chart_y,
                              chart_width,
@@ -482,7 +482,7 @@ namespace Pomodoro
             var totals = Data ();
 
             this.days.for_each ((date_string, data) => {
-                totals.pomodoro_elapsed += data.pomodoro_elapsed;
+                totals.extimer_elapsed += data.extimer_elapsed;
                 totals.break_elapsed += data.break_elapsed;
             });
 
@@ -495,7 +495,7 @@ namespace Pomodoro
                               chart_height,
                               theme_fg_color);
 
-            /* pomodoro bar */
+            /* extimer bar */
             bar_x = Math.floor (chart_x + chart_width / 2.0 - bar_spacing / 2.0 - bar_width);
 
             context.set_source_rgba
@@ -504,14 +504,14 @@ namespace Pomodoro
                      theme_selected_bg_color.blue,
                      theme_selected_bg_color.alpha);
             draw_bar (context,
-                      totals.pomodoro_elapsed / reference_value,
+                      totals.extimer_elapsed / reference_value,
                       bar_x,
                       bar_y,
                       bar_width,
                       bar_height);
             context.fill ();
 
-            /* pomodoro bar: label */
+            /* extimer bar: label */
             context.select_font_face ("Sans", Cairo.FontSlant.NORMAL, Cairo.FontWeight.BOLD);
             context.set_font_size (14.0);
             context.set_source_rgba
@@ -524,18 +524,18 @@ namespace Pomodoro
             label_y = bar_y + bar_height + LABEL_OFFSET;
 
             draw_label (context,
-                        _("Pomodoro"),
+                        _("ExTimer"),
                         label_x,
                         label_y,
                         label_width,
                         label_height);
 
-            /* pomodoro bar: total value */
+            /* extimer bar: total value */
             label_y += label_height;
 
             context.select_font_face ("Sans", Cairo.FontSlant.NORMAL, Cairo.FontWeight.NORMAL);
             draw_label (context,
-                        format_value (totals.pomodoro_elapsed),
+                        format_value (totals.extimer_elapsed),
                         label_x,
                         label_y,
                         label_width,
@@ -619,19 +619,19 @@ namespace Pomodoro
         {
             this.days.remove_all ();
 
-            var date_start = this.date.format (Pomodoro.AggregatedEntry.DATE_FORMAT);
-            var date_end = this.date_end.format (Pomodoro.AggregatedEntry.DATE_FORMAT);
+            var date_start = this.date.format (ExTimer.AggregatedEntry.DATE_FORMAT);
+            var date_end = this.date_end.format (ExTimer.AggregatedEntry.DATE_FORMAT);
 
             var filter = new Gom.Filter.and (
-                new Gom.Filter.gte (typeof (Pomodoro.AggregatedEntry), "date-string", date_start),
-                new Gom.Filter.lt (typeof (Pomodoro.AggregatedEntry), "date-string", date_end)
+                new Gom.Filter.gte (typeof (ExTimer.AggregatedEntry), "date-string", date_start),
+                new Gom.Filter.lt (typeof (ExTimer.AggregatedEntry), "date-string", date_end)
             );
 
             var reference_value = yield this.get_reference_value ();
 
             var daily_reference_value = yield AggregatedEntry.get_baseline_daily_elapsed ();
 
-            this.repository.find_async.begin (typeof (Pomodoro.AggregatedEntry), filter, (obj, res) => {
+            this.repository.find_async.begin (typeof (ExTimer.AggregatedEntry), filter, (obj, res) => {
                 try {
                     var group = this.repository.find_async.end (res);
 
@@ -641,7 +641,7 @@ namespace Pomodoro
                                 group.fetch_async.end (res);
 
                                 for (var index = 0; index < group.count; index++) {
-                                    var aggregated_entry = group.get_index (index) as Pomodoro.AggregatedEntry;
+                                    var aggregated_entry = group.get_index (index) as ExTimer.AggregatedEntry;
 
                                     Data? day = this.days.lookup (aggregated_entry.date_string);
 
@@ -650,8 +650,8 @@ namespace Pomodoro
                                     }
 
                                     switch (aggregated_entry.state_name) {
-                                        case "pomodoro":
-                                            day.pomodoro_elapsed += aggregated_entry.elapsed;
+                                        case "extimer":
+                                            day.extimer_elapsed += aggregated_entry.elapsed;
                                             break;
 
                                         case "break":

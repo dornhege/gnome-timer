@@ -30,11 +30,11 @@ namespace GnomePlugin
 
     private const string CURRENT_DESKTOP_VARIABLE = "XDG_CURRENT_DESKTOP";
 
-    public class ApplicationExtension : Peas.ExtensionBase, Pomodoro.ApplicationExtension, GLib.AsyncInitable
+    public class ApplicationExtension : Peas.ExtensionBase, ExTimer.ApplicationExtension, GLib.AsyncInitable
     {
-        private Pomodoro.Timer                  timer;
+        private ExTimer.Timer                  timer;
         private GLib.Settings                   settings;
-        private Pomodoro.CapabilityGroup        capabilities;
+        private ExTimer.CapabilityGroup        capabilities;
         private GnomePlugin.GnomeShellExtension shell_extension;
         private GnomePlugin.IdleMonitor         idle_monitor;
         private uint                            become_active_id = 0;
@@ -43,7 +43,7 @@ namespace GnomePlugin
 
         construct
         {
-            this.settings = Pomodoro.get_settings ().get_child ("preferences");
+            this.settings = ExTimer.get_settings ().get_child ("preferences");
             this.can_enable = GLib.Environment.get_variable (CURRENT_DESKTOP_VARIABLE) == "GNOME";
 
             // try {
@@ -58,21 +58,21 @@ namespace GnomePlugin
                                       GLib.Cancellable? cancellable = null)
                                       throws GLib.Error
         {
-            var application = Pomodoro.Application.get_default ();
+            var application = ExTimer.Application.get_default ();
 
             /* Mutter IdleMonitor */
             if (this.idle_monitor == null) {
-                this.capabilities = new Pomodoro.CapabilityGroup ("gnome");
+                this.capabilities = new ExTimer.CapabilityGroup ("gnome");
 
                 try {
                     this.idle_monitor = new GnomePlugin.IdleMonitor ();
 
-                    this.timer = Pomodoro.Timer.get_default ();
+                    this.timer = ExTimer.Timer.get_default ();
                     this.timer.state_changed.connect_after (this.on_timer_state_changed);
 
-                    this.capabilities.add (new Pomodoro.Capability ("idle-monitor"));
+                    this.capabilities.add (new ExTimer.Capability ("idle-monitor"));
 
-                    application.capabilities.add_group (this.capabilities, Pomodoro.Priority.HIGH);
+                    application.capabilities.add_group (this.capabilities, ExTimer.Priority.HIGH);
                 }
                 catch (GLib.Error error) {
                     // Gnome.IdleMonitor not available
@@ -100,16 +100,16 @@ namespace GnomePlugin
             }
         }
 
-        private void on_timer_state_changed (Pomodoro.TimerState state,
-                                             Pomodoro.TimerState previous_state)
+        private void on_timer_state_changed (ExTimer.TimerState state,
+                                             ExTimer.TimerState previous_state)
         {
             if (this.become_active_id != 0) {
                 this.idle_monitor.remove_watch (this.become_active_id);
                 this.become_active_id = 0;
             }
 
-            if (state is Pomodoro.PomodoroState &&
-                previous_state is Pomodoro.BreakState &&
+            if (state is ExTimer.ExTimerState &&
+                previous_state is ExTimer.BreakState &&
                 previous_state.is_completed () &&
                 this.settings.get_boolean ("pause-when-idle"))
             {
@@ -127,7 +127,7 @@ namespace GnomePlugin
         private void on_become_active (GnomePlugin.IdleMonitor monitor,
                                        uint                    id)
         {
-            var timestamp = Pomodoro.get_current_time ();
+            var timestamp = ExTimer.get_current_time ();
 
             if (timestamp - this.last_activity_time < IDLE_MONITOR_MIN_IDLE_TIME) {
                 this.become_active_id = 0;
@@ -142,24 +142,24 @@ namespace GnomePlugin
         }
     }
 
-    public class PreferencesDialogExtension : Peas.ExtensionBase, Pomodoro.PreferencesDialogExtension
+    public class PreferencesDialogExtension : Peas.ExtensionBase, ExTimer.PreferencesDialogExtension
     {
-        private Pomodoro.PreferencesDialog dialog;
+        private ExTimer.PreferencesDialog dialog;
 
         private GLib.Settings settings;
         private GLib.List<Gtk.ListBoxRow> rows;
 
         construct
         {
-            this.settings = new GLib.Settings ("org.gnome.pomodoro.plugins.gnome");
-            this.dialog = Pomodoro.PreferencesDialog.get_default ();
+            this.settings = new GLib.Settings ("org.gnome.extimer.plugins.gnome");
+            this.dialog = ExTimer.PreferencesDialog.get_default ();
 
             this.setup_main_page ();
         }
 
         private void setup_main_page ()
         {
-            var main_page = this.dialog.get_page ("main") as Pomodoro.PreferencesMainPage;
+            var main_page = this.dialog.get_page ("main") as ExTimer.PreferencesMainPage;
 
             var hide_system_notifications_toggle = new Gtk.Switch ();
             hide_system_notifications_toggle.valign = Gtk.Align.CENTER;
@@ -214,9 +214,9 @@ public void peas_register_types (GLib.TypeModule module)
 {
     var object_module = module as Peas.ObjectModule;
 
-    object_module.register_extension_type (typeof (Pomodoro.ApplicationExtension),
+    object_module.register_extension_type (typeof (ExTimer.ApplicationExtension),
                                            typeof (GnomePlugin.ApplicationExtension));
 
-    object_module.register_extension_type (typeof (Pomodoro.PreferencesDialogExtension),
+    object_module.register_extension_type (typeof (ExTimer.PreferencesDialogExtension),
                                            typeof (GnomePlugin.PreferencesDialogExtension));
 }

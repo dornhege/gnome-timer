@@ -1,11 +1,11 @@
-# Turkish translation for gnome-pomodoro
+# Turkish translation for gnome-extimer
 # Copyright (c) 2012 gnome-pomodoro contributors
-# This file is distributed under the same license as the gnome-pomodoro package.
+# This file is distributed under the same license as the gnome-extimer package.
 # Erkan Erdem (a.k.a. ErkanMDR) <erkanmdr@gmail.com>, 2015.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gnome-pomodoro\n"
+"Project-Id-Version: gnome-extimer\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-10-16 11:22+0100\n"
 "PO-Revision-Date: 2015-10-16 12:00+0100\n"
@@ -21,8 +21,8 @@ msgstr ""
 
 #. Toggle timer state button */
 #: ../extension/indicator.js:87
-msgid "Pomodoro Timer"
-msgstr "Pomodoro Timer"
+msgid "ExTimer Timer"
+msgstr "ExTimer Timer"
 
 #: ../extension/indicator.js:94 ../src/preferences-dialog.vala:129
 #: ../src/preferences-dialog.vala:184
@@ -30,25 +30,25 @@ msgid "Preferences"
 msgstr "Tercihler"
 
 #: ../extension/notifications.js:115 ../src/about-dialog.vala:30
-#: ../data/gnome-pomodoro.desktop.in.h:1
-msgid "Pomodoro"
-msgstr "Pomodoro"
+#: ../data/gnome-extimer.desktop.in.h:1
+msgid "ExTimer"
+msgstr "ExTimer"
 
 #: ../extension/notifications.js:389
 msgid "It's time to take a break"
 msgstr "Mola zamanı"
 
 #: ../extension/notifications.js:574
-msgid "A new pomodoro is starting"
-msgstr "Yeni pomodoro başlıyor"
+msgid "A new extimer is starting"
+msgstr "Yeni extimer başlıyor"
 
 #: ../extension/notifications.js:587
 msgid "Take a break!"
 msgstr "Mola ver!"
 
 #: ../extension/notifications.js:610
-msgid "Start pomodoro"
-msgstr "Pomodoro başlat"
+msgid "Start extimer"
+msgstr "ExTimer başlat"
 
 #: ../extension/notifications.js:652
 msgid "Shorten the break"
@@ -77,16 +77,16 @@ msgid "Hey, you're missing out on a break"
 msgstr "Hey! Molanı kaçırıyorsun!"
 
 #: ../extension/notifications.js:772
-msgid "Could not run pomodoro"
-msgstr "Pomodoro başlatılamadı"
+msgid "Could not run extimer"
+msgstr "ExTimer başlatılamadı"
 
 #: ../extension/notifications.js:774
 msgid "Something went badly wrong..."
 msgstr "Bişey kötü gitti..."
 
 #: ../extension/notifications.js:775
-msgid "Looks like gnome-pomodoro is not installed"
-msgstr "gnome-pomodoro yüklenmemiş gibi gözüküyor"
+msgid "Looks like gnome-extimer is not installed"
+msgstr "gnome-extimer yüklenmemiş gibi gözüküyor"
 
 #: ../extension/notifications.js:784
 msgid "Report issue"
@@ -97,8 +97,8 @@ msgid "Install"
 msgstr "Yükle"
 
 #: ../src/about-dialog.vala:29
-msgid "About Pomodoro"
-msgstr "Pomodoro Hakkında"
+msgid "About ExTimer"
+msgstr "ExTimer Hakkında"
 
 #: ../src/about-dialog.vala:31
 msgid "A simple time management utility"
@@ -125,8 +125,8 @@ msgid "Timer"
 msgstr "Zamanlayıcı"
 
 #: ../src/preferences-dialog.vala:396
-msgid "Pomodoro duration"
-msgstr "Pomodoro süresi"
+msgid "ExTimer duration"
+msgstr "ExTimer süresi"
 
 #: ../src/preferences-dialog.vala:399
 msgid "Short break duration"
@@ -136,9 +136,9 @@ msgstr "Kısa mola süresi"
 msgid "Long break duration"
 msgstr "Uzun mola süresi"
 
-#. @translators: You can refer it to number of pomodoros in a cycle
+#. @translators: You can refer it to number of extimers in a cycle
 #: ../src/preferences-dialog.vala:411
-msgid "Pomodoros to a long break"
+msgid "ExTimers to a long break"
 msgstr "Uzun mola için modoro sayısı"
 
 #: ../src/preferences-dialog.vala:418
@@ -198,12 +198,12 @@ msgid "Start of break sound"
 msgstr "Mola başlama sesi"
 
 #: ../src/preferences-dialog.vala:534
-msgid "Select sound for pomodoro start"
-msgstr "Pomodoro başlandığında çalınacak sesi seç"
+msgid "Select sound for extimer start"
+msgstr "ExTimer başlandığında çalınacak sesi seç"
 
 #: ../src/preferences-dialog.vala:543
-msgid "Pomodoro start sound"
-msgstr "Pomodoro başlama sesi"
+msgid "ExTimer start sound"
+msgstr "ExTimer başlama sesi"
 
 #: ../src/preferences-dialog.vala:575
 msgid "Available"
@@ -223,12 +223,12 @@ msgid "Presence"
 msgstr "Durum"
 
 #: ../src/preferences-dialog.vala:603
-msgid "Postpone pomodoro when idle"
-msgstr "Boştayken pomodoro durdurma"
+msgid "Postpone extimer when idle"
+msgstr "Boştayken extimer durdurma"
 
 #: ../src/preferences-dialog.vala:608
-msgid "Status during pomodoro"
-msgstr "Pomodoro aktif durumu"
+msgid "Status during extimer"
+msgstr "ExTimer aktif durumu"
 
 #: ../src/preferences-dialog.vala:613
 msgid "Status during break"
@@ -236,9 +236,9 @@ msgstr "Mola aktif durumu"
 
 #: ../src/preferences-dialog.vala:686
 msgid ""
-"System notifications including chat messages won't show up during pomodoro."
+"System notifications including chat messages won't show up during extimer."
 msgstr ""
-"Sohbet mesajları dahil olmak üzere sistem bildirimleri pomodoro sırasında görünmez."
+"Sohbet mesajları dahil olmak üzere sistem bildirimleri extimer sırasında görünmez."
 
 #: ../src/preferences-dialog.vala:690
 msgid ""
@@ -316,10 +316,10 @@ msgstr "Hiçbiri"
 msgid "Supported audio files"
 msgstr "Uyumlu ses dosyaları"
 
-#: ../data/gnome-pomodoro.desktop.in.h:2
+#: ../data/gnome-extimer.desktop.in.h:2
 msgid "Manage your time and tasks"
 msgstr "Zamanını ve görevlerini kontrol et"
 
-#: ../data/gnome-pomodoro.desktop.in.h:3
+#: ../data/gnome-extimer.desktop.in.h:3
 msgid "time;timer;tasks;manage;organize;"
 msgstr "time;timer;tasks;manage;organize;"

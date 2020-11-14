@@ -28,14 +28,14 @@ const Utils = Extension.imports.utils;
 
 
 /**
- * Helps in managing presence for GNOME Shell according to the Pomodoro state.
+ * Helps in managing presence for GNOME Shell according to the ExTimer state.
  */
 var Presence = class {
     constructor() {
         this._busy = false;
 
         // Setup a patch for suppressing presence handlers.
-        // When applied the main presence controller becomes gnome-pomodoro.
+        // When applied the main presence controller becomes gnome-extimer.
         this._patch = new Utils.Patch(MessageTray.MessageTray.prototype, {
             _onStatusChanged(status) {
                 this._updateState();

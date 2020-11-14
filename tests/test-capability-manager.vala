@@ -1,5 +1,5 @@
 /*
- * This file is part of GNOME Pomodoro
+ * This file is part of GNOME ExTimer
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,9 +18,9 @@
  *
  */
 
-namespace Pomodoro
+namespace ExTimer
 {
-    public class CapabilityManagerTest : Pomodoro.TestSuite
+    public class CapabilityManagerTest : ExTimer.TestSuite
     {
         public CapabilityManagerTest ()
         {
@@ -64,16 +64,16 @@ namespace Pomodoro
         }
 
         /**
-         * Unit test for Pomodoro.Capability.is_virtual() method.
+         * Unit test for ExTimer.Capability.is_virtual() method.
          */
         public void test_add_group ()
         {
-            var capability = new Pomodoro.Capability ("anti-gravity");
-            var group      = new Pomodoro.CapabilityGroup ();
-            var manager    = new Pomodoro.CapabilityManager ();
+            var capability = new ExTimer.Capability ("anti-gravity");
+            var group      = new ExTimer.CapabilityGroup ();
+            var manager    = new ExTimer.CapabilityManager ();
 
             group.add (capability);
-            manager.add_group (group, Pomodoro.Priority.DEFAULT);
+            manager.add_group (group, ExTimer.Priority.DEFAULT);
 
             assert (manager.has_group (group));
             assert (manager.has_capability ("anti-gravity"));
@@ -82,14 +82,14 @@ namespace Pomodoro
 
         public void test_remove_group ()
         {
-            var capability = new Pomodoro.Capability ("anti-gravity");
-            var group      = new Pomodoro.CapabilityGroup ();
-            var manager    = new Pomodoro.CapabilityManager ();
+            var capability = new ExTimer.Capability ("anti-gravity");
+            var group      = new ExTimer.CapabilityGroup ();
+            var manager    = new ExTimer.CapabilityManager ();
 
             group.add (capability);
             manager.enable ("anti-gravity");
 
-            manager.add_group (group, Pomodoro.Priority.DEFAULT);
+            manager.add_group (group, ExTimer.Priority.DEFAULT);
             assert (manager.has_capability ("anti-gravity"));
             assert (capability.enabled);
 
@@ -102,12 +102,12 @@ namespace Pomodoro
          */
         public void test_enable ()
         {
-            var capability = new Pomodoro.Capability ("anti-gravity");
-            var group      = new Pomodoro.CapabilityGroup ();
-            var manager    = new Pomodoro.CapabilityManager ();
+            var capability = new ExTimer.Capability ("anti-gravity");
+            var group      = new ExTimer.CapabilityGroup ();
+            var manager    = new ExTimer.CapabilityManager ();
 
             group.add (capability);
-            manager.add_group (group, Pomodoro.Priority.DEFAULT);
+            manager.add_group (group, ExTimer.Priority.DEFAULT);
 
             manager.enable ("anti-gravity");
             assert (capability.enabled);
@@ -121,14 +121,14 @@ namespace Pomodoro
          */
         public void test_enable_2 ()
         {
-            var capability = new Pomodoro.Capability ("anti-gravity");
-            var group      = new Pomodoro.CapabilityGroup ();
-            var manager    = new Pomodoro.CapabilityManager ();
+            var capability = new ExTimer.Capability ("anti-gravity");
+            var group      = new ExTimer.CapabilityGroup ();
+            var manager    = new ExTimer.CapabilityManager ();
 
             capability.enable ();
 
             group.add (capability);
-            manager.add_group (group, Pomodoro.Priority.DEFAULT);
+            manager.add_group (group, ExTimer.Priority.DEFAULT);
 
             assert (!capability.enabled);
         }
@@ -138,14 +138,14 @@ namespace Pomodoro
          */
         public void test_enable_3 ()
         {
-            var capability = new Pomodoro.Capability ("anti-gravity");
-            var group      = new Pomodoro.CapabilityGroup ();
-            var manager    = new Pomodoro.CapabilityManager ();
+            var capability = new ExTimer.Capability ("anti-gravity");
+            var group      = new ExTimer.CapabilityGroup ();
+            var manager    = new ExTimer.CapabilityManager ();
 
             manager.enable ("anti-gravity");
 
             group.add (capability);
-            manager.add_group (group, Pomodoro.Priority.DEFAULT);
+            manager.add_group (group, ExTimer.Priority.DEFAULT);
 
             assert (capability.enabled);
         }
@@ -155,19 +155,19 @@ namespace Pomodoro
          */
         public void test_fallback_add_group ()
         {
-            var manager = new Pomodoro.CapabilityManager ();
+            var manager = new ExTimer.CapabilityManager ();
 
-            var capability1 = new Pomodoro.Capability ("anti-gravity");
-            var group1      = new Pomodoro.CapabilityGroup ();
+            var capability1 = new ExTimer.Capability ("anti-gravity");
+            var group1      = new ExTimer.CapabilityGroup ();
 
-            var capability2 = new Pomodoro.Capability ("anti-gravity");
-            var group2      = new Pomodoro.CapabilityGroup ();
+            var capability2 = new ExTimer.Capability ("anti-gravity");
+            var group2      = new ExTimer.CapabilityGroup ();
 
             group1.add (capability1);
             group2.add (capability2);
 
-            manager.add_group (group1, Pomodoro.Priority.DEFAULT);
-            manager.add_group (group2, Pomodoro.Priority.HIGH);
+            manager.add_group (group1, ExTimer.Priority.DEFAULT);
+            manager.add_group (group2, ExTimer.Priority.HIGH);
 
             manager.enable ("anti-gravity");
 
@@ -181,19 +181,19 @@ namespace Pomodoro
          */
         public void test_fallback_remove_group ()
         {
-            var manager = new Pomodoro.CapabilityManager ();
+            var manager = new ExTimer.CapabilityManager ();
 
-            var capability1 = new Pomodoro.Capability ("anti-gravity");
-            var group1      = new Pomodoro.CapabilityGroup ();
+            var capability1 = new ExTimer.Capability ("anti-gravity");
+            var group1      = new ExTimer.CapabilityGroup ();
 
-            var capability2 = new Pomodoro.Capability ("anti-gravity");
-            var group2      = new Pomodoro.CapabilityGroup ();
+            var capability2 = new ExTimer.Capability ("anti-gravity");
+            var group2      = new ExTimer.CapabilityGroup ();
 
             group1.add (capability1);
             group2.add (capability2);
 
-            manager.add_group (group1, Pomodoro.Priority.DEFAULT);
-            manager.add_group (group2, Pomodoro.Priority.HIGH);
+            manager.add_group (group1, ExTimer.Priority.DEFAULT);
+            manager.add_group (group2, ExTimer.Priority.HIGH);
 
             manager.enable ("anti-gravity");
 
@@ -212,16 +212,16 @@ namespace Pomodoro
          */
         public void test_fallback_capability_added ()
         {
-            var manager = new Pomodoro.CapabilityManager ();
+            var manager = new ExTimer.CapabilityManager ();
 
-            var capability1 = new Pomodoro.Capability ("anti-gravity");
-            var group1      = new Pomodoro.CapabilityGroup ();
+            var capability1 = new ExTimer.Capability ("anti-gravity");
+            var group1      = new ExTimer.CapabilityGroup ();
 
-            var capability2 = new Pomodoro.Capability ("anti-gravity");
-            var group2      = new Pomodoro.CapabilityGroup ();
+            var capability2 = new ExTimer.Capability ("anti-gravity");
+            var group2      = new ExTimer.CapabilityGroup ();
 
-            manager.add_group (group1, Pomodoro.Priority.DEFAULT);
-            manager.add_group (group2, Pomodoro.Priority.HIGH);
+            manager.add_group (group1, ExTimer.Priority.DEFAULT);
+            manager.add_group (group2, ExTimer.Priority.HIGH);
 
             group1.add (capability1);
             group2.add (capability2);
@@ -238,19 +238,19 @@ namespace Pomodoro
          */
         public void test_fallback_capability_removed ()
         {
-            var manager = new Pomodoro.CapabilityManager ();
+            var manager = new ExTimer.CapabilityManager ();
 
-            var capability1 = new Pomodoro.Capability ("anti-gravity");
-            var group1      = new Pomodoro.CapabilityGroup ();
+            var capability1 = new ExTimer.Capability ("anti-gravity");
+            var group1      = new ExTimer.CapabilityGroup ();
 
-            var capability2 = new Pomodoro.Capability ("anti-gravity");
-            var group2      = new Pomodoro.CapabilityGroup ();
+            var capability2 = new ExTimer.Capability ("anti-gravity");
+            var group2      = new ExTimer.CapabilityGroup ();
 
             group1.add (capability1);
             group2.add (capability2);
 
-            manager.add_group (group1, Pomodoro.Priority.DEFAULT);
-            manager.add_group (group2, Pomodoro.Priority.HIGH);
+            manager.add_group (group1, ExTimer.Priority.DEFAULT);
+            manager.add_group (group2, ExTimer.Priority.HIGH);
 
             manager.enable ("anti-gravity");
 
@@ -265,18 +265,18 @@ namespace Pomodoro
         }
 
         /**
-         * Unit test for Pomodoro.CapabilityManager.dispose() method.
+         * Unit test for ExTimer.CapabilityManager.dispose() method.
          */
         public void test_dispose ()
         {
-            var capability = new Pomodoro.Capability ("anti-gravity");
-            var group      = new Pomodoro.CapabilityGroup ();
-            var manager    = new Pomodoro.CapabilityManager ();
+            var capability = new ExTimer.Capability ("anti-gravity");
+            var group      = new ExTimer.CapabilityGroup ();
+            var manager    = new ExTimer.CapabilityManager ();
 
             manager.enable ("anti-gravity");
 
             group.add (capability);
-            manager.add_group (group, Pomodoro.Priority.DEFAULT);
+            manager.add_group (group, ExTimer.Priority.DEFAULT);
 
             manager.dispose ();
 

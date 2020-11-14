@@ -13,7 +13,7 @@ libactions_la_VALASOURCES = \
 	action.vala \
 	enums.vala \
 	preferences-page.vala \
-	$(top_builddir)/lib/gnome-pomodoro.vapi
+	$(top_builddir)/lib/gnome-extimer.vapi
 
 libactions_la_SOURCES = \
 	$(libactions_la_VALASOURCES) \
@@ -38,10 +38,10 @@ libactions_la_LDFLAGS = \
 
 libactions_la_LIBADD = \
 	$(PLUGIN_LIBS) \
-	$(top_builddir)/lib/libgnome-pomodoro.la
+	$(top_builddir)/lib/libgnome-extimer.la
 
 gsettings_SCHEMAS = \
-	org.gnome.pomodoro.plugins.actions.gschema.xml
+	org.gnome.extimer.plugins.actions.gschema.xml
 @GSETTINGS_RULES@
 
 resources = \
@@ -50,7 +50,7 @@ resources_deps = \
 	$(shell $(GLIB_COMPILE_RESOURCES) --generate-dependencies --sourcedir=$(srcdir)/resources $(resources))
 
 resources.c: $(resources) $(resources_deps)
-	$(AM_V_GEN) $(GLIB_COMPILE_RESOURCES) --generate-source --c-name="pomodoro" --sourcedir=$(srcdir)/resources --target=$@ $<
+	$(AM_V_GEN) $(GLIB_COMPILE_RESOURCES) --generate-source --c-name="extimer" --sourcedir=$(srcdir)/resources --target=$@ $<
 
 
 BUILT_SOURCES = \

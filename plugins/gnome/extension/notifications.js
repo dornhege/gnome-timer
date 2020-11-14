@@ -68,7 +68,7 @@ var NotificationPolicy = GObject.registerClass({
             'details-in-lock-screen', 'details-in-lock-screen', 'details-in-lock-screen',
             GObject.ParamFlags.READABLE, true),
     },
-}, class PomodoroNotificationPolicy extends MessageTray.NotificationPolicy {
+}, class ExTimerNotificationPolicy extends MessageTray.NotificationPolicy {
     get showInLockScreen() {
         return true;
     }
@@ -79,11 +79,11 @@ var NotificationPolicy = GObject.registerClass({
 });
 
 var Source = GObject.registerClass(
-class PomodoroSource extends MessageTray.Source {
+class ExTimerSource extends MessageTray.Source {
     _init() {
-        let icon_name = 'gnome-pomodoro';
+        let icon_name = 'gnome-extimer';
 
-        super._init(_("Pomodoro Timer"), icon_name);
+        super._init(_("ExTimer Timer"), icon_name);
 
         this.ICON_NAME = icon_name;
 
@@ -93,8 +93,8 @@ class PomodoroSource extends MessageTray.Source {
            so to monkey patch notification list. */
         let patch = new Utils.Patch(Calendar.NotificationSection.prototype, {
             _onNotificationAdded(source, notification) {
-                if (notification instanceof PomodoroEndNotification ||
-                    notification instanceof PomodoroStartNotification)
+                if (notification instanceof ExTimerEndNotification ||
+                    notification instanceof ExTimerStartNotification)
                 {
                     let message = new TimerBanner(notification);
 
@@ -137,7 +137,7 @@ class PomodoroSource extends MessageTray.Source {
             return GLib.SOURCE_REMOVE;
         });
         GLib.Source.set_name_by_id(this._idleId,
-                                   '[gnome-pomodoro] this._lastNotificationRemoved');
+                                   '[gnome-extimer] this._lastNotificationRemoved');
     }
 
     /* override parent method */
@@ -166,7 +166,7 @@ class PomodoroSource extends MessageTray.Source {
 
 
 var Notification = GObject.registerClass(
-class PomodoroNotification extends MessageTray.Notification {
+class ExTimerNotification extends MessageTray.Notification {
     _init(title, description, params) {
         super._init(null, title, description, params);
 
@@ -227,17 +227,17 @@ class PomodoroNotification extends MessageTray.Notification {
 });
 
 
-var PomodoroStartNotification = GObject.registerClass({
+var ExTimerStartNotification = GObject.registerClass({
     Signals: {
         'changed': {},
     },
-}, class PomodoroStartNotification extends Notification {
+}, class ExTimerStartNotification extends Notification {
     /**
-     * Notification pops up a little before Pomodoro starts and changes message once started.
+     * Notification pops up a little before ExTimer starts and changes message once started.
      */
 
     _init(timer) {
-        let title = _("Pomodoro");
+        let title = _("ExTimer");
 
         // TODO: try customContent param
 
@@ -272,7 +272,7 @@ var PomodoroStartNotification = GObject.registerClass({
 
             switch (state) {
                 case Timer.State.POMODORO:
-                    title = _("Pomodoro");
+                    title = _("ExTimer");
                     // message = _("Time to work");
                     resident = false;
                     break;
@@ -280,7 +280,7 @@ var PomodoroStartNotification = GObject.registerClass({
                 case Timer.State.SHORT_BREAK:
                 case Timer.State.LONG_BREAK:
                     title = _("Break is about to end");
-                    // message = _("Click to start Pomodoro");
+                    // message = _("Click to start ExTimer");
                     resident = true;
                     break;
 
@@ -379,11 +379,11 @@ var PomodoroStartNotification = GObject.registerClass({
 });
 
 
-var PomodoroEndNotification = GObject.registerClass({
+var ExTimerEndNotification = GObject.registerClass({
     Signals: {
         'changed': {},
     },
-}, class PomodoroEndNotification extends Notification {
+}, class ExTimerEndNotification extends Notification {
     _init(timer) {
         let title = '';
 
@@ -420,7 +420,7 @@ var PomodoroEndNotification = GObject.registerClass({
 
             switch (state) {
                 case Timer.State.POMODORO:
-                    title = _("Pomodoro is about to end");
+                    title = _("ExTimer is about to end");
                     // message = _("Click to start a break");
                     resident = true;
                     break;
@@ -519,7 +519,7 @@ var ScreenShieldNotification = GObject.registerClass({
     Signals: {
         'changed': {},
     },
-}, class PomodoroScreenShieldNotification extends Notification {
+}, class ExTimerScreenShieldNotification extends Notification {
     _init(timer) {
         super._init('', null, null);
 
@@ -565,7 +565,7 @@ var ScreenShieldNotification = GObject.registerClass({
         let state = this.timer.getState();
         let title = Timer.State.label(state);
 
-        // HACK: "Pomodoro" in application name may be confusing with state name,
+        // HACK: "ExTimer" in application name may be confusing with state name,
         //       so replace application name with current state.
         if (this.source !== null) {
             this.source.setTitle(title ? title : '');
@@ -633,14 +633,14 @@ var ScreenShieldNotification = GObject.registerClass({
 
 
 var IssueNotification = GObject.registerClass(
-class PomodoroIssueNotification extends MessageTray.Notification {
-    /* Use base class instead of PomodoroNotification, in case
+class ExTimerIssueNotification extends MessageTray.Notification {
+    /* Use base class instead of ExTimerNotification, in case
      * issue is caused by our implementation.
      */
 
     _init(message) {
         let source = getDefaultSource();
-        let title  = _("Pomodoro Timer");
+        let title  = _("ExTimer Timer");
         let url    = Config.PACKAGE_BUGREPORT;
 
         super._init(source, title, message, { bannerMarkup: true });
@@ -665,7 +665,7 @@ class PomodoroIssueNotification extends MessageTray.Notification {
 
 
 var TimerBanner = GObject.registerClass(
-class PomodoroTimerBanner extends Calendar.NotificationMessage {
+class ExTimerTimerBanner extends Calendar.NotificationMessage {
     _init(notification) {
         super._init(notification);
 
@@ -703,7 +703,7 @@ class PomodoroTimerBanner extends Calendar.NotificationMessage {
     }
 
     addAction(label, callback) {
-        let button = new St.Button({ style_class: 'extension-pomodoro-message-action',
+        let button = new St.Button({ style_class: 'extension-extimer-message-action',
                                      label: label,
                                      x_expand: true,
                                      can_focus: true });

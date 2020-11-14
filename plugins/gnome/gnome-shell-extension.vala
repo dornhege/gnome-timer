@@ -130,7 +130,7 @@ namespace GnomePlugin
 
             if (this.enabled && (cancellable == null || !cancellable.is_cancelled ()))
             {
-                yield Pomodoro.DesktopExtension.get_default ().initialize (cancellable);
+                yield ExTimer.DesktopExtension.get_default ().initialize (cancellable);
             }
         }
 

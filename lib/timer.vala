@@ -21,19 +21,19 @@
 using GLib;
 
 
-namespace Pomodoro
+namespace ExTimer
 {
     private const double TIME_TO_RESET_SCORE = 3600.0;
 
     /**
-     * Pomodoro.Timer class.
+     * ExTimer.Timer class.
      *
      * A class for a countdown timer. Timer works in an atomic manner, it acknowlegdes passage
      * of time after calling update() method.
      */
     public class Timer : GLib.Object
     {
-        private static Pomodoro.Timer? instance = null;
+        private static ExTimer.Timer? instance = null;
 
         public TimerState state {
             get {
@@ -91,7 +91,7 @@ namespace Pomodoro
                 return this._is_paused;
             }
             set {
-                this.set_is_paused_full (value, Pomodoro.get_current_time ());
+                this.set_is_paused_full (value, ExTimer.get_current_time ());
             }
         }
 
@@ -110,16 +110,16 @@ namespace Pomodoro
         }
 
         private uint timeout_source = 0;
-        private Pomodoro.TimerState _state;
+        private ExTimer.TimerState _state;
         private bool _is_paused;
 
         construct
         {
-            this._state = new Pomodoro.DisabledState ();
+            this._state = new ExTimer.DisabledState ();
             this.timestamp = this._state.timestamp;
         }
 
-        public static unowned Pomodoro.Timer get_default ()
+        public static unowned ExTimer.Timer get_default ()
         {
             if (Timer.instance == null) {
                 var timer = new Timer ();
@@ -148,27 +148,27 @@ namespace Pomodoro
             return this.timeout_source != 0;
         }
 
-        public void start (double timestamp = Pomodoro.get_current_time ())
+        public void start (double timestamp = ExTimer.get_current_time ())
         {
             this.resume (timestamp);
 
-            if (this.state is Pomodoro.DisabledState) {
-                this.state = new Pomodoro.PomodoroState.with_timestamp (timestamp);
+            if (this.state is ExTimer.DisabledState) {
+                this.state = new ExTimer.ExTimerState.with_timestamp (timestamp);
             }
         }
 
-        public void stop (double timestamp = Pomodoro.get_current_time ())
+        public void stop (double timestamp = ExTimer.get_current_time ())
         {
             this.resume (timestamp);
 
-            if (!(this.state is Pomodoro.DisabledState)) {
-                this.state = new Pomodoro.DisabledState.with_timestamp (timestamp);
+            if (!(this.state is ExTimer.DisabledState)) {
+                this.state = new ExTimer.DisabledState.with_timestamp (timestamp);
             }
         }
 
-        public void toggle (double timestamp = Pomodoro.get_current_time ())
+        public void toggle (double timestamp = ExTimer.get_current_time ())
         {
-            if (this.state is Pomodoro.DisabledState) {
+            if (this.state is ExTimer.DisabledState) {
                 this.start (timestamp);
             }
             else {
@@ -176,25 +176,25 @@ namespace Pomodoro
             }
         }
 
-        public void pause (double timestamp = Pomodoro.get_current_time ())
+        public void pause (double timestamp = ExTimer.get_current_time ())
         {
             this.set_is_paused_full (true, timestamp);
         }
 
-        public void resume (double timestamp = Pomodoro.get_current_time ())
+        public void resume (double timestamp = ExTimer.get_current_time ())
         {
             this.set_is_paused_full (false, timestamp);
         }
 
-        public void reset (double timestamp = Pomodoro.get_current_time ())
+        public void reset (double timestamp = ExTimer.get_current_time ())
         {
             this.resume (timestamp);
 
             this.score = 0.0;
-            this.state = new Pomodoro.DisabledState.with_timestamp (timestamp);
+            this.state = new ExTimer.DisabledState.with_timestamp (timestamp);
         }
 
-        public void skip (double timestamp = Pomodoro.get_current_time ())
+        public void skip (double timestamp = ExTimer.get_current_time ())
         {
             this.state = this._state.create_next_state (this.score, timestamp);
         }
@@ -204,7 +204,7 @@ namespace Pomodoro
          *
          * Changes the state and sets new timestamp
          */
-        private void set_state_full (Pomodoro.TimerState state,
+        private void set_state_full (ExTimer.TimerState state,
                                      double              timestamp)
         {
             var previous_state = this._state;
@@ -291,7 +291,7 @@ namespace Pomodoro
          */
         private bool resolve_state ()
         {
-            var original_state = this._state as Pomodoro.TimerState;
+            var original_state = this._state as ExTimer.TimerState;
             var state_changed = false;
 
             while (this._state.duration > 0.0 &&
@@ -314,7 +314,7 @@ namespace Pomodoro
             return state_changed;
         }
 
-        public virtual signal void update (double timestamp = Pomodoro.get_current_time ())
+        public virtual signal void update (double timestamp = ExTimer.get_current_time ())
         {
             this.timestamp = timestamp;
 
@@ -362,14 +362,14 @@ namespace Pomodoro
 
         public GLib.ActionGroup get_action_group ()
         {
-            return Pomodoro.TimerActionGroup.for_timer (this);
+            return ExTimer.TimerActionGroup.for_timer (this);
         }
 
         /**
          * Saves timer state to settings.
          */
         public void save (GLib.Settings settings)
-                          requires (settings.settings_schema.get_id () == "org.gnome.pomodoro.state")
+                          requires (settings.settings_schema.get_id () == "org.gnome.extimer.state")
         {
             var timer_datetime = new DateTime.from_unix_utc (
                                  (int64) Math.floor (this.timestamp));
@@ -400,10 +400,10 @@ namespace Pomodoro
          * If exceeded time of a long break, timer would reset.
          */
         public void restore (GLib.Settings settings,
-                             double        timestamp = Pomodoro.get_current_time ())
-                             requires (settings.settings_schema.get_id () == "org.gnome.pomodoro.state")
+                             double        timestamp = ExTimer.get_current_time ())
+                             requires (settings.settings_schema.get_id () == "org.gnome.extimer.state")
         {
-            var state          = Pomodoro.TimerState.lookup (settings.get_string ("timer-state"));
+            var state          = ExTimer.TimerState.lookup (settings.get_string ("timer-state"));
             var is_paused      = settings.get_boolean ("timer-paused");
             var score          = settings.get_double ("timer-score");
             var last_timestamp = 0.0;

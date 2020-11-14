@@ -1,0 +1,34 @@
+<schemalist>
+  <schema id="org.gnome.extimer.plugins.sounds" path="/org/gnome/extimer/plugins/sounds/" gettext-domain="gnome-extimer">
+    <key name="extimer-start-sound" type="s">
+      <default>"loud-bell.ogg"</default>
+      <summary>ExTimer start sound</summary>
+      <description>Sound file to notify of extimer start.</description>
+    </key>
+    <key name="extimer-start-sound-volume" type="d">
+      <default>1.0</default>
+      <summary>ExTimer start sound volume</summary>
+      <description>Volume of extimer start sound.</description>
+    </key>
+    <key name="extimer-end-sound" type="s">
+      <default>"bell.ogg"</default>
+      <summary>ExTimer end sound</summary>
+      <description>Sound file to notify of extimer end.</description>
+    </key>
+    <key name="extimer-end-sound-volume" type="d">
+      <default>1.0</default>
+      <summary>ExTimer end sound volume</summary>
+      <description>Volume of extimer end sound.</description>
+    </key>
+    <key name="ticking-sound" type="s">
+      <default>""</default>
+      <summary>Ticking sound</summary>
+      <description>Sound to play during extimer.</description>
+    </key>
+    <key name="ticking-sound-volume" type="d">
+      <default>0.2</default>
+      <summary>Ticking sound volume</summary>
+      <description>Volume of ticking sound.</description>
+    </key>
+  </schema>
+</schemalist>

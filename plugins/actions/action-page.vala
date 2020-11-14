@@ -21,15 +21,15 @@ using GLib;
 
 namespace Actions
 {
-    [GtkTemplate (ui = "/org/gnome/pomodoro/plugins/actions/action-page.ui")]
-    public class ActionPage : Gtk.Box, Pomodoro.PreferencesPage
+    [GtkTemplate (ui = "/org/gnome/extimer/plugins/actions/action-page.ui")]
+    public class ActionPage : Gtk.Box, ExTimer.PreferencesPage
     {
         [GtkChild]
         private Gtk.Entry name_entry;
         [GtkChild]
         private Gtk.Entry command_entry;
         [GtkChild]
-        private Gtk.ToggleButton pomodoro_state_togglebutton;
+        private Gtk.ToggleButton extimer_state_togglebutton;
         [GtkChild]
         private Gtk.ToggleButton short_break_state_togglebutton;
         [GtkChild]
@@ -66,7 +66,7 @@ namespace Actions
 
             try {
                 var menu_builder = new Gtk.Builder ();
-                menu_builder.add_from_resource ("/org/gnome/pomodoro/plugins/actions/menus.ui");
+                menu_builder.add_from_resource ("/org/gnome/extimer/plugins/actions/menus.ui");
 
                 var add_variable_model = menu_builder.get_object ("add-variable") as GLib.MenuModel;
                 var add_variable_popover = new Gtk.Popover.from_model (this.add_variable_button,
@@ -121,11 +121,11 @@ namespace Actions
                                            null));
             this.bindings.append (
                 this.action.bind_property ("states",
-                                           this.pomodoro_state_togglebutton,
+                                           this.extimer_state_togglebutton,
                                            "active",
                                            GLib.BindingFlags.SYNC_CREATE | GLib.BindingFlags.BIDIRECTIONAL,
-                                           this.pomodoro_state_transform_to_boolean,
-                                           this.pomodoro_state_transform_from_boolean));
+                                           this.extimer_state_transform_to_boolean,
+                                           this.extimer_state_transform_from_boolean));
             this.bindings.append (
                 this.action.bind_property ("states",
                                            this.short_break_state_togglebutton,
@@ -201,7 +201,7 @@ namespace Actions
             return true;
         }
 
-        private bool pomodoro_state_transform_to_boolean (GLib.Binding   binding,
+        private bool extimer_state_transform_to_boolean (GLib.Binding   binding,
                                                           GLib.Value     source_value,
                                                           ref GLib.Value target_value)
         {
@@ -211,7 +211,7 @@ namespace Actions
             return true;
         }
 
-        private bool pomodoro_state_transform_from_boolean (GLib.Binding   binding,
+        private bool extimer_state_transform_from_boolean (GLib.Binding   binding,
                                                             GLib.Value     source_value,
                                                             ref GLib.Value target_value)
         {

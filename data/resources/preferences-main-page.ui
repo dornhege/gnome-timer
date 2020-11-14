@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Generated with glade 3.20.0 -->
-<interface domain="gnome-pomodoro">
+<interface domain="gnome-extimer">
   <requires lib="gtk+" version="3.16"/>
   <!-- interface-css-provider-path style.css -->
   <object class="GtkAdjustment" id="long_break_interval_adjustment">
@@ -10,7 +10,7 @@
     <property name="step_increment">1</property>
     <property name="page_increment">4</property>
   </object>
-  <template class="PomodoroPreferencesMainPage" parent="GtkScrolledWindow">
+  <template class="ExTimerPreferencesMainPage" parent="GtkScrolledWindow">
     <property name="visible">True</property>
     <property name="can_focus">True</property>
     <property name="hscrollbar_policy">never</property>
@@ -74,14 +74,14 @@
                             <property name="activatable">False</property>
                             <property name="selectable">False</property>
                             <child>
-                              <object class="GtkGrid" id="pomodoro_grid">
+                              <object class="GtkGrid" id="extimer_grid">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
                                 <property name="orientation">vertical</property>
                                 <property name="row_spacing">6</property>
                                 <property name="column_spacing">30</property>
                                 <child>
-                                  <object class="GtkLabel" id="pomodoro_label">
+                                  <object class="GtkLabel" id="extimer_label">
                                     <property name="visible">True</property>
                                     <property name="can_focus">False</property>
                                     <property name="halign">end</property>
@@ -105,7 +105,7 @@
                                     <property name="valign">baseline</property>
                                     <property name="margin_left">5</property>
                                     <property name="hexpand">True</property>
-                                    <property name="label" translatable="yes">Pomodoro duration</property>
+                                    <property name="label" translatable="yes">ExTimer duration</property>
                                   </object>
                                   <packing>
                                     <property name="left_attach">0</property>
@@ -115,7 +115,7 @@
                               </object>
                             </child>
                             <style>
-                              <class name="pomodoro-wide-row"/>
+                              <class name="extimer-wide-row"/>
                             </style>
                           </object>
                         </child>
@@ -167,7 +167,7 @@
                               </object>
                             </child>
                             <style>
-                              <class name="pomodoro-wide-row"/>
+                              <class name="extimer-wide-row"/>
                             </style>
                           </object>
                         </child>
@@ -220,7 +220,7 @@
                               </object>
                             </child>
                             <style>
-                              <class name="pomodoro-wide-row"/>
+                              <class name="extimer-wide-row"/>
                             </style>
                           </object>
                         </child>
@@ -242,7 +242,7 @@
                                     <property name="halign">start</property>
                                     <property name="valign">baseline</property>
                                     <property name="hexpand">True</property>
-                                    <property name="label" translatable="yes">Pomodoros before a long break</property>
+                                    <property name="label" translatable="yes">ExTimers before a long break</property>
                                   </object>
                                   <packing>
                                     <property name="expand">False</property>
@@ -269,7 +269,7 @@
                               </object>
                             </child>
                             <style>
-                              <class name="pomodoro-slim-row"/>
+                              <class name="extimer-slim-row"/>
                             </style>
                           </object>
                         </child>
@@ -320,7 +320,7 @@
                           </object>
                         </child>
                         <style>
-                          <class name="pomodoro-list"/>
+                          <class name="extimer-list"/>
                         </style>
                       </object>
                     </child>
@@ -422,7 +422,7 @@
                           </object>
                         </child>
                         <style>
-                          <class name="pomodoro-list"/>
+                          <class name="extimer-list"/>
                         </style>
                       </object>
                     </child>
@@ -531,7 +531,7 @@
                               </object>
                             </child>
                             <style>
-                              <class name="pomodoro-list"/>
+                              <class name="extimer-list"/>
                             </style>
                           </object>
                         </child>
@@ -576,7 +576,7 @@
                               </object>
                             </child>
                             <style>
-                              <class name="pomodoro-list"/>
+                              <class name="extimer-list"/>
                             </style>
                           </object>
                         </child>

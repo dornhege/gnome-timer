@@ -26,7 +26,7 @@
                 <property name="hexpand">True</property>
                 <property name="label">Name</property>
                 <style>
-                  <class name="pomodoro-action-name"/>
+                  <class name="extimer-action-name"/>
                 </style>
               </object>
               <packing>
@@ -43,7 +43,7 @@
                 <property name="selection_mode">none</property>
                 <property name="activate_on_single_click">False</property>
                 <style>
-                  <class name="pomodoro-action-keywords"/>
+                  <class name="extimer-action-keywords"/>
                 </style>
               </object>
               <packing>
@@ -87,7 +87,7 @@
       </object>
     </child>
     <style>
-      <class name="pomodoro-action-row"/>
+      <class name="extimer-action-row"/>
     </style>
   </template>
 </interface>

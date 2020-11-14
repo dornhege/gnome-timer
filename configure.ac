@@ -1,9 +1,9 @@
 AC_PREREQ([2.69])
-AC_INIT([gnome-pomodoro],
+AC_INIT([gnome-extimer],
         [0.18.1],
-        [https://github.com/codito/gnome-pomodoro/issues],
-        [gnome-pomodoro],
-        [http://gnomepomodoro.org])
+        [https://github.com/codito/gnome-extimer/issues],
+        [gnome-extimer],
+        [http://gnomeextimer.org])
 
 AC_CONFIG_SRCDIR([src])
 AC_CONFIG_HEADERS([config.h])
@@ -148,18 +148,18 @@ AC_DEFUN([RECURSIVE_EVAL],
                echo "[$]_lcl_receval")`])
 
 RECURSIVE_EVAL("$localedir", [PACKAGE_LOCALE_DIR])
-RECURSIVE_EVAL("$datadir/gnome-pomodoro", [PACKAGE_DATA_DIR])
-RECURSIVE_EVAL("$libdir/gnome-pomodoro", [PACKAGE_LIB_DIR])
-RECURSIVE_EVAL("$datadir/gnome-pomodoro/plugins", [PLUGIN_DATA_DIR])
-RECURSIVE_EVAL("$libdir/gnome-pomodoro/plugins", [PLUGIN_LIB_DIR])
-RECURSIVE_EVAL("$datadir/gnome-shell/extensions/pomodoro@arun.codito.in", [EXTENSION_DIR])
+RECURSIVE_EVAL("$datadir/gnome-extimer", [PACKAGE_DATA_DIR])
+RECURSIVE_EVAL("$libdir/gnome-extimer", [PACKAGE_LIB_DIR])
+RECURSIVE_EVAL("$datadir/gnome-extimer/plugins", [PLUGIN_DATA_DIR])
+RECURSIVE_EVAL("$libdir/gnome-extimer/plugins", [PLUGIN_LIB_DIR])
+RECURSIVE_EVAL("$datadir/gnome-shell/extensions/extimer@arun.codito.in", [EXTENSION_DIR])
 RECURSIVE_EVAL("$gsettingsschemadir", [GSETTINGS_SCHEMA_DIR])
 
 
 # Some variables to pass to Makefiles
-AC_SUBST([EXTENSION_UUID], [pomodoro@arun.codito.in])
+AC_SUBST([EXTENSION_UUID], [extimer@arun.codito.in])
 AC_SUBST([EXTENSION_DIR])
-AC_SUBST([GETTEXT_PACKAGE], [gnome-pomodoro])
+AC_SUBST([GETTEXT_PACKAGE], [gnome-extimer])
 AC_SUBST([PACKAGE_DATA_DIR])
 AC_SUBST([PACKAGE_LOCALE_DIR])
 AC_SUBST([GSETTINGS_SCHEMA_DIR])
@@ -194,9 +194,9 @@ AC_DEFINE_UNQUOTED([GETTEXT_PACKAGE], "$GETTEXT_PACKAGE",
 AC_DEFINE_UNQUOTED([GSETTINGS_SCHEMA_DIR], "$GSETTINGS_SCHEMA_DIR",
                    [GSettings schema dir])
 AC_DEFINE_UNQUOTED([EXTENSION_UUID], "$EXTENSION_UUID",
-                   [UUID of the pomodoro extension])
+                   [UUID of the extimer extension])
 AC_DEFINE_UNQUOTED([EXTENSION_DIR], "$EXTENSION_DIR",
-                   [Path of the pomodoro extension])
+                   [Path of the extimer extension])
 AC_DEFINE_UNQUOTED([PACKAGE_LOCALE_DIR], "$PACKAGE_LOCALE_DIR",
                    [Locale dir])
 AC_DEFINE_UNQUOTED([PACKAGE_DATA_DIR], "$PACKAGE_DATA_DIR",
@@ -243,7 +243,7 @@ AC_CONFIG_FILES([
 AC_OUTPUT
 
 echo "
-gnome-pomodoro ${VERSION}:
+gnome-extimer ${VERSION}:
 
     prefix:                 ${prefix}
     datadir:                ${datadir}

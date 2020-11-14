@@ -19,9 +19,9 @@
 using GLib;
 
 
-namespace Pomodoro
+namespace ExTimer
 {
-    [DBus (name = "org.gnome.Pomodoro.Extension")]
+    [DBus (name = "org.gnome.ExTimer.Extension")]
     private interface DesktopExtensionInterface : GLib.Object
     {
         public abstract string[] capabilities { owned get; }
@@ -30,9 +30,9 @@ namespace Pomodoro
 
     public class DesktopExtension : GLib.Object
     {
-        private static Pomodoro.DesktopExtension? instance = null;
+        private static ExTimer.DesktopExtension? instance = null;
 
-        public Pomodoro.CapabilityGroup capabilities { get; construct set; }
+        public ExTimer.CapabilityGroup capabilities { get; construct set; }
 
         /* extension may vanish for a short time, eg when restarting gnome-shell */
         public uint timeout { get; set; default = 2000; }
@@ -45,34 +45,34 @@ namespace Pomodoro
 
         construct
         {
-            this.capabilities = new Pomodoro.CapabilityGroup ("desktop");
+            this.capabilities = new ExTimer.CapabilityGroup ("desktop");
         }
 
         public DesktopExtension () throws GLib.Error
         {
             this.proxy = GLib.Bus.get_proxy_sync<DesktopExtensionInterface>
                                    (GLib.BusType.SESSION,
-                                    "org.gnome.Pomodoro.Extension",
-                                    "/org/gnome/Pomodoro/Extension",
+                                    "org.gnome.ExTimer.Extension",
+                                    "/org/gnome/ExTimer/Extension",
                                     GLib.DBusProxyFlags.NONE);
 
             this.watcher_id = GLib.Bus.watch_name (
                                         GLib.BusType.SESSION,
-                                        "org.gnome.Pomodoro.Extension",
+                                        "org.gnome.ExTimer.Extension",
                                         GLib.BusNameWatcherFlags.NONE,
                                         this.on_name_appeared,
                                         this.on_name_vanished);
         }
 
-        public static unowned Pomodoro.DesktopExtension get_default ()
+        public static unowned ExTimer.DesktopExtension get_default ()
         {
             if (DesktopExtension.instance == null) {
                 try {
-                    var desktop_extension = new Pomodoro.DesktopExtension ();
+                    var desktop_extension = new ExTimer.DesktopExtension ();
                     desktop_extension.set_default ();
                 }
                 catch (GLib.Error error) {
-                    GLib.critical ("Failed to create proxy org.gnome.Pomodoro.Extension");
+                    GLib.critical ("Failed to create proxy org.gnome.ExTimer.Extension");
                 }
             }
 
@@ -135,7 +135,7 @@ namespace Pomodoro
                 capabilities_hash.insert (capability_name, true);
 
                 if (!this.capabilities.contains (capability_name)) {
-                    this.capabilities.add (new Pomodoro.Capability (capability_name));
+                    this.capabilities.add (new ExTimer.Capability (capability_name));
                 }
             }
 

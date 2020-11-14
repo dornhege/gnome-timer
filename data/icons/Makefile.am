@@ -8,7 +8,7 @@ SUBDIRS = \
 	symbolic
 
 noinst_DATA = \
-	gnome-pomodoro.svg
+	gnome-extimer.svg
 
 gtk_update_icon_cache = $(GTK_UPDATE_ICON_CACHE) -f -t $(datadir)/icons/hicolor
 

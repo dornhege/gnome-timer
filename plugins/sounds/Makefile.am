@@ -9,7 +9,7 @@ libsounds_la_plugindata_DATA = \
 libsounds_la_VALASOURCES = \
 	sound-player.vala \
 	sounds-plugin.vala \
-	$(top_builddir)/lib/gnome-pomodoro.vapi
+	$(top_builddir)/lib/gnome-extimer.vapi
 
 libsounds_la_SOURCES = \
 	$(libsounds_la_VALASOURCES) \
@@ -39,10 +39,10 @@ libsounds_la_LDFLAGS = \
 libsounds_la_LIBADD = \
 	$(PLUGIN_LIBS) \
 	$(SOUNDS_PLUGIN_LIBS) \
-	$(top_builddir)/lib/libgnome-pomodoro.la
+	$(top_builddir)/lib/libgnome-extimer.la
 
 gsettings_SCHEMAS = \
-	org.gnome.pomodoro.plugins.sounds.gschema.xml
+	org.gnome.extimer.plugins.sounds.gschema.xml
 @GSETTINGS_RULES@
 
 resources = \
@@ -51,7 +51,7 @@ resources_deps = \
 	$(shell $(GLIB_COMPILE_RESOURCES) --generate-dependencies --sourcedir=$(srcdir)/resources $(resources))
 
 resources.c: $(resources) $(resources_deps)
-	$(AM_V_GEN) $(GLIB_COMPILE_RESOURCES) --generate-source --c-name="pomodoro" --sourcedir=$(srcdir)/resources --target=$@ $<
+	$(AM_V_GEN) $(GLIB_COMPILE_RESOURCES) --generate-source --c-name="extimer" --sourcedir=$(srcdir)/resources --target=$@ $<
 
 BUILT_SOURCES = \
 	resources.c

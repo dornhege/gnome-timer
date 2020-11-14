@@ -148,7 +148,7 @@ namespace SoundsPlugin
         private GLib.File _file;
         private dynamic Gst.Element pipeline;
         private dynamic Gst.Element volume_filter;
-        private Pomodoro.Animation volume_animation;
+        private ExTimer.Animation volume_animation;
         private bool is_about_to_finish = false;
 
         [Flags]
@@ -222,7 +222,7 @@ namespace SoundsPlugin
             }
 
             if (duration > 0) {
-                this.volume_animation = new Pomodoro.Animation (Pomodoro.AnimationMode.EASE_OUT,
+                this.volume_animation = new ExTimer.Animation (ExTimer.AnimationMode.EASE_OUT,
                                                                 duration,
                                                                 FADE_FRAMES_PER_SECOND);
                 this.volume_animation.add_property (this,
@@ -261,7 +261,7 @@ namespace SoundsPlugin
             }
 
             if (duration > 0 && state == Gst.State.PLAYING) {
-                this.volume_animation = new Pomodoro.Animation (Pomodoro.AnimationMode.EASE_IN_OUT,
+                this.volume_animation = new ExTimer.Animation (ExTimer.AnimationMode.EASE_IN_OUT,
                                                                 duration,
                                                                 FADE_FRAMES_PER_SECOND);
                 this.volume_animation.add_property (this,

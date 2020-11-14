@@ -20,11 +20,11 @@
 using GLib;
 
 
-namespace Pomodoro
+namespace ExTimer
 {
     public class TimerActionGroup : GLib.SimpleActionGroup
     {
-        public Pomodoro.Timer timer { get; construct set; }
+        public ExTimer.Timer timer { get; construct set; }
 
         private GLib.SimpleAction start_action;
         private GLib.SimpleAction stop_action;
@@ -32,7 +32,7 @@ namespace Pomodoro
         private GLib.SimpleAction resume_action;
         private GLib.SimpleAction state_action;
 
-        public TimerActionGroup (Pomodoro.Timer timer)
+        public TimerActionGroup (ExTimer.Timer timer)
         {
             this.timer = timer;
 
@@ -66,7 +66,7 @@ namespace Pomodoro
             this.update_action_states ();
         }
 
-        public static GLib.ActionGroup for_timer (Pomodoro.Timer timer)
+        public static GLib.ActionGroup for_timer (ExTimer.Timer timer)
         {
             var action_group = timer.get_data<GLib.ActionGroup> ("action-group");
 
@@ -80,7 +80,7 @@ namespace Pomodoro
 
         private void update_action_states ()
         {
-            var is_disabled = this.timer.state is Pomodoro.DisabledState;
+            var is_disabled = this.timer.state is ExTimer.DisabledState;
             var is_paused = this.timer.is_paused;
 
             this.start_action.set_enabled (is_disabled);
@@ -90,15 +90,15 @@ namespace Pomodoro
             this.state_action.set_state (new GLib.Variant.string (this.timer.state.name));
         }
 
-        private void on_timer_state_changed (Pomodoro.TimerState state,
-                                             Pomodoro.TimerState previous_state)
+        private void on_timer_state_changed (ExTimer.TimerState state,
+                                             ExTimer.TimerState previous_state)
         {
             this.update_action_states ();
         }
 
         private void on_timer_is_paused_notify ()
         {
-            var is_disabled = this.timer.state is Pomodoro.DisabledState;
+            var is_disabled = this.timer.state is ExTimer.DisabledState;
             var is_paused = this.timer.is_paused;
 
             this.pause_action.set_enabled (!is_disabled && !is_paused);
@@ -132,7 +132,7 @@ namespace Pomodoro
         private void activate_state (GLib.SimpleAction action,
                                      GLib.Variant?     parameter)
         {
-            var state = Pomodoro.TimerState.lookup (parameter.get_string ());
+            var state = ExTimer.TimerState.lookup (parameter.get_string ());
 
             if (state != null)
             {

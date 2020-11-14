@@ -18,7 +18,7 @@
    id="svg11300"
    sodipodi:version="0.32"
    inkscape:version="0.92.1 r"
-   sodipodi:docname="gnome-pomodoro.svg"
+   sodipodi:docname="gnome-extimer.svg"
    inkscape:output_extension="org.inkscape.output.svg.inkscape"
    version="1.0"
    style="enable-background:new">
@@ -1763,7 +1763,7 @@
          id="path4632"
          inkscape:connector-curvature="0"
          sodipodi:nodetypes="sssss"
-         inkscape:export-filename="/home/kamil/Personal/Projects/gnome-pomodoro/path4419.png"
+         inkscape:export-filename="/home/kamil/Personal/Projects/gnome-extimer/path4419.png"
          inkscape:export-xdpi="610.71405"
          inkscape:export-ydpi="610.71405" />
     </clipPath>
@@ -2033,7 +2033,7 @@
          id="path4281"
          inkscape:connector-curvature="0"
          sodipodi:nodetypes="sssss"
-         inkscape:export-filename="/home/kamil/Personal/Projects/gnome-pomodoro/path4419.png"
+         inkscape:export-filename="/home/kamil/Personal/Projects/gnome-extimer/path4419.png"
          inkscape:export-xdpi="610.71405"
          inkscape:export-ydpi="610.71405" />
     </clipPath>
@@ -2536,7 +2536,7 @@
        width="256"
        id="rect6282"
        style="display:inline;overflow:visible;visibility:visible;fill:#d3d7cf;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:2;marker:none;enable-background:accumulate"
-       inkscape:export-filename="/home/build/jhbuild/checkout/gnome-pomodoro/data/icons/g4215.png"
+       inkscape:export-filename="/home/build/jhbuild/checkout/gnome-extimer/data/icons/g4215.png"
        inkscape:export-xdpi="90"
        inkscape:export-ydpi="90" />
     <rect
@@ -2559,7 +2559,7 @@
        style="display:inline;overflow:visible;visibility:visible;fill:#d3d7cf;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:2;marker:none;enable-background:accumulate"
        inkscape:export-xdpi="96"
        inkscape:export-ydpi="96"
-       inkscape:export-filename="/home/kamil/Projects/gnome-pomodoro/data/icons/32x32/gnome-pomodoro-new.png" />
+       inkscape:export-filename="/home/kamil/Projects/gnome-extimer/data/icons/32x32/gnome-extimer-new.png" />
     <rect
        style="display:inline;overflow:visible;visibility:visible;fill:#d3d7cf;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:2;marker:none;enable-background:accumulate"
        id="rect6749"
@@ -2578,7 +2578,7 @@
        style="display:inline;overflow:visible;visibility:visible;fill:#d3d7cf;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:2;marker:none;enable-background:accumulate"
        inkscape:export-xdpi="90"
        inkscape:export-ydpi="90"
-       inkscape:export-filename="/home/build/jhbuild/checkout/gnome-pomodoro/data/icons/hicolor_apps_16x16_gnome-pomodoro.png" />
+       inkscape:export-filename="/home/build/jhbuild/checkout/gnome-extimer/data/icons/hicolor_apps_16x16_gnome-extimer.png" />
     <rect
        inkscape:label="24x24"
        y="166"
@@ -2612,9 +2612,9 @@
          id="tspan16847"
          x="159"
          y="-18.999996"
-         style="font-size:20px;line-height:1.25">gnome-pomodoro</tspan></text>
+         style="font-size:20px;line-height:1.25">gnome-extimer</tspan></text>
     <rect
-       inkscape:export-filename="/home/build/jhbuild/checkout/gnome-pomodoro/data/icons/hicolor_apps_16x16_gnome-pomodoro.png"
+       inkscape:export-filename="/home/build/jhbuild/checkout/gnome-extimer/data/icons/hicolor_apps_16x16_gnome-extimer.png"
        inkscape:export-ydpi="90"
        inkscape:export-xdpi="90"
        style="display:inline;overflow:visible;visibility:visible;fill:#d3d7cf;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:2;marker:none;enable-background:accumulate"
@@ -2666,7 +2666,7 @@
            id="path3215"
            inkscape:connector-curvature="0"
            sodipodi:nodetypes="sssss"
-           inkscape:export-filename="/home/kamil/Personal/Projects/gnome-pomodoro/path4419.png"
+           inkscape:export-filename="/home/kamil/Personal/Projects/gnome-extimer/path4419.png"
            inkscape:export-xdpi="610.71405"
            inkscape:export-ydpi="610.71405" />
         <g
@@ -2772,7 +2772,7 @@
         <path
            inkscape:export-ydpi="610.71405"
            inkscape:export-xdpi="610.71405"
-           inkscape:export-filename="/home/kamil/Personal/Projects/gnome-pomodoro/path4419.png"
+           inkscape:export-filename="/home/kamil/Personal/Projects/gnome-extimer/path4419.png"
            sodipodi:nodetypes="sssss"
            inkscape:connector-curvature="0"
            id="path4816"
@@ -2795,7 +2795,7 @@
            style="fill:none;stroke:#ffffff;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;display:inline;filter:url(#filter4270);enable-background:new"
            id="path4427"
            d="m 148.28125,32.75 c -23.47351,0 -44.83121,13.777869 -60.40625,34.96875 -15.575042,21.190881 -25.25,49.72062 -25.25,78.6875 0,57.93375 38.30492,95.5 85.65625,95.5 47.35133,0 85.65625,-37.56626 85.65625,-95.5 0,-28.96688 -9.67496,-57.496619 -25.25,-78.6875 C 193.11246,46.527869 171.75476,32.75 148.28125,32.75 z"
-           inkscape:export-filename="/home/kamil/Personal/Projects/gnome-pomodoro/path4419.png"
+           inkscape:export-filename="/home/kamil/Personal/Projects/gnome-extimer/path4419.png"
            inkscape:export-xdpi="610.71405"
            inkscape:export-ydpi="610.71405" />
       </g>
@@ -2840,7 +2840,7 @@
         <path
            inkscape:export-ydpi="610.71405"
            inkscape:export-xdpi="610.71405"
-           inkscape:export-filename="/home/kamil/Personal/Projects/gnome-pomodoro/path4419.png"
+           inkscape:export-filename="/home/kamil/Personal/Projects/gnome-extimer/path4419.png"
            sodipodi:nodetypes="sssss"
            inkscape:connector-curvature="0"
            id="path5041"
@@ -2946,7 +2946,7 @@
            id="path5075"
            inkscape:connector-curvature="0"
            sodipodi:nodetypes="sssss"
-           inkscape:export-filename="/home/kamil/Personal/Projects/gnome-pomodoro/path4419.png"
+           inkscape:export-filename="/home/kamil/Personal/Projects/gnome-extimer/path4419.png"
            inkscape:export-xdpi="610.71405"
            inkscape:export-ydpi="610.71405" />
         <path
@@ -2960,7 +2960,7 @@
         <path
            inkscape:export-ydpi="610.71405"
            inkscape:export-xdpi="610.71405"
-           inkscape:export-filename="/home/kamil/Personal/Projects/gnome-pomodoro/path4419.png"
+           inkscape:export-filename="/home/kamil/Personal/Projects/gnome-extimer/path4419.png"
            d="m 148.28125,35.34375 c -22.45218,0 -43.09259,13.229804 -58.3125,33.9375 -15.219907,20.707696 -24.75,48.73733 -24.75,77.125 0,56.77532 37.09895,92.90625 83.0625,92.90625 45.96354,0 83.0625,-36.13094 83.0625,-92.90625 0,-28.38767 -9.53009,-56.417304 -24.75,-77.125 -15.21991,-20.707696 -35.86032,-33.9375 -58.3125,-33.9375 z"
            id="path5079"
            style="fill:none;stroke:url(#linearGradient5091);stroke-width:5.4084506;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;display:inline;enable-background:new"
@@ -2990,7 +2990,7 @@
            id="path4286"
            inkscape:connector-curvature="0"
            sodipodi:nodetypes="sssss"
-           inkscape:export-filename="/home/kamil/Personal/Projects/gnome-pomodoro/path4419.png"
+           inkscape:export-filename="/home/kamil/Personal/Projects/gnome-extimer/path4419.png"
            inkscape:export-xdpi="610.71405"
            inkscape:export-ydpi="610.71405" />
         <path
@@ -3038,7 +3038,7 @@
         <path
            inkscape:export-ydpi="610.71405"
            inkscape:export-xdpi="610.71405"
-           inkscape:export-filename="/home/kamil/Personal/Projects/gnome-pomodoro/path4419.png"
+           inkscape:export-filename="/home/kamil/Personal/Projects/gnome-extimer/path4419.png"
            sodipodi:nodetypes="sssss"
            inkscape:connector-curvature="0"
            id="path4318"
@@ -3088,7 +3088,7 @@
         <path
            inkscape:export-ydpi="610.71405"
            inkscape:export-xdpi="610.71405"
-           inkscape:export-filename="/home/kamil/Personal/Projects/gnome-pomodoro/path4419.png"
+           inkscape:export-filename="/home/kamil/Personal/Projects/gnome-extimer/path4419.png"
            sodipodi:nodetypes="sssss"
            inkscape:connector-curvature="0"
            id="path4348"
@@ -3141,7 +3141,7 @@
            id="path4380"
            inkscape:connector-curvature="0"
            sodipodi:nodetypes="sssss"
-           inkscape:export-filename="/home/kamil/Personal/Projects/gnome-pomodoro/path4419.png"
+           inkscape:export-filename="/home/kamil/Personal/Projects/gnome-extimer/path4419.png"
            inkscape:export-xdpi="610.71405"
            inkscape:export-ydpi="610.71405" />
         <path
@@ -3157,7 +3157,7 @@
     <g
        id="g4398"
        transform="matrix(0.6397214,0,0,0.6397214,114.11334,90.752296)"
-       inkscape:export-filename="/home/kamil/Projects/gnome-pomodoro/data/icons/32x32/gnome-pomodoro-new.png"
+       inkscape:export-filename="/home/kamil/Projects/gnome-extimer/data/icons/32x32/gnome-extimer-new.png"
        inkscape:export-xdpi="96"
        inkscape:export-ydpi="96">
       <g
@@ -3202,7 +3202,7 @@
            id="path4410"
            inkscape:connector-curvature="0"
            sodipodi:nodetypes="sssss"
-           inkscape:export-filename="/home/kamil/Personal/Projects/gnome-pomodoro/path4419.png"
+           inkscape:export-filename="/home/kamil/Personal/Projects/gnome-extimer/path4419.png"
            inkscape:export-xdpi="610.71405"
            inkscape:export-ydpi="610.71405" />
         <g
@@ -3304,7 +3304,7 @@
         <path
            inkscape:export-ydpi="610.71405"
            inkscape:export-xdpi="610.71405"
-           inkscape:export-filename="/home/kamil/Personal/Projects/gnome-pomodoro/path4419.png"
+           inkscape:export-filename="/home/kamil/Personal/Projects/gnome-extimer/path4419.png"
            sodipodi:nodetypes="sssss"
            inkscape:connector-curvature="0"
            id="path4442"

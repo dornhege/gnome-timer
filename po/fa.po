@@ -1,11 +1,11 @@
-# Persian translation for gnome-pomodoro
+# Persian translation for gnome-extimer
 # Copyright (c) 2016 gnome-pomodoro contributors
-# This file is distributed under the same license as the gnome-pomodoro package.
+# This file is distributed under the same license as the gnome-extimer package.
 # Arash Mousavi <mousavi.arash@gmail.com>, 2012, 2016.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gnome-pomodoro\n"
+"Project-Id-Version: gnome-extimer\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-01-10 14:23+0100\n"
 "PO-Revision-Date: 2016-06-19 12:20+0430\n"
@@ -21,7 +21,7 @@ msgstr ""
 
 #. Toggle timer state button */
 #: ../extension/indicator.js:87
-msgid "Pomodoro Timer"
+msgid "ExTimer Timer"
 msgstr "زمانسنج پومودورو"
 
 #: ../extension/indicator.js:94 ../src/preferences-dialog.vala:129
@@ -30,8 +30,8 @@ msgid "Preferences"
 msgstr "ترجیحات"
 
 #: ../extension/notifications.js:115 ../src/about-dialog.vala:30
-#: ../data/gnome-pomodoro.desktop.in.h:1
-msgid "Pomodoro"
+#: ../data/gnome-extimer.desktop.in.h:1
+msgid "ExTimer"
 msgstr "پومودورو"
 
 #: ../extension/notifications.js:389
@@ -39,7 +39,7 @@ msgid "It's time to take a break"
 msgstr "وقتشه کمی استراحت کنی"
 
 #: ../extension/notifications.js:574
-msgid "A new pomodoro is starting"
+msgid "A new extimer is starting"
 msgstr "یک پومودورو دیگه شروع شد"
 
 #: ../extension/notifications.js:587
@@ -47,7 +47,7 @@ msgid "Take a break!"
 msgstr "یکم استراحت کن!"
 
 #: ../extension/notifications.js:610
-msgid "Start pomodoro"
+msgid "Start extimer"
 msgstr "شروع پومودورو"
 
 #: ../extension/notifications.js:652
@@ -75,7 +75,7 @@ msgid "Hey, you're missing out on a break"
 msgstr "ای بابا، داری زمان استراحتت رو از دست میدی"
 
 #: ../extension/notifications.js:772
-msgid "Could not run pomodoro"
+msgid "Could not run extimer"
 msgstr "امکان اجرا پومودورو نبود"
 
 #: ../extension/notifications.js:774
@@ -83,8 +83,8 @@ msgid "Something went badly wrong..."
 msgstr "یک اتفاق ناجوری افتاد…"
 
 #: ../extension/notifications.js:775
-msgid "Looks like gnome-pomodoro is not installed"
-msgstr "به نظر میاد gnome-pomodoro نصب نشده است"
+msgid "Looks like gnome-extimer is not installed"
+msgstr "به نظر میاد gnome-extimer نصب نشده است"
 
 #: ../extension/notifications.js:784
 msgid "Report issue"
@@ -95,7 +95,7 @@ msgid "Install"
 msgstr "نصب"
 
 #: ../src/about-dialog.vala:29
-msgid "About Pomodoro"
+msgid "About ExTimer"
 msgstr "پومودورو دربارهٔ"
 
 #: ../src/about-dialog.vala:31
@@ -122,7 +122,7 @@ msgid "Timer"
 msgstr "زمانسنج"
 
 #: ../src/preferences-dialog.vala:396
-msgid "Pomodoro duration"
+msgid "ExTimer duration"
 msgstr "طول مدت پومودورو"
 
 #: ../src/preferences-dialog.vala:399
@@ -133,9 +133,9 @@ msgstr "طول مدت استراحتِ کوتاه"
 msgid "Long break duration"
 msgstr "طول مدت استراحتِ بلند"
 
-#. @translators: You can refer it to number of pomodoros in a cycle
+#. @translators: You can refer it to number of extimers in a cycle
 #: ../src/preferences-dialog.vala:411
-msgid "Pomodoros to a long break"
+msgid "ExTimers to a long break"
 msgstr "تعداد پومودورو تا اجرا استراحت طولانی"
 
 #: ../src/preferences-dialog.vala:418
@@ -195,11 +195,11 @@ msgid "Start of break sound"
 msgstr "صدا برای شروع استراحت"
 
 #: ../src/preferences-dialog.vala:534
-msgid "Select sound for pomodoro start"
+msgid "Select sound for extimer start"
 msgstr "انتخاب صدا برای شروع پومودورو"
 
 #: ../src/preferences-dialog.vala:543
-msgid "Pomodoro start sound"
+msgid "ExTimer start sound"
 msgstr "صدا شروع پومودورو"
 
 #: ../src/preferences-dialog.vala:575
@@ -220,11 +220,11 @@ msgid "Presence"
 msgstr "حضور"
 
 #: ../src/preferences-dialog.vala:603
-msgid "Postpone pomodoro when idle"
+msgid "Postpone extimer when idle"
 msgstr "تعویق کردن پومودورو هنگام بیکاری"
 
 #: ../src/preferences-dialog.vala:608
-msgid "Status during pomodoro"
+msgid "Status during extimer"
 msgstr "وضعیت هنگام شروع پومودورو"
 
 #: ../src/preferences-dialog.vala:613
@@ -233,7 +233,7 @@ msgstr "وضعیت هنگام استراحت"
 
 #: ../src/preferences-dialog.vala:686
 msgid ""
-"System notifications including chat messages won't show up during pomodoro."
+"System notifications including chat messages won't show up during extimer."
 msgstr ""
 "اعلان‌های سیستم، شامل گپ‌ها، در هنگام اجرای پومودورو نمایش داده نخواهند شد."
 
@@ -308,11 +308,11 @@ msgstr "هیچ‌کدام"
 msgid "Supported audio files"
 msgstr "پرونده‌های صوتی پیشیبانی شده"
 
-#: ../data/gnome-pomodoro.desktop.in.h:2
+#: ../data/gnome-extimer.desktop.in.h:2
 msgid "Manage your time and tasks"
 msgstr "وظایف و زمان خود را مدیریت کنید"
 
-#: ../data/gnome-pomodoro.desktop.in.h:3
+#: ../data/gnome-extimer.desktop.in.h:3
 msgid "time;timer;tasks;manage;organize;"
 msgstr "time;timer;tasks;manage;organize;زمان;زمانسنج;وظایف;مدیریت;سازماندهی;"
 
@@ -395,10 +395,10 @@ msgstr "time;timer;tasks;manage;organize;زمان;زمانسنج;وظایف;مد
 #~ msgid "Show Dialog Messages"
 #~ msgstr "نمایش محاوره‌ی پیام‌ها"
 
-#~ msgid "Show a dialog message at the end of pomodoro session"
+#~ msgid "Show a dialog message at the end of extimer session"
 #~ msgstr "نمایش یک پیام در پایان دوره پومودورو"
 
-#~ msgid "Pomodoro Finished!"
+#~ msgid "ExTimer Finished!"
 #~ msgstr "پومودورو تمام شد!"
 
 #~ msgid "Hide"

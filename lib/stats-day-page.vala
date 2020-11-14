@@ -21,7 +21,7 @@
 using GLib;
 
 
-namespace Pomodoro
+namespace ExTimer
 {
     private class StatsDayPage : StatsPage
     {

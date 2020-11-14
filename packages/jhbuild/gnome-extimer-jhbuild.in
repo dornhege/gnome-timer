@@ -1,0 +1,3 @@
+#!/bin/sh
+
+jhbuild --file=@abs_srcdir@/gnome-extimer.jhbuildrc --moduleset=@abs_srcdir@/gnome-extimer.modules --exit-on-error $@

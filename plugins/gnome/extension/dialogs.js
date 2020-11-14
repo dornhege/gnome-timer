@@ -110,7 +110,7 @@ var BlurEffect = GObject.registerClass({
             0, 1, 0
         ),
     },
-}, class PomodoroBlurEffect extends Clutter.ShaderEffect {
+}, class ExTimerBlurEffect extends Clutter.ShaderEffect {
     _init(params) {
         params = Params.parse(params, {
             orientation: Clutter.Orientation.HORIZONTAL,
@@ -226,7 +226,7 @@ class extends Lightbox.Lightbox {
             this._uiGroup = null;
         }
 
-        this.add_style_class_name('extension-pomodoro-lightbox');
+        this.add_style_class_name('extension-extimer-lightbox');
     }
 
     lightOn(fadeInTime) {
@@ -306,7 +306,7 @@ var ModalDialog = class {
                                        source: global.stage,
                                        coordinate: Clutter.BindCoordinate.ALL });
 
-        this.actor = new St.Widget({ style_class: 'extension-pomodoro-dialog',
+        this.actor = new St.Widget({ style_class: 'extension-extimer-dialog',
                                      accessible_role: Atk.Role.DIALOG,
                                      layout_manager: new Clutter.BinLayout(),
                                      visible: false,
@@ -603,7 +603,7 @@ var ModalDialog = class {
 Signals.addSignalMethods(ModalDialog.prototype);
 
 
-var PomodoroEndDialog = class extends ModalDialog {
+var ExTimerEndDialog = class extends ModalDialog {
     constructor(timer) {
         super();
 
@@ -630,20 +630,20 @@ var PomodoroEndDialog = class extends ModalDialog {
             x_align: Clutter.ActorAlign.START,
         });
 
-        let hbox = new St.BoxLayout({ vertical: false, style_class: 'extension-pomodoro-dialog-timer' });
+        let hbox = new St.BoxLayout({ vertical: false, style_class: 'extension-extimer-dialog-timer' });
         hbox.add_actor(this._minutesLabel);
         hbox.add_actor(this._separatorLabel);
         hbox.add_actor(this._secondsLabel);
 
         this._descriptionLabel = new St.Label({
-            style_class: 'extension-pomodoro-dialog-description',
+            style_class: 'extension-extimer-dialog-description',
             text: this.description,
             x_align: Clutter.ActorAlign.CENTER,
         });
         this._descriptionLabel.clutter_text.ellipsize = Pango.EllipsizeMode.NONE;
         this._descriptionLabel.clutter_text.line_wrap = true;
 
-        let box = new St.BoxLayout({ style_class: 'extension-pomodoro-dialog-box',
+        let box = new St.BoxLayout({ style_class: 'extension-extimer-dialog-box',
                                      vertical: true });
         box.add_actor(hbox);
         box.add_actor(this._descriptionLabel);

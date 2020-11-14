@@ -1,5 +1,5 @@
 /*
- * This file is part of GNOME Pomodoro
+ * This file is part of GNOME ExTimer
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,9 +18,9 @@
  *
  */
 
-namespace Pomodoro
+namespace ExTimer
 {
-    public class TimerTest : Pomodoro.TestSuite
+    public class TimerTest : ExTimer.TestSuite
     {
         private const double POMODORO_DURATION = 25.0;
         private const double SHORT_BREAK_DURATION = 5.0;
@@ -59,8 +59,8 @@ namespace Pomodoro
             this.add_test ("long_break_state_postponed",
                            this.test_long_break_state_postponed);
 
-            this.add_test ("pomodoro_state_create_next_state",
-                           this.test_pomodoro_state_create_next_state);
+            this.add_test ("extimer_state_create_next_state",
+                           this.test_extimer_state_create_next_state);
 
             this.add_test ("pause_1",
                            this.test_pause_1);
@@ -104,9 +104,9 @@ namespace Pomodoro
 
         public override void setup ()
         {
-            var settings = Pomodoro.get_settings ()
+            var settings = ExTimer.get_settings ()
                                    .get_child ("preferences");
-            settings.set_double ("pomodoro-duration", POMODORO_DURATION);
+            settings.set_double ("extimer-duration", POMODORO_DURATION);
             settings.set_double ("short-break-duration", SHORT_BREAK_DURATION);
             settings.set_double ("long-break-duration", LONG_BREAK_DURATION);
             settings.set_double ("long-break-interval", LONG_BREAK_INTERVAL);
@@ -115,25 +115,25 @@ namespace Pomodoro
 
         public override void teardown ()
         {
-            var settings = Pomodoro.get_settings ();
+            var settings = ExTimer.get_settings ();
             settings.revert ();
         }
 
         /**
-         * Unit test for Pomodoro.Timer.set_state_full() method.
+         * Unit test for ExTimer.Timer.set_state_full() method.
          *
          * Check changing timer state.
          */
         public void test_set_state ()
         {
-            var timer = new Pomodoro.Timer ();
-            var timestamp = Pomodoro.get_current_time ();
+            var timer = new ExTimer.Timer ();
+            var timestamp = ExTimer.get_current_time ();
 
             timer.state_changed.connect ((new_state, previous_state) => {
                 
             });
 
-            timer.state = new PomodoroState.with_timestamp (timestamp);
+            timer.state = new ExTimerState.with_timestamp (timestamp);
 
             timestamp += timer.state.duration;
 
@@ -141,30 +141,30 @@ namespace Pomodoro
 
             timestamp += timer.state.duration;
 
-            timer.state = new PomodoroState.with_timestamp (timestamp);
+            timer.state = new ExTimerState.with_timestamp (timestamp);
         }
 
         public void test_start ()
         {
-            var timer = new Pomodoro.Timer ();
+            var timer = new ExTimer.Timer ();
 
             timer.start ();
 
-            assert (timer.state is PomodoroState);
+            assert (timer.state is ExTimerState);
             assert (timer.is_running ());
 
             timer.pause ();
             timer.start ();
 
-            assert (timer.state is PomodoroState);
+            assert (timer.state is ExTimerState);
             assert (!timer.is_paused);
             assert (timer.is_running ());
         }
 
         public void test_stop ()
         {
-            var timer = new Pomodoro.Timer ();
-            timer.state = new PomodoroState ();
+            var timer = new ExTimer.Timer ();
+            timer.state = new ExTimerState ();
 
             timer.stop ();
 
@@ -174,27 +174,27 @@ namespace Pomodoro
 
         public void test_update ()
         {
-            var timer = new Pomodoro.Timer ();
+            var timer = new ExTimer.Timer ();
             timer.start ();
 
             timer.update (timer.state.timestamp + 0.5);
-            assert (timer.state is PomodoroState);
+            assert (timer.state is ExTimerState);
             assert (timer.elapsed == 0.5);
         }
 
         public void test_update_offset ()
         {
-            var timer = new Pomodoro.Timer ();
+            var timer = new ExTimer.Timer ();
             var initial_timestamp = timer.timestamp;
 
-            var state1 = new PomodoroState.with_timestamp (initial_timestamp);
+            var state1 = new ExTimerState.with_timestamp (initial_timestamp);
             state1.elapsed = 0.5;
 
             timer.state = state1;
 
             assert (timer.elapsed == 0.5);
 
-            var state2 = new PomodoroState.with_timestamp (initial_timestamp - 2.0);
+            var state2 = new ExTimerState.with_timestamp (initial_timestamp - 2.0);
             state2.elapsed = 0.5;
 
             timer.state = state2;
@@ -205,26 +205,26 @@ namespace Pomodoro
 
         public void test_disabled_state ()
         {
-            var timer = new Pomodoro.Timer ();
+            var timer = new ExTimer.Timer ();
             var initial_timestamp = timer.state.timestamp;
 
             timer.update (initial_timestamp + 2.0);
 
-            assert (timer.state is Pomodoro.DisabledState);
+            assert (timer.state is ExTimer.DisabledState);
             assert (!timer.is_running ());
             assert (timer.state.duration == 0.0);
             assert (timer.state.timestamp == initial_timestamp);
         }
 
         /**
-         * Unit test for Pomodoro.Timer.update() method.
+         * Unit test for ExTimer.Timer.update() method.
          *
          * Check whether states change properly with time.
          */
         public void test_short_break_state ()
         {
-            var timer = new Pomodoro.Timer ();
-            timer.state = new PomodoroState ();
+            var timer = new ExTimer.Timer ();
+            timer.state = new ExTimerState ();
             timer.score = 0.0;
 
             timer.update (timer.state.timestamp + timer.state.duration);
@@ -236,8 +236,8 @@ namespace Pomodoro
 
         public void test_long_break_state ()
         {
-            var timer = new Pomodoro.Timer ();
-            timer.state = new PomodoroState ();
+            var timer = new ExTimer.Timer ();
+            timer.state = new ExTimerState ();
             timer.score = 3.0;
 
             timer.update (timer.state.timestamp + timer.state.duration);
@@ -245,7 +245,7 @@ namespace Pomodoro
             assert (timer.score == 4.0);
 
             timer.update (timer.state.timestamp + timer.state.duration);
-            assert (timer.state is PomodoroState);
+            assert (timer.state is ExTimerState);
             assert (timer.score == 0.0);
         }
 
@@ -254,8 +254,8 @@ namespace Pomodoro
          */
         public void test_long_break_state_postponed ()
         {
-            var timer = new Pomodoro.Timer ();
-            timer.state = new PomodoroState ();
+            var timer = new ExTimer.Timer ();
+            timer.state = new ExTimerState ();
             timer.score = 3.0;
 
             timer.update (timer.state.timestamp + timer.state.duration);
@@ -263,20 +263,20 @@ namespace Pomodoro
             assert (timer.state is LongBreakState);
             assert (timer.score == 4.0);
 
-            var state = new PomodoroState.with_timestamp (timer.state.timestamp + 1.0);
+            var state = new ExTimerState.with_timestamp (timer.state.timestamp + 1.0);
             timer.state = state;
 
-            assert (timer.state is PomodoroState);
+            assert (timer.state is ExTimerState);
             assert (timer.score == 4.0);
         }
 
         /**
-         * Extra time from pomodoro should be passed on to a break. If interruption happens
+         * Extra time from extimer should be passed on to a break. If interruption happens
          * (a reboot for instance) we can assume that user is not straining himself/herself.
          */
-        public void test_pomodoro_state_create_next_state ()
+        public void test_extimer_state_create_next_state ()
         {
-            var timer = new Pomodoro.Timer ();
+            var timer = new ExTimer.Timer ();
             timer.start ();
 
             timer.update (timer.state.timestamp + timer.state.duration + 2.0);
@@ -285,7 +285,7 @@ namespace Pomodoro
             assert (timer.elapsed == 2.0);
 
             timer.update (timer.state.timestamp + timer.state.duration + 2.0);
-            assert (timer.state is PomodoroState);
+            assert (timer.state is ExTimerState);
             assert (timer.elapsed == 0.0);
         }
 
@@ -296,8 +296,8 @@ namespace Pomodoro
 
         public void test_pause_1 ()
         {
-            var timer = new Pomodoro.Timer ();
-            timer.state = new Pomodoro.PomodoroState.with_timestamp (0.0);
+            var timer = new ExTimer.Timer ();
+            timer.state = new ExTimer.ExTimerState.with_timestamp (0.0);
             timer.start (0.0);
             timer.pause (0.0);
             timer.resume (2.0);
@@ -312,31 +312,31 @@ namespace Pomodoro
          */
         public void test_pause_2 ()
         {
-            var timer1 = new Pomodoro.Timer ();
-            timer1.state = new Pomodoro.PomodoroState.with_timestamp (0.0);
+            var timer1 = new ExTimer.Timer ();
+            timer1.state = new ExTimer.ExTimerState.with_timestamp (0.0);
             timer1.start (0.0);
             timer1.pause (0.0);
             timer1.resume (15.0);
             timer1.update (15.0 + 25.0);
 
-            assert (timer1.state is Pomodoro.ShortBreakState);
+            assert (timer1.state is ExTimer.ShortBreakState);
             assert (timer1.score == 1.0);
 
-            var timer2 = new Pomodoro.Timer ();
-            timer2.state = new Pomodoro.PomodoroState.with_timestamp (0.0);
+            var timer2 = new ExTimer.Timer ();
+            timer2.state = new ExTimer.ExTimerState.with_timestamp (0.0);
             timer2.start (0.0);
             timer2.update (20.0);
             timer2.pause (20.0);
             timer2.resume (20.0 + 15.0);
             timer2.update (20.0 + 15.0 + 5.0);
 
-            assert (timer2.state is Pomodoro.ShortBreakState);
+            assert (timer2.state is ExTimer.ShortBreakState);
             assert (timer2.score == 1.0);
         }
 
         public void test_is_running ()
         {
-            var timer = new Pomodoro.Timer ();
+            var timer = new ExTimer.Timer ();
             timer.pause ();
 
             assert (!timer.is_running ());
@@ -349,39 +349,39 @@ namespace Pomodoro
 
         public void test_state_duration_setting ()
         {
-            Pomodoro.TimerState state;
+            ExTimer.TimerState state;
 
-            state = new Pomodoro.DisabledState ();
+            state = new ExTimer.DisabledState ();
             assert (state.duration == 0.0);
 
-            state = new Pomodoro.PomodoroState ();
+            state = new ExTimer.ExTimerState ();
             assert (state.duration == POMODORO_DURATION);
 
-            state = new Pomodoro.ShortBreakState ();
+            state = new ExTimer.ShortBreakState ();
             assert (state.duration == SHORT_BREAK_DURATION);
 
-            state = new Pomodoro.LongBreakState ();
+            state = new ExTimer.LongBreakState ();
             assert (state.duration == LONG_BREAK_DURATION);
         }
 
 //        /** TODO
-//         * Unit test for pomodoro duration.
+//         * Unit test for extimer duration.
 //         *
-//         * Shortening pomodoro_duration shouldn't result in immediate long_break,
+//         * Shortening extimer_duration shouldn't result in immediate long_break,
 //         */
 //        public void test_state_duration_change ()
 //        {
-//            var timer = new Pomodoro.Timer ();
+//            var timer = new ExTimer.Timer ();
 //            timer.start ();
 //
-//            /* shorten pomodoro duration */
+//            /* shorten extimer duration */
 //            timer.state.duration = POMODORO_DURATION / 10.0;
 //
 //            timer.update (timer.state.timestamp + timer.state.duration);
 //
 ////            print_timer_state (timer);
 //
-//            assert (timer.state is Pomodoro.ShortBreakState);
+//            assert (timer.state is ExTimer.ShortBreakState);
 //            assert (timer.session == 1.0);
 //        }
 
@@ -390,12 +390,12 @@ namespace Pomodoro
          */
         public void test_restore_1 ()
         {
-            var settings = Pomodoro.get_settings ()
+            var settings = ExTimer.get_settings ()
                                    .get_child ("state");
 
-            var timer1 = new Pomodoro.Timer ();
+            var timer1 = new ExTimer.Timer ();
             timer1.score = 1.0;
-            timer1.state = new Pomodoro.PomodoroState.with_timestamp (0.0);
+            timer1.state = new ExTimer.ExTimerState.with_timestamp (0.0);
             timer1.state.duration = 20.0;  // custom duration
             timer1.pause (0.0);
             timer1.resume (5.0);
@@ -403,7 +403,7 @@ namespace Pomodoro
             timer1.pause (15.0);
             timer1.save (settings);
 
-            assert (settings.get_string ("timer-state") == "pomodoro");
+            assert (settings.get_string ("timer-state") == "extimer");
             assert (settings.get_double ("timer-state-duration") == 20.0);
             assert (settings.get_double ("timer-elapsed") == 10.0);
             assert (settings.get_double ("timer-score") == 1.0);
@@ -417,7 +417,7 @@ namespace Pomodoro
                 settings.get_string ("timer-date") == "1970-01-01T00:00:15+0000"
             );
 
-            var timer2 = new Pomodoro.Timer ();
+            var timer2 = new ExTimer.Timer ();
             timer2.restore (settings, timer1.timestamp);
 
             assert (timer2.state.name == timer1.state.name);
@@ -435,19 +435,19 @@ namespace Pomodoro
          */
         public void test_restore_2 ()
         {
-            var settings = Pomodoro.get_settings ()
+            var settings = ExTimer.get_settings ()
                                    .get_child ("state");
 
-            var timer1 = new Pomodoro.Timer ();
+            var timer1 = new ExTimer.Timer ();
             timer1.score = 1.0;
-            timer1.state = new Pomodoro.PomodoroState.with_timestamp (0.0);
+            timer1.state = new ExTimer.ExTimerState.with_timestamp (0.0);
             timer1.start (0.0);
             timer1.update (10.0);
             timer1.pause (10.0);
             timer1.update (15.0);
             timer1.save (settings);
 
-            var timer2 = new Pomodoro.Timer ();
+            var timer2 = new ExTimer.Timer ();
             timer2.restore (settings, 20.0);
 
             assert (timer2.state.name == timer1.state.name);
@@ -466,22 +466,22 @@ namespace Pomodoro
          */
         public void test_restore_3 ()
         {
-            var settings = Pomodoro.get_settings ()
+            var settings = ExTimer.get_settings ()
                                    .get_child ("state");
 
-            var timer1 = new Pomodoro.Timer ();
+            var timer1 = new ExTimer.Timer ();
             timer1.score = 1.0;
-            timer1.state = new Pomodoro.PomodoroState.with_timestamp (0.0);
+            timer1.state = new ExTimer.ExTimerState.with_timestamp (0.0);
             timer1.start (0.0);
             timer1.update (10.0);
             timer1.pause (10.0);
             timer1.update (15.0);
             timer1.save (settings);
 
-            var timer2 = new Pomodoro.Timer ();
+            var timer2 = new ExTimer.Timer ();
             timer2.restore (settings, 20.0 + 3600.0);
 
-            assert (timer2.state is Pomodoro.DisabledState);
+            assert (timer2.state is ExTimer.DisabledState);
             assert (timer2.state.elapsed == 0.0);
             assert (timer2.state.timestamp == 3620.0);
             assert (timer2.score == 0.0);
@@ -495,10 +495,10 @@ namespace Pomodoro
          */
         public void test_restore_4 ()
         {
-            var settings = Pomodoro.get_settings ()
+            var settings = ExTimer.get_settings ()
                                    .get_child ("state");
 
-            settings.set_string ("timer-state", "pomodoro");
+            settings.set_string ("timer-state", "extimer");
             settings.set_double ("timer-state-duration", 10.0);
             settings.set_double ("timer-elapsed", 1.0);
             settings.set_double ("timer-score", 1.0);
@@ -506,19 +506,19 @@ namespace Pomodoro
             settings.set_string ("timer-state-date", "invalid value");
             settings.set_string ("timer-date", "invalid value");
 
-            var timer = new Pomodoro.Timer ();
+            var timer = new ExTimer.Timer ();
             timer.restore (settings, 3600.0);
 
-            assert (timer.state is Pomodoro.DisabledState);
+            assert (timer.state is ExTimer.DisabledState);
         }
 
         /**
-         * Test whether score is counted after pomodoro
+         * Test whether score is counted after extimer
          */
         public void test_score_1 ()
         {
-            var timer = new Pomodoro.Timer ();
-            timer.state = new Pomodoro.PomodoroState.with_timestamp (0.0);
+            var timer = new ExTimer.Timer ();
+            timer.state = new ExTimer.ExTimerState.with_timestamp (0.0);
             timer.update (timer.state.duration);
 
             assert (timer.score == 1.0);
@@ -529,12 +529,12 @@ namespace Pomodoro
          */
         public void test_score_2 ()
         {
-            var timer = new Pomodoro.Timer ();
-            timer.state = new Pomodoro.LongBreakState.with_timestamp (0.0);
+            var timer = new ExTimer.Timer ();
+            timer.state = new ExTimer.LongBreakState.with_timestamp (0.0);
             timer.score = 4.0;
             timer.update (timer.state.duration);
 
-            assert (timer.state is Pomodoro.PomodoroState);
+            assert (timer.state is ExTimer.ExTimerState);
             assert (timer.score == 0.0);
         }
 
@@ -543,7 +543,7 @@ namespace Pomodoro
          */
         public void test_score_3 ()
         {
-            var timer = new Pomodoro.Timer ();
+            var timer = new ExTimer.Timer ();
             timer.score = 1.0;
             timer.start ();
             timer.stop ();
@@ -556,8 +556,8 @@ namespace Pomodoro
          */
         public void test_score_4 ()
         {
-            var timer = new Pomodoro.Timer ();
-            timer.state = new Pomodoro.DisabledState.with_timestamp (0.0);
+            var timer = new ExTimer.Timer ();
+            timer.state = new ExTimer.DisabledState.with_timestamp (0.0);
             timer.score = 1.0;
 
             timer.state_leave.connect ((old_state) => {
@@ -572,7 +572,7 @@ namespace Pomodoro
             assert (timer.score == 0.0);
         }
 
-    //     private static void print_timer_state (Pomodoro.Timer timer)
+    //     private static void print_timer_state (ExTimer.Timer timer)
     //     {
     //         stdout.printf ("""
     // %s

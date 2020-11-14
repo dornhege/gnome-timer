@@ -33,7 +33,7 @@
 using GLib;
 
 
-namespace Pomodoro
+namespace ExTimer
 {
     private errordomain AcceleratorError
     {
@@ -61,7 +61,7 @@ namespace Pomodoro
                 uint keyval = 0;
                 Gdk.ModifierType modifiers = 0;
 
-                Pomodoro.Accelerator.parse (value, out keyval, out modifiers);
+                ExTimer.Accelerator.parse (value, out keyval, out modifiers);
 
                 this.set_keyval (keyval, modifiers);
             }

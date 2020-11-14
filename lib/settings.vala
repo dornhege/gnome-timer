@@ -21,21 +21,21 @@
 using GLib;
 
 
-namespace Pomodoro
+namespace ExTimer
 {
     private GLib.Settings settings = null;
 
     public void set_settings (GLib.Settings settings)
     {
-        Pomodoro.settings = settings;
+        ExTimer.settings = settings;
     }
 
     public unowned GLib.Settings get_settings ()
     {
-        if (Pomodoro.settings == null) {
-            Pomodoro.settings = new GLib.Settings ("org.gnome.pomodoro");
+        if (ExTimer.settings == null) {
+            ExTimer.settings = new GLib.Settings ("org.gnome.extimer");
         }
 
-        return Pomodoro.settings;
+        return ExTimer.settings;
     }
 }

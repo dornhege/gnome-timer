@@ -1,12 +1,12 @@
-# Greek translations for gnome-pomodoro package.
+# Greek translations for gnome-extimer package.
 # Copyright (c) 2016 gnome-pomodoro contributors
-# This file is distributed under the same license as the gnome-pomodoro package.
+# This file is distributed under the same license as the gnome-extimer package.
 # Giannis Katsanos <giannis.katsanos@gmail.com>, 2016.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gnome-pomodoro 0.13.0\n"
-"Report-Msgid-Bugs-To: https://github.com/codito/gnome-pomodoro/issues\n"
+"Project-Id-Version: gnome-extimer 0.13.0\n"
+"Report-Msgid-Bugs-To: https://github.com/codito/gnome-extimer/issues\n"
 "POT-Creation-Date: 2016-10-06 16:00+0300\n"
 "PO-Revision-Date: 2016-10-06 20:55+0200\n"
 "Last-Translator: Giannis Katsanos <giannis.katsanos@gmail.com>\n"
@@ -17,54 +17,54 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: data/org.gnome.Pomodoro.appdata.xml.in:7
-#: data/org.gnome.Pomodoro.desktop.in:3 lib/resources/ui/menus.ui:51
+#: data/org.gnome.ExTimer.appdata.xml.in:7
+#: data/org.gnome.ExTimer.desktop.in:3 lib/resources/ui/menus.ui:51
 #: lib/resources/ui/window.ui:275 lib/about-dialog.vala:31
 #: lib/notifications-capability.vala:106 src/main.vala:30
-msgid "Pomodoro"
-msgstr "Pomodoro"
+msgid "ExTimer"
+msgstr "ExTimer"
 
-#: data/org.gnome.Pomodoro.appdata.xml.in:8
+#: data/org.gnome.ExTimer.appdata.xml.in:8
 msgid "A time management utility for GNOME"
 msgstr "Μια εφαρμογή διαχείρισης χρόνου για το GNOME"
 
-#: data/org.gnome.Pomodoro.appdata.xml.in:10
+#: data/org.gnome.ExTimer.appdata.xml.in:10
 msgid ""
-"A GNOME utility that helps managing time according to Pomodoro Technique. It "
+"A GNOME utility that helps managing time according to ExTimer Technique. It "
 "intends to improve productivity and focus by taking short breaks after every "
 "25 minutes of work."
 msgstr ""
-"Μια εφαρμογή του GNOME για διαχείριση χρόνου σύμφωνα με την τεχνική Pomodoro. "
+"Μια εφαρμογή του GNOME για διαχείριση χρόνου σύμφωνα με την τεχνική ExTimer. "
 "Ο σκοπός της είναι η βελτίωση της παραγωγικότητας και ενίσχυση της συγκέντρωσης "
 "μέσω μικρών διαλειμμάτων μετά από κάθε 25 λεπτά δουλειάς."
 
-#: data/org.gnome.Pomodoro.appdata.xml.in:19
+#: data/org.gnome.ExTimer.appdata.xml.in:19
 msgid "Main window"
 msgstr "Κυρίως παράθυρο"
 
-#: data/org.gnome.Pomodoro.appdata.xml.in:23 lib/preferences-dialog.vala:721
+#: data/org.gnome.ExTimer.appdata.xml.in:23 lib/preferences-dialog.vala:721
 msgid "Preferences"
 msgstr "Επιλογές"
 
-#: data/org.gnome.Pomodoro.appdata.xml.in:27
+#: data/org.gnome.ExTimer.appdata.xml.in:27
 msgid "Indicator for GNOME Shell"
 msgstr "Ένδειξη για το GNOME Shell"
 
-#: data/org.gnome.Pomodoro.appdata.xml.in:32
+#: data/org.gnome.ExTimer.appdata.xml.in:32
 msgid "Kamil Prusko"
 msgstr "Kamil Prusko"
 
-#: data/org.gnome.Pomodoro.desktop.in:4 lib/about-dialog.vala:32
+#: data/org.gnome.ExTimer.desktop.in:4 lib/about-dialog.vala:32
 msgid "A simple time management utility"
 msgstr "Μια απλή εφαρμογή διαχείρισης χρόνου"
 
-#: data/org.gnome.Pomodoro.desktop.in:5
+#: data/org.gnome.ExTimer.desktop.in:5
 msgid "timer;"
 msgstr "χρονόμετρο;"
 
-#: data/org.gnome.Pomodoro.desktop.in:7
-msgid "gnome-pomodoro"
-msgstr "gnome-pomodoro"
+#: data/org.gnome.ExTimer.desktop.in:7
+msgid "gnome-extimer"
+msgstr "gnome-extimer"
 
 #: lib/resources/ui/menus.ui:6 lib/resources/ui/menus.ui:68
 msgid "_Timer"
@@ -129,8 +129,8 @@ msgid "Timer"
 msgstr "Χρονόμετρο"
 
 #: lib/resources/ui/preferences-main-page.ui:112
-msgid "Pomodoro duration"
-msgstr "Διάρκεια Pomodoro"
+msgid "ExTimer duration"
+msgstr "Διάρκεια ExTimer"
 
 #: lib/resources/ui/preferences-main-page.ui:164
 msgid "Break duration"
@@ -141,8 +141,8 @@ msgid "Long break duration"
 msgstr "Διάρκεια μεγάλου διαλείμματος"
 
 #: lib/resources/ui/preferences-main-page.ui:249
-msgid "Pomodoros before a long break"
-msgstr "Pomodoros πριν από ένα μεγάλο διάλειμμα"
+msgid "ExTimers before a long break"
+msgstr "ExTimers πριν από ένα μεγάλο διάλειμμα"
 
 #: lib/resources/ui/preferences-main-page.ui:298
 msgid "Keyboard shortcut"
@@ -203,12 +203,12 @@ msgid "It's time to take a break"
 msgstr "Ώρα για διάλειμμα"
 
 #: lib/resources/ui/window.ui:31
-msgid "Start Pomodoro"
-msgstr "Έναρξη Pomodoro"
+msgid "Start ExTimer"
+msgstr "Έναρξη ExTimer"
 
 #: lib/about-dialog.vala:30
-msgid "About Pomodoro"
-msgstr "Σχετικά με το Pomodoro"
+msgid "About ExTimer"
+msgstr "Σχετικά με το ExTimer"
 
 #: lib/about-dialog.vala:41
 msgid "translator-credits"
@@ -273,8 +273,8 @@ msgid "Shorten it"
 msgstr "Σύμπτυξη"
 
 #: lib/notifications-capability.vala:166
-msgid "Start pomodoro"
-msgstr "Έναρξη pomodoro"
+msgid "Start extimer"
+msgstr "Έναρξη extimer"
 
 #: lib/preferences-dialog.vala:158
 #, c-format

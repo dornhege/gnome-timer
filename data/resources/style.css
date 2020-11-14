@@ -10,33 +10,33 @@
     border-radius: 5px;
 }
 
-.pomodoro-list > row {
+.extimer-list > row {
     padding: 12px 20px;
 }
 
-.pomodoro-list > row.pomodoro-wide-row {
+.extimer-list > row.extimer-wide-row {
     padding: 12px 15px;
 }
 
-.pomodoro-list > row.pomodoro-slim-row {
+.extimer-list > row.extimer-slim-row {
     padding-top: 8px;
     padding-bottom: 8px;
 }
 
-.pomodoro-plugin-name {
+.extimer-plugin-name {
     font-weight: bold;
 }
 
-.pomodoro-plugin-description {
+.extimer-plugin-description {
     font-size: small;
 }
 
-.pomodoro-button {
+.extimer-button {
     padding-top: 5px;
     padding-bottom: 6px;
 }
 
-.pomodoro-symbolic-button {
+.extimer-symbolic-button {
     outline: 0;
     border: 0;
     padding: 25px;
@@ -44,58 +44,58 @@
     box-shadow: none;
 }
 
-.pomodoro-symbolic-button:focus {
+.extimer-symbolic-button:focus {
     outline: 1px dashed alpha(@theme_fg_color, 0.1);
 }
 
-.pomodoro-symbolic-button:hover,
-.pomodoro-symbolic-button.suggested-action {
+.extimer-symbolic-button:hover,
+.extimer-symbolic-button.suggested-action {
     outline: 0;
     color: @theme_fg_color;
     background-color: @theme_base_color;
     background-image: none;
 }
 
-.pomodoro-symbolic-button:active,
-.pomodoro-symbolic-button.suggested-action:active {
+.extimer-symbolic-button:active,
+.extimer-symbolic-button.suggested-action:active {
     outline: 0;
     color: shade(@theme_fg_color, 1.5);
     background-color: @theme_base_color;
     background-image: none;
 }
 
-.pomodoro-timer-label {
+.extimer-timer-label {
     font-size: 55pt;
 }
 
-.pomodoro-separator-label:backdrop {
+.extimer-separator-label:backdrop {
     color: @insensitive_fg_color;
 }
 
-.pomodoro-screen-notification.background {
+.extimer-screen-notification.background {
     background-color: rgba(0, 0, 0, 0.7);
 }
 
-.pomodoro-screen-notification {
+.extimer-screen-notification {
     color: white;
     transition: opacity 180ms ease-out;
     opacity: 1.0;
 }
 
-.pomodoro-screen-notification.hidden {
+.extimer-screen-notification.hidden {
     opacity: 0.0;
 }
 
-.pomodoro-screen-notification .pomodoro-timer-label,
-.pomodoro-screen-notification .pomodoro-timer-label:backdrop {
+.extimer-screen-notification .extimer-timer-label,
+.extimer-screen-notification .extimer-timer-label:backdrop {
     font-size: 55pt;
     font-weight: normal;
     text-shadow: 0px 5px 8px rgba(0, 0, 0, 0.10);
     color: white;
 }
 
-.pomodoro-screen-notification label,
-.pomodoro-screen-notification label:backdrop {
+.extimer-screen-notification label,
+.extimer-screen-notification label:backdrop {
     font-size: 11pt;
     text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.35);
     color: white;

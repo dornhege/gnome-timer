@@ -1,5 +1,5 @@
 icondir = $(datadir)/icons/hicolor/512x512/apps
-icon_DATA = gnome-pomodoro.png
+icon_DATA = gnome-extimer.png
 
 EXTRA_DIST = \
 	$(icon_DATA)

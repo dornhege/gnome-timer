@@ -21,7 +21,7 @@
 using GLib;
 
 
-namespace Pomodoro
+namespace ExTimer
 {
     public enum Priority
     {
@@ -32,23 +32,23 @@ namespace Pomodoro
 
     public class CapabilityManager : GLib.Object
     {
-        private GLib.HashTable<string,Pomodoro.Capability> capabilities;
+        private GLib.HashTable<string,ExTimer.Capability> capabilities;
         private GLib.GenericSet<string>                    enabled_capabilities;
-        private GLib.SList<Pomodoro.CapabilityGroup>       groups;
+        private GLib.SList<ExTimer.CapabilityGroup>       groups;
 
         construct
         {
             /* all collected capabilities except overriden ones */
-            this.capabilities = new GLib.HashTable<string, Pomodoro.Capability> (str_hash, str_equal);
+            this.capabilities = new GLib.HashTable<string, ExTimer.Capability> (str_hash, str_equal);
 
             /* keep capability "enabled" status regardless of implementation or timing */
             this.enabled_capabilities = new GLib.GenericSet<string> (str_hash, str_equal);
 
             /* list of groups sorted by priority */
-            this.groups = new GLib.SList<Pomodoro.CapabilityGroup> ();
+            this.groups = new GLib.SList<ExTimer.CapabilityGroup> ();
         }
 
-        public unowned Pomodoro.Capability get_preferred_capability (string capability_name)
+        public unowned ExTimer.Capability get_preferred_capability (string capability_name)
         {
             return this.capabilities.lookup (capability_name);
         }
@@ -65,15 +65,15 @@ namespace Pomodoro
             return capability != null ? capability.enabled : false;
         }
 
-        public bool has_group (Pomodoro.CapabilityGroup group)
+        public bool has_group (ExTimer.CapabilityGroup group)
         {
             return this.groups.index (group) >= 0;
         }
 
-        public void add_group (Pomodoro.CapabilityGroup group,
-                               Pomodoro.Priority        priority)
+        public void add_group (ExTimer.CapabilityGroup group,
+                               ExTimer.Priority        priority)
         {
-            unowned GLib.SList<Pomodoro.CapabilityGroup> group_link = this.groups.find (group);
+            unowned GLib.SList<ExTimer.CapabilityGroup> group_link = this.groups.find (group);
 
             if (group_link == null) {
                 set_group_priority (group, priority);
@@ -94,9 +94,9 @@ namespace Pomodoro
             }
         }
 
-        public void remove_group (Pomodoro.CapabilityGroup group)
+        public void remove_group (ExTimer.CapabilityGroup group)
         {
-            unowned GLib.SList<Pomodoro.CapabilityGroup> group_link = this.groups.find (group);
+            unowned GLib.SList<ExTimer.CapabilityGroup> group_link = this.groups.find (group);
 
             if (group_link != null)
             {
@@ -148,20 +148,20 @@ namespace Pomodoro
             this.enabled_capabilities.remove_all ();
         }
 
-        private static Pomodoro.Priority get_group_priority (Pomodoro.CapabilityGroup group)
+        private static ExTimer.Priority get_group_priority (ExTimer.CapabilityGroup group)
         {
-            return group.get_data<Pomodoro.Priority> ("priority");
+            return group.get_data<ExTimer.Priority> ("priority");
         }
 
-        private static void set_group_priority (Pomodoro.CapabilityGroup group,
-                                                Pomodoro.Priority        priority)
+        private static void set_group_priority (ExTimer.CapabilityGroup group,
+                                                ExTimer.Priority        priority)
         {
-            group.set_data<Pomodoro.Priority> ("priority", priority);
+            group.set_data<ExTimer.Priority> ("priority", priority);
         }
 
         [CCode (has_target = false)]
-        private static int group_priority_compare (Pomodoro.CapabilityGroup a,
-                                                   Pomodoro.CapabilityGroup b)
+        private static int group_priority_compare (ExTimer.CapabilityGroup a,
+                                                   ExTimer.CapabilityGroup b)
         {
             var a_priority = get_group_priority (a);
             var b_priority = get_group_priority (b);
@@ -177,7 +177,7 @@ namespace Pomodoro
             return 0;
         }
 
-        private void add_capability_internal (Pomodoro.Capability capability)
+        private void add_capability_internal (ExTimer.Capability capability)
         {
             var preferred_capability = this.capabilities.lookup (capability.name);
 
@@ -208,7 +208,7 @@ namespace Pomodoro
             }
         }
 
-        private void remove_capability_internal (Pomodoro.Capability capability)
+        private void remove_capability_internal (ExTimer.Capability capability)
         {
             var preferred_capability = this.capabilities.lookup (capability.name);
 
@@ -220,7 +220,7 @@ namespace Pomodoro
 
                 /* select new preferred implementation */
 
-                unowned GLib.SList<Pomodoro.CapabilityGroup> iter = this.groups;
+                unowned GLib.SList<ExTimer.CapabilityGroup> iter = this.groups;
 
                 while (iter != null)
                 {
@@ -238,14 +238,14 @@ namespace Pomodoro
             }
         }
 
-        private void on_group_capability_added (Pomodoro.CapabilityGroup group,
-                                                Pomodoro.Capability      capability)
+        private void on_group_capability_added (ExTimer.CapabilityGroup group,
+                                                ExTimer.Capability      capability)
         {
             this.add_capability_internal (capability);
         }
 
-        private void on_group_capability_removed (Pomodoro.CapabilityGroup group,
-                                                  Pomodoro.Capability      capability)
+        private void on_group_capability_removed (ExTimer.CapabilityGroup group,
+                                                  ExTimer.Capability      capability)
         {
             this.remove_capability_internal (capability);
         }
@@ -257,9 +257,9 @@ namespace Pomodoro
             base.dispose ();
         }
 
-        public signal void group_added (Pomodoro.CapabilityGroup group);
+        public signal void group_added (ExTimer.CapabilityGroup group);
 
-        public signal void group_removed (Pomodoro.CapabilityGroup group);
+        public signal void group_removed (ExTimer.CapabilityGroup group);
 
         public signal void capability_enabled (string capability_name);
 

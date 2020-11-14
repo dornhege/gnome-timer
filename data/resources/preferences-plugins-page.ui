@@ -2,7 +2,7 @@
 <!-- Generated with glade 3.19.0 -->
 <interface>
   <requires lib="gtk+" version="3.16"/>
-  <template class="PomodoroPreferencesPluginsPage" parent="GtkScrolledWindow">
+  <template class="ExTimerPreferencesPluginsPage" parent="GtkScrolledWindow">
     <property name="visible">True</property>
     <property name="can_focus">True</property>
     <property name="hscrollbar_policy">never</property>
@@ -33,7 +33,7 @@
                     <property name="can_focus">False</property>
                     <property name="selection_mode">none</property>
                     <style>
-                      <class name="pomodoro-list"/>
+                      <class name="extimer-list"/>
                     </style>
                   </object>
                 </child>

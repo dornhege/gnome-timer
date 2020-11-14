@@ -1,5 +1,5 @@
 /*
- * This file is part of GNOME Pomodoro
+ * This file is part of GNOME ExTimer
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,9 +18,9 @@
  *
  */
 
-namespace Pomodoro
+namespace ExTimer
 {
-    public class ApplicationTest : Pomodoro.TestSuite
+    public class ApplicationTest : ExTimer.TestSuite
     {
         public ApplicationTest ()
         {
@@ -39,25 +39,25 @@ namespace Pomodoro
 
 //        public void test_save ()
 //        {
-//            var settings = Pomodoro.get_settings ()
+//            var settings = ExTimer.get_settings ()
 //                                   .get_child ("state");
 //
-//            var timer = new Pomodoro.Timer();
+//            var timer = new ExTimer.Timer();
 //
 //            /* TODO */
 //        }
 
 //        /**
-//         * Unit test for Pomodoro.Timer.restore() method.
+//         * Unit test for ExTimer.Timer.restore() method.
 //         *
 //         * Check whether restoring timer works correctly.
 //         */
 //        public void test_restore ()
 //        {
-//            var settings = Pomodoro.get_settings ()
+//            var settings = ExTimer.get_settings ()
 //                                   .get_child ("state");
 //
-//            var timer = new Pomodoro.Timer();
+//            var timer = new ExTimer.Timer();
 //
 //            /* TODO */
 //        }

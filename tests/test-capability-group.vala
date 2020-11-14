@@ -1,5 +1,5 @@
 /*
- * This file is part of GNOME Pomodoro
+ * This file is part of GNOME ExTimer
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,9 +18,9 @@
  *
  */
 
-namespace Pomodoro
+namespace ExTimer
 {
-    public class CapabilityGroupTest : Pomodoro.TestSuite
+    public class CapabilityGroupTest : ExTimer.TestSuite
     {
         public CapabilityGroupTest ()
         {
@@ -43,14 +43,14 @@ namespace Pomodoro
         }
 
         /**
-         * Unit test for Pomodoro.CapabilityGroup.add() method.
+         * Unit test for ExTimer.CapabilityGroup.add() method.
          */
         public void test_add ()
         {
             var signal_emit_count = 0;
 
-            var group      = new Pomodoro.CapabilityGroup ();
-            var capability = new Pomodoro.Capability ("anti-gravity");
+            var group      = new ExTimer.CapabilityGroup ();
+            var capability = new ExTimer.Capability ("anti-gravity");
 
             group.capability_added.connect (() => {
                 signal_emit_count++;
@@ -63,14 +63,14 @@ namespace Pomodoro
         }
 
         /**
-         * Unit test for Pomodoro.CapabilityGroup.remove() method.
+         * Unit test for ExTimer.CapabilityGroup.remove() method.
          */
         public void test_remove ()
         {
             var signal_emit_count = 0;
 
-            var group      = new Pomodoro.CapabilityGroup ();
-            var capability = new Pomodoro.Capability ("anti-gravity");
+            var group      = new ExTimer.CapabilityGroup ();
+            var capability = new ExTimer.Capability ("anti-gravity");
 
             group.capability_removed.connect (() => {
                 signal_emit_count++;
@@ -84,15 +84,15 @@ namespace Pomodoro
         }
 
         /**
-         * Unit test for Pomodoro.CapabilityGroup.dispose() method.
+         * Unit test for ExTimer.CapabilityGroup.dispose() method.
          */
         public void test_dispose ()
         {
             var capability_removed_count = 0;
             var capability_disabled_count = 0;
 
-            var group      = new Pomodoro.CapabilityGroup ();
-            var capability = new Pomodoro.Capability ("anti-gravity");
+            var group      = new ExTimer.CapabilityGroup ();
+            var capability = new ExTimer.Capability ("anti-gravity");
 
             group.capability_removed.connect (() => {
                 capability_removed_count++;

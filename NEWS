@@ -160,7 +160,7 @@
 	* Louder sounds
 	* Fixed brining preferences dialog to focus
 	* Fixed change of notications volume
-	* Fixed reminders being showed up during pomodoro
+	* Fixed reminders being showed up during extimer
 
 2014-01-11  Kamil Prusko  <kamilprusko@gmail.com>
 
@@ -177,7 +177,7 @@
 
 	* Support for GNOME Shell 3.8
 	* Improved long pause scheduling
-	* Deactivate screensaver to notify start of pomodoro
+	* Deactivate screensaver to notify start of extimer
 	* German translation (thanks @linuxrider)
 	* Bug fixes
 
@@ -222,10 +222,10 @@
 	* Breaking change: Dropped support for older gnome-shell versions due to
 	incompatible APIs
 	* Feature: Support for "Away from desk" mode
-	* Feature: Ability to change IM presence status based on pomodoro activity
+	* Feature: Ability to change IM presence status based on extimer activity
 	* New translation: Persian (thanks @arashm)
 	* Fixed issues #38, #39, #41, #42, #45 and
-	[more](https://github.com/codito/gnome-shell-pomodoro/issues?sort=created&direction=desc&state=closed&page=1)
+	[more](https://github.com/codito/gnome-shell-extimer/issues?sort=created&direction=desc&state=closed&page=1)
 
 2011-12-04  Arun  <pratikarun@gmail.com>
 
@@ -238,7 +238,7 @@
 
 	Release version 0.4:
 
-	* Sound notification at end of a pomodoro break [Issue #26, Patch from @kamilprusko]
+	* Sound notification at end of a extimer break [Issue #26, Patch from @kamilprusko]
 	* System wide config file support [Patch from @mgrela]
 	* Support to skip breaks in case of persistent message [Patch from @amanbh]
 	* Some minor bug fixes, and keybinder3 requirement is now optional

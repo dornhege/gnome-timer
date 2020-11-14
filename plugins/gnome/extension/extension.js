@@ -1,5 +1,5 @@
 /*
- * A simple pomodoro timer for GNOME Shell
+ * A simple extimer timer for GNOME Shell
  *
  * Copyright (c) 2011-2017 gnome-pomodoro contributors
  *
@@ -51,7 +51,7 @@ var ExtensionMode = {
 };
 
 
-var PomodoroExtension = class {
+var ExTimerExtension = class {
     constructor(mode) {
         this.settings            = null;
         this.pluginSettings      = null;
@@ -70,11 +70,11 @@ var PomodoroExtension = class {
         this._timerStateDuration = 0.0;
 
         try {
-            this.settings = Settings.getSettings('org.gnome.pomodoro.preferences');
+            this.settings = Settings.getSettings('org.gnome.extimer.preferences');
             this.settings.connect('changed::show-screen-notifications',
                                   this._onSettingsChanged.bind(this));
 
-            this.pluginSettings = Settings.getSettings('org.gnome.pomodoro.plugins.gnome');
+            this.pluginSettings = Settings.getSettings('org.gnome.extimer.plugins.gnome');
             this.pluginSettings.connect('changed::hide-system-notifications',
                                         this._onSettingsChanged.bind(this));
             this.pluginSettings.connect('changed::indicator-type',
@@ -88,7 +88,7 @@ var PomodoroExtension = class {
             this.timer.connect('paused', this._onTimerPaused.bind(this));
             this.timer.connect('resumed', this._onTimerResumed.bind(this));
 
-            this.service = new DBus.PomodoroExtension();
+            this.service = new DBus.ExTimerExtension();
             this.service.connect('name-acquired', this._onServiceNameAcquired.bind(this));
             this.service.connect('name-lost', this._onServiceNameLost.bind(this));
 
@@ -100,7 +100,7 @@ var PomodoroExtension = class {
     }
 
     get application() {
-        return Shell.AppSystem.get_default().lookup_app('org.gnome.Pomodoro.desktop');
+        return Shell.AppSystem.get_default().lookup_app('org.gnome.ExTimer.desktop');
     }
 
     setMode(mode) {
@@ -184,7 +184,7 @@ var PomodoroExtension = class {
     _onServiceNameLost() {
         this.emit('service-name-lost');
 
-        Utils.logError('Lost service name "org.gnome.Pomodoro.Extension"');
+        Utils.logError('Lost service name "org.gnome.ExTimer.Extension"');
     }
 
     _onTimerServiceConnected() {
@@ -192,7 +192,7 @@ var PomodoroExtension = class {
     }
 
     _onTimerServiceDisconnected() {
-        Utils.logWarning('Lost connection to "org.gnome.Pomodoro"');
+        Utils.logWarning('Lost connection to "org.gnome.ExTimer"');
     }
 
     _onTimerUpdate() {
@@ -227,16 +227,16 @@ var PomodoroExtension = class {
         }
     }
 
-    _notifyPomodoroStart() {
+    _notifyExTimerStart() {
         if (this.notification &&
-            this.notification instanceof Notifications.PomodoroStartNotification)
+            this.notification instanceof Notifications.ExTimerStartNotification)
         {
             if (this.notification.resident || this.notification.acknowledged) {
                 this.notification.show();
             }
         }
         else {
-            this.notification = new Notifications.PomodoroStartNotification(this.timer);
+            this.notification = new Notifications.ExTimerStartNotification(this.timer);
             this.notification.connect('activated',
                 (notification) => {
                     if (this.timer.isBreak()) {
@@ -250,9 +250,9 @@ var PomodoroExtension = class {
         }
     }
 
-    _notifyPomodoroEnd() {
+    _notifyExTimerEnd() {
         if (this.notification &&
-            this.notification instanceof Notifications.PomodoroEndNotification)
+            this.notification instanceof Notifications.ExTimerEndNotification)
         {
             if (this.dialog && this.timer.isBreak()) {
                 this.dialog.open(true);
@@ -262,7 +262,7 @@ var PomodoroExtension = class {
             }
         }
         else {
-            this.notification = new Notifications.PomodoroEndNotification(this.timer);
+            this.notification = new Notifications.ExTimerEndNotification(this.timer);
             this.notification.connect('activated',
                 (notification) => {
                     if (this.timer.isBreak()) {
@@ -308,18 +308,18 @@ var PomodoroExtension = class {
             }
             else if (this.timer.getRemaining() > NOTIFICATIONS_TIME_OFFSET) {
                 if (timerState == Timer.State.POMODORO) {
-                    this._notifyPomodoroStart();
+                    this._notifyExTimerStart();
                 }
                 else {
-                    this._notifyPomodoroEnd();
+                    this._notifyExTimerEnd();
                 }
             }
             else {
                 if (timerState != Timer.State.POMODORO) {
-                    this._notifyPomodoroStart();
+                    this._notifyExTimerStart();
                 }
                 else {
-                    this._notifyPomodoroEnd();
+                    this._notifyExTimerEnd();
                 }
             }
         }
@@ -432,7 +432,7 @@ var PomodoroExtension = class {
 
     _enableScreenNotification() {
         if (!this.dialog) {
-            this.dialog = new Dialogs.PomodoroEndDialog(this.timer);
+            this.dialog = new Dialogs.ExTimerEndDialog(this.timer);
             this.dialog.connect('opening', 
                 () => {
                     try {
@@ -447,7 +447,7 @@ var PomodoroExtension = class {
             this.dialog.connect('closing',
                 () => {
                     if (this.timer.isBreak() && !this.timer.isPaused()) {
-                        if (this.notification instanceof Notifications.PomodoroEndNotification) {
+                        if (this.notification instanceof Notifications.ExTimerEndNotification) {
                             this.notification.show();
                         }
 
@@ -534,7 +534,7 @@ var PomodoroExtension = class {
         this.emit('destroy');
     }
 };
-Signals.addSignalMethods(PomodoroExtension.prototype);
+Signals.addSignalMethods(ExTimerExtension.prototype);
 
 
 function init(metadata) {
@@ -548,7 +548,7 @@ function enable() {
     let sessionModeUpdatedId;
 
     if (!extension) {
-        extension = new PomodoroExtension(Main.sessionMode.isLocked
+        extension = new ExTimerExtension(Main.sessionMode.isLocked
                                           ? ExtensionMode.RESTRICTED : ExtensionMode.DEFAULT);
         extension.connect('destroy',
             () => {

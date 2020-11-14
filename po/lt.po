@@ -1,12 +1,12 @@
-# Lithuanian translation for gnome-pomodoro.
+# Lithuanian translation for gnome-extimer.
 # Copyright (C) 2016 Free Software Foundation, Inc.
-# This file is distributed under the same license as the gnome-pomodoro package.
+# This file is distributed under the same license as the gnome-extimer package.
 # Paulius Šukys <paul.sukys@gmail.com>, 2016.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gnome-pomodoro 0.13.0\n"
-"Report-Msgid-Bugs-To: https://github.com/codito/gnome-pomodoro/issues\n"
+"Project-Id-Version: gnome-extimer 0.13.0\n"
+"Report-Msgid-Bugs-To: https://github.com/codito/gnome-extimer/issues\n"
 "POT-Creation-Date: 2016-12-10 14:29+0100\n"
 "PO-Revision-Date: 2016-12-13 21:32+0100\n"
 "Last-Translator: Paulius Šukys <paul.sukys@gmail.com>\n"
@@ -19,8 +19,8 @@ msgstr ""
 "%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: Gtranslator 2.91.7\n"
 
-#: data/org.gnome.Pomodoro.appdata.xml.in:7
-#: data/org.gnome.Pomodoro.desktop.in:3 data/resources/menus.ui:51
+#: data/org.gnome.ExTimer.appdata.xml.in:7
+#: data/org.gnome.ExTimer.desktop.in:3 data/resources/menus.ui:51
 #: data/resources/window.ui:278 lib/about-dialog.vala:31
 #: lib/notifications-capability.vala:106 src/main.vala:50
 #: plugins/actions/enums.vala:91 plugins/gnome/extension/indicator.js:171
@@ -28,52 +28,52 @@ msgstr ""
 #: plugins/gnome/extension/notifications.js:86
 #: plugins/gnome/extension/notifications.js:202
 #: plugins/gnome/extension/notifications.js:432
-msgid "Pomodoro"
-msgstr "Pomodoro"
+msgid "ExTimer"
+msgstr "ExTimer"
 
-#: data/org.gnome.Pomodoro.appdata.xml.in:8
+#: data/org.gnome.ExTimer.appdata.xml.in:8
 msgid "A time management utility for GNOME"
 msgstr "Laiko valdymo įrankis GNOME aplinkai"
 
-#: data/org.gnome.Pomodoro.appdata.xml.in:10
+#: data/org.gnome.ExTimer.appdata.xml.in:10
 msgid ""
-"A GNOME utility that helps managing time according to Pomodoro Technique. It "
+"A GNOME utility that helps managing time according to ExTimer Technique. It "
 "intends to improve productivity and focus by taking short breaks after every "
 "25 minutes of work."
 msgstr ""
-"GNOME aplinkos įrankis, kuris padeda valdyti laiką pagal Pomodoro metodiką. "
+"GNOME aplinkos įrankis, kuris padeda valdyti laiką pagal ExTimer metodiką. "
 "Jos paskirtis - patobulinti produktyvumą ir susikaupimą, darant trumpas "
 "pertraukas tarp 25 koncentruoto darbo minučių. "
 
-#: data/org.gnome.Pomodoro.appdata.xml.in:19
+#: data/org.gnome.ExTimer.appdata.xml.in:19
 #: data/resources/preferences-main-page.ui:45
 msgid "Timer"
 msgstr "Laikmatis"
 
-#: data/org.gnome.Pomodoro.appdata.xml.in:23 lib/preferences-dialog.vala:805
+#: data/org.gnome.ExTimer.appdata.xml.in:23 lib/preferences-dialog.vala:805
 #: plugins/gnome/extension/indicator.js:83
 msgid "Preferences"
 msgstr "Nustatymai"
 
-#: data/org.gnome.Pomodoro.appdata.xml.in:27
+#: data/org.gnome.ExTimer.appdata.xml.in:27
 msgid "Indicator for GNOME Shell"
 msgstr "Indikatorius GNOME aplinkai"
 
-#: data/org.gnome.Pomodoro.appdata.xml.in:32
+#: data/org.gnome.ExTimer.appdata.xml.in:32
 msgid "Kamil Prusko"
 msgstr "Kamil Prusko"
 
-#: data/org.gnome.Pomodoro.desktop.in:4 lib/about-dialog.vala:32
+#: data/org.gnome.ExTimer.desktop.in:4 lib/about-dialog.vala:32
 msgid "A simple time management utility"
 msgstr "Paprastas laiko valdymo įrankis"
 
-#: data/org.gnome.Pomodoro.desktop.in:5
+#: data/org.gnome.ExTimer.desktop.in:5
 msgid "timer;"
 msgstr "laikmatis;"
 
-#: data/org.gnome.Pomodoro.desktop.in:7
-msgid "gnome-pomodoro"
-msgstr "gnome-pomodoro"
+#: data/org.gnome.ExTimer.desktop.in:7
+msgid "gnome-extimer"
+msgstr "gnome-extimer"
 
 #: data/resources/menus.ui:6 data/resources/menus.ui:68
 msgid "_Timer"
@@ -142,8 +142,8 @@ msgid "Disable"
 msgstr "Išjungti"
 
 #: data/resources/preferences-main-page.ui:108
-msgid "Pomodoro duration"
-msgstr "Pomodoro trukmė"
+msgid "ExTimer duration"
+msgstr "ExTimer trukmė"
 
 #: data/resources/preferences-main-page.ui:160
 msgid "Break duration"
@@ -154,8 +154,8 @@ msgid "Long break duration"
 msgstr "Ilgosios pertraukos trukmė"
 
 #: data/resources/preferences-main-page.ui:245
-msgid "Pomodoros before a long break"
-msgstr "Pomodoro kiekis prieš ilgąją pertrauką"
+msgid "ExTimers before a long break"
+msgstr "ExTimer kiekis prieš ilgąją pertrauką"
 
 #: data/resources/preferences-main-page.ui:294
 msgid "Keyboard shortcut"
@@ -191,12 +191,12 @@ msgid "It's time to take a break"
 msgstr "Laikas padaryti pertrauką"
 
 #: data/resources/window.ui:31
-msgid "Start Pomodoro"
-msgstr "Pradėti Pomodoro"
+msgid "Start ExTimer"
+msgstr "Pradėti ExTimer"
 
 #: lib/about-dialog.vala:30
-msgid "About Pomodoro"
-msgstr "Apie Pomodoro"
+msgid "About ExTimer"
+msgstr "Apie ExTimer"
 
 #: lib/about-dialog.vala:41
 msgid "translator-credits"
@@ -268,8 +268,8 @@ msgstr "Sutrumpinti"
 
 #: lib/notifications-capability.vala:166
 #: plugins/gnome/extension/notifications.js:300
-msgid "Start pomodoro"
-msgstr "Pradėti pomodoro"
+msgid "Start extimer"
+msgstr "Pradėti extimer"
 
 #: lib/preferences-dialog.vala:158
 #, c-format
@@ -335,8 +335,8 @@ msgid "Name"
 msgstr "Vardas"
 
 #: plugins/actions/resources/action-page.ui:88
-msgid "_Pomodoro"
-msgstr "_Pomodoro"
+msgid "_ExTimer"
+msgstr "_ExTimer"
 
 #: plugins/actions/resources/action-page.ui:102
 msgid "_Short Break"
@@ -399,8 +399,8 @@ msgstr[1] "%d naujos žinutės"
 msgstr[2] "%d naujų žinučių"
 
 #: plugins/gnome/extension/indicator.js:132
-msgid "Pomodoro Timer"
-msgstr "Pomodoro Laikmatis"
+msgid "ExTimer Timer"
+msgstr "ExTimer Laikmatis"
 
 #: plugins/gnome/extension/indicator.js:150
 msgid "Start Timer"
@@ -425,19 +425,19 @@ msgstr "Laikas pertraukai!"
 
 #: plugins/gnome/extension/notifications.js:260
 #, javascript-format
-msgid "You have %d minute until next pomodoro."
-msgid_plural "You have %d minutes until next pomodoro."
-msgstr[0] "Jums liko %d minutė iki sekančio pomodoro."
-msgstr[1] "Jums liko %d minutės iki sekančio pomodoro."
-msgstr[2] "Jums liko %d minučių iki sekančio pomodoro."
+msgid "You have %d minute until next extimer."
+msgid_plural "You have %d minutes until next extimer."
+msgstr[0] "Jums liko %d minutė iki sekančio extimer."
+msgstr[1] "Jums liko %d minutės iki sekančio extimer."
+msgstr[2] "Jums liko %d minučių iki sekančio extimer."
 
 #: plugins/gnome/extension/notifications.js:262
 #, javascript-format
-msgid "You have %d second until next pomodoro."
-msgid_plural "You have %d seconds until next pomodoro."
-msgstr[0] "Jums liko %d sekundė iki sekančio pomodoro."
-msgstr[1] "Jums liko %d sekundės iki sekančio pomodoro."
-msgstr[2] "Jums liko %d sekundžių iki sekančio pomodoro."
+msgid "You have %d second until next extimer."
+msgid_plural "You have %d seconds until next extimer."
+msgstr[0] "Jums liko %d sekundė iki sekančio extimer."
+msgstr[1] "Jums liko %d sekundės iki sekančio extimer."
+msgstr[2] "Jums liko %d sekundžių iki sekančio extimer."
 
 #: plugins/gnome/extension/notifications.js:415
 msgid "Hey!"

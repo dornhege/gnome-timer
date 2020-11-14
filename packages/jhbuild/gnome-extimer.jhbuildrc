@@ -1,14 +1,14 @@
 # -*- mode: python -*-
 # -*- coding: utf-8 -*-
 #
-# jhbuildrc for building gnome-pomodoro.
+# jhbuildrc for building gnome-extimer.
 
 # if you have a git account, uncomment this line
 # repos['github.com'] = 'ssh://git@github.com'
 
 # A dictionary specifying which branch to use for specific modules. This is useful if you are making some changes on a branch of a module and want JHBuild to build that branch instead of the one listed in the module set.
 # Tuple, with first part being an optional repository (or the None value) and the second part the name of the branch. E.g. ('git://git.example.net/project', 'branchname')
-# branches['gnome-pomodoro'] = (None, 'experimental')
+# branches['gnome-extimer'] = (None, 'experimental')
 
 # If set to True JHBuild will automatically try to solve failures by 1) running autogen.sh again, and 2) checking out a newer version of a module from version control. This setting is equivalent to passing the --try-checkout option.
 trycheckout = False
@@ -18,12 +18,12 @@ trycheckout = False
 
 # A list of strings specifying the modules to build.
 modules = [
-    'meta-gnome-pomodoro',
+    'meta-gnome-extimer',
 ]
 
 # A string or list of strings specifying the name(s) of the module set(s) to use. This can either be the filename of a moduleset included with JHBuild (excluding the path and extension), or a full HTTP URL to an externally managed moduleset.
 moduleset = [
-    os.path.join (os.path.dirname(__file__), 'gnome-pomodoro.modules'),
+    os.path.join (os.path.dirname(__file__), 'gnome-extimer.modules'),
     'gnome-suites-core-3.26',
 ]
 
@@ -31,16 +31,16 @@ moduleset = [
 use_local_modulesets = True
 
 # A dictionary mapping module names to strings specifying the arguments to be passed to autogen.sh. The setting in module_autogenargs is used instead of the global autogenargs setting.
-module_autogenargs['gnome-pomodoro'] = ''
+module_autogenargs['gnome-extimer'] = ''
 
 # A dictionary specifying which checkout mode to use for modules.
-module_checkout_mode['gnome-pomodoro'] = 'update'
+module_checkout_mode['gnome-extimer'] = 'update'
 
 # A dictionary mapping module names to strings specifying the arguments to pass to make.
-module_makeargs['gnome-pomodoro'] = ''
+module_makeargs['gnome-extimer'] = ''
 
 # A dictionary mapping module names to boolean values specifying whether to run make check after make.
-module_makecheck['gnome-pomodoro'] = False
+module_makecheck['gnome-extimer'] = False
 
 # A dictionary mapping module names to dictionaries with extra environment variables to pass when executing commands for the module.
-module_extra_env['gnome-pomodoro'] = {}
+module_extra_env['gnome-extimer'] = {}

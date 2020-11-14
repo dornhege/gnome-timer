@@ -1,33 +1,33 @@
 bin_PROGRAMS = \
-	gnome-pomodoro
+	gnome-extimer
 
-gnome_pomodoro_SOURCES = \
+gnome_extimer_SOURCES = \
 	main.vala \
-	$(top_builddir)/lib/gnome-pomodoro.vapi
+	$(top_builddir)/lib/gnome-extimer.vapi
 
-gnome_pomodoro_VALAFLAGS = \
+gnome_extimer_VALAFLAGS = \
 	$(GNOME_POMODORO_VALAFLAGS) \
 	--pkg posix
 
-gnome_pomodoro_CPPFLAGS = \
+gnome_extimer_CPPFLAGS = \
 	$(GNOME_POMODORO_CPPFLAGS) \
 	-DGETTEXT_PACKAGE=\"$(GETTEXT_PACKAGE)\" \
 	-DPACKAGE_LOCALE_DIR=\""$(localedir)"\" \
 	-DPACKAGE_DATA_DIR=\""$(pkgdatadir)"\"
 
-gnome_pomodoro_CFLAGS = \
+gnome_extimer_CFLAGS = \
 	$(GNOME_POMODORO_CFLAGS) \
 	-w
 
-gnome_pomodoro_LDADD = \
+gnome_extimer_LDADD = \
 	$(GNOME_POMODORO_LIBS) \
-	$(top_builddir)/lib/libgnome-pomodoro.la
+	$(top_builddir)/lib/libgnome-extimer.la
 
 
 CLEANFILES = \
-	$(gnome_pomodoro_SOURCES:.vala=.c) \
-	gnome-pomodoro \
-	gnome_pomodoro_vala.stamp
+	$(gnome_extimer_SOURCES:.vala=.c) \
+	gnome-extimer \
+	gnome_extimer_vala.stamp
 
 -include $(top_srcdir)/git.mk
 

@@ -5,9 +5,9 @@
          xmlns:gnome="http://api.gnome.org/doap-extensions#"
          xmlns="http://usefulinc.com/ns/doap#">
 
-  <name xml:lang="en">Pomodoro</name>
+  <name xml:lang="en">ExTimer</name>
   <shortdesc xml:lang="en">Time management utility for GNOME</shortdesc>
-  <homepage rdf:resource="https://github.com/codito/gnome-shell-pomodoro" />
+  <homepage rdf:resource="https://github.com/codito/gnome-shell-extimer" />
   <license rdf:resource="http://www.gnu.org/licenses/gpl-3.0.html" />
   <category rdf:resource="http://api.gnome.org/doap-extensions#desktop" />
 
@@ -16,8 +16,8 @@
 
   <repository>
     <GitRepository>
-        <browse rdf:resource="https://github.com/codito/gnome-shell-pomodoro"/>
-      <location rdf:resource="git://git@github.com:codito/gnome-shell-pomodoro.git"/>
+        <browse rdf:resource="https://github.com/codito/gnome-shell-extimer"/>
+      <location rdf:resource="git://git@github.com:codito/gnome-shell-extimer.git"/>
     </GitRepository>
   </repository>
 

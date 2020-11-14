@@ -21,13 +21,13 @@
 using GLib;
 
 
-namespace Pomodoro
+namespace ExTimer
 {
-    [DBus (name = "org.gnome.Pomodoro")]
+    [DBus (name = "org.gnome.ExTimer")]
     public class Service : GLib.Object
     {
         private weak GLib.DBusConnection connection;
-        private Pomodoro.Timer timer;
+        private ExTimer.Timer timer;
         private GLib.HashTable<string, GLib.Variant> changed_properties;
         private uint idle_id;
         private GLib.Cancellable cancellable;
@@ -53,7 +53,7 @@ namespace Pomodoro
         }
 
         public Service (GLib.DBusConnection connection,
-                        Pomodoro.Timer      timer)
+                        ExTimer.Timer      timer)
         {
             this.connection = connection;
             this.changed_properties = new GLib.HashTable<string, GLib.Variant> (str_hash, str_equal);
@@ -69,7 +69,7 @@ namespace Pomodoro
         public void set_state (string name,
                                double timestamp) throws Error
         {
-            var state = Pomodoro.TimerState.lookup (name);
+            var state = ExTimer.TimerState.lookup (name);
 
             if (timestamp > 0.0) {
                 state.timestamp = timestamp;
@@ -96,13 +96,13 @@ namespace Pomodoro
         public void show_main_window (string mode,
                                       uint32 timestamp) throws Error
         {
-            var application = Pomodoro.Application.get_default ();
+            var application = ExTimer.Application.get_default ();
             application.show_window (mode, timestamp);
         }
 
         public void show_preferences (uint32 timestamp) throws Error
         {
-            var application = Pomodoro.Application.get_default ();
+            var application = ExTimer.Application.get_default ();
             application.show_preferences (timestamp);
         }
 
@@ -140,7 +140,7 @@ namespace Pomodoro
         {
             this.timer.stop ();
 
-            var application = Pomodoro.Application.get_default ();
+            var application = ExTimer.Application.get_default ();
             application.quit ();
         }
 
@@ -157,11 +157,11 @@ namespace Pomodoro
 
             try {
                 this.connection.emit_signal (null,
-                                             "/org/gnome/Pomodoro",
+                                             "/org/gnome/ExTimer",
                                              "org.freedesktop.DBus.Properties",
                                              "PropertiesChanged",
                                              new GLib.Variant ("(sa{sv}as)",
-                                                               "org.gnome.Pomodoro",
+                                                               "org.gnome.ExTimer",
                                                                builder_properties,
                                                                builder_invalid));
                 this.connection.flush_sync (this.cancellable);
@@ -218,7 +218,7 @@ namespace Pomodoro
             }
         }
 
-        private static GLib.HashTable<string, GLib.Variant> serialize_timer_state (Pomodoro.TimerState state)
+        private static GLib.HashTable<string, GLib.Variant> serialize_timer_state (ExTimer.TimerState state)
         {
             var serialized = new GLib.HashTable<string, GLib.Variant> (str_hash, str_equal);
             serialized.insert ("name", new GLib.Variant.string (state.name));
@@ -229,8 +229,8 @@ namespace Pomodoro
             return serialized;
         }
 
-        private void on_timer_state_changed (Pomodoro.TimerState state,
-                                             Pomodoro.TimerState previous_state)
+        private void on_timer_state_changed (ExTimer.TimerState state,
+                                             ExTimer.TimerState previous_state)
         {
             this.state_changed (serialize_timer_state (state),
                                 serialize_timer_state (previous_state));

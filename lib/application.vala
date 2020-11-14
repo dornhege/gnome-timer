@@ -21,7 +21,7 @@
 using GLib;
 
 
-namespace Pomodoro
+namespace ExTimer
 {
     public interface ApplicationExtension : Peas.ExtensionBase
     {
@@ -29,7 +29,7 @@ namespace Pomodoro
 
     internal Gom.Repository get_repository ()
     {
-        var application = Pomodoro.Application.get_default ();
+        var application = ExTimer.Application.get_default ();
 
         return (Gom.Repository) application.get_repository ();
     }
@@ -39,9 +39,9 @@ namespace Pomodoro
         private const uint REPOSITORY_VERSION = 1;
         private const uint SETUP_PLUGINS_TIMEOUT = 3000;
 
-        public Pomodoro.Service service;
-        public Pomodoro.Timer timer;
-        public Pomodoro.CapabilityManager capabilities;
+        public ExTimer.Service service;
+        public ExTimer.Timer timer;
+        public ExTimer.CapabilityManager capabilities;
 
         private Gom.Repository repository;
         private Gom.Adapter adapter;
@@ -51,9 +51,9 @@ namespace Pomodoro
             return (GLib.Object) this.repository;
         }
 
-        private Pomodoro.PreferencesDialog preferences_dialog;
-        private Pomodoro.Window window;
-        private Pomodoro.DesktopExtension desktop_extension;
+        private ExTimer.PreferencesDialog preferences_dialog;
+        private ExTimer.Window window;
+        private ExTimer.DesktopExtension desktop_extension;
         private Gtk.Window about_dialog;
         private Peas.ExtensionSet extensions;
         private GLib.Settings settings;
@@ -131,7 +131,7 @@ namespace Pomodoro
         public Application ()
         {
             GLib.Object (
-                application_id: "org.gnome.Pomodoro",
+                application_id: "org.gnome.ExTimer",
                 flags: GLib.ApplicationFlags.HANDLES_COMMAND_LINE
             );
 
@@ -141,7 +141,7 @@ namespace Pomodoro
 
         public new static unowned Application get_default ()
         {
-            return GLib.Application.get_default () as Pomodoro.Application;
+            return GLib.Application.get_default () as ExTimer.Application;
         }
 
         public unowned Gtk.Window get_last_focused_window ()
@@ -156,7 +156,7 @@ namespace Pomodoro
         private void setup_resources ()
         {
             var css_provider = new Gtk.CssProvider ();
-            css_provider.load_from_resource ("/org/gnome/pomodoro/style.css");
+            css_provider.load_from_resource ("/org/gnome/extimer/style.css");
 
             Gtk.StyleContext.add_provider_for_screen (
                                          Gdk.Screen.get_default (),
@@ -167,9 +167,9 @@ namespace Pomodoro
         private void setup_desktop_extension ()
         {
             try {
-                this.desktop_extension = new Pomodoro.DesktopExtension ();
+                this.desktop_extension = new ExTimer.DesktopExtension ();
 
-                this.capabilities.add_group (this.desktop_extension.capabilities, Pomodoro.Priority.HIGH);
+                this.capabilities.add_group (this.desktop_extension.capabilities, ExTimer.Priority.HIGH);
             }
             catch (GLib.Error error) {
                 GLib.warning ("Error while initializing desktop extension: %s",
@@ -195,7 +195,7 @@ namespace Pomodoro
                 return GLib.Source.REMOVE;
             });
 
-            this.extensions = new Peas.ExtensionSet (engine, typeof (Pomodoro.ApplicationExtension));
+            this.extensions = new Peas.ExtensionSet (engine, typeof (ExTimer.ApplicationExtension));
             this.extensions.extension_added.connect ((extension_set,
                                                       info,
                                                       extension_object) => {
@@ -237,12 +237,12 @@ namespace Pomodoro
 
         private void setup_capabilities ()
         {
-            var default_capabilities = new Pomodoro.CapabilityGroup ("default");
+            var default_capabilities = new ExTimer.CapabilityGroup ("default");
 
-            default_capabilities.add (new Pomodoro.NotificationsCapability ("notifications"));
+            default_capabilities.add (new ExTimer.NotificationsCapability ("notifications"));
 
-            this.capabilities = new Pomodoro.CapabilityManager ();
-            this.capabilities.add_group (default_capabilities, Pomodoro.Priority.LOW);
+            this.capabilities = new ExTimer.CapabilityManager ();
+            this.capabilities.add_group (default_capabilities, ExTimer.Priority.LOW);
         }
 
         private static bool migrate_repository (Gom.Repository repository,
@@ -255,7 +255,7 @@ namespace Pomodoro
 
             GLib.debug ("Migrating database to version %u", version);
 
-            var file = File.new_for_uri ("resource:///org/gnome/pomodoro/database/version-%u.sql".printf (version));
+            var file = File.new_for_uri ("resource:///org/gnome/extimer/database/version-%u.sql".printf (version));
             file.load_contents (null, out file_contents, null);
 
             /* Gom.Adapter.execute_sql is limited to single line queries,
@@ -299,8 +299,8 @@ namespace Pomodoro
 
                 /* Migrate database if needed */
                 var repository = new Gom.Repository (adapter);
-                repository.migrate_sync (Pomodoro.Application.REPOSITORY_VERSION,
-                                         Pomodoro.Application.migrate_repository);
+                repository.migrate_sync (ExTimer.Application.REPOSITORY_VERSION,
+                                         ExTimer.Application.migrate_repository);
 
                 this.repository = repository;
             }
@@ -338,7 +338,7 @@ namespace Pomodoro
                                  uint32 timestamp = 0)
         {
             if (this.window == null) {
-                this.window = new Pomodoro.Window ();
+                this.window = new ExTimer.Window ();
                 this.window.application = this;
                 this.window.destroy.connect (() => {
                     this.remove_window (this.window);
@@ -362,7 +362,7 @@ namespace Pomodoro
         public void show_preferences (uint32 timestamp = 0)
         {
             if (this.preferences_dialog == null) {
-                this.preferences_dialog = new Pomodoro.PreferencesDialog ();
+                this.preferences_dialog = new ExTimer.PreferencesDialog ();
                 this.preferences_dialog.destroy.connect (() => {
                     this.remove_window (this.preferences_dialog);
                     this.preferences_dialog = null;
@@ -443,7 +443,7 @@ namespace Pomodoro
             {
                 var window = this.get_last_focused_window ();
 
-                this.about_dialog = new Pomodoro.AboutDialog ();
+                this.about_dialog = new ExTimer.AboutDialog ();
                 this.about_dialog.destroy.connect (() => {
                     this.remove_window (this.about_dialog);
                     this.about_dialog = null;
@@ -771,23 +771,23 @@ namespace Pomodoro
             }
 
             if (this.timer == null) {
-                this.timer = Pomodoro.Timer.get_default ();
+                this.timer = ExTimer.Timer.get_default ();
                 this.timer.notify["is-paused"].connect (this.on_timer_is_paused_notify);
                 this.timer.state_changed.connect_after (this.on_timer_state_changed);
             }
 
             if (this.settings == null) {
-                this.settings = Pomodoro.get_settings ()
+                this.settings = ExTimer.get_settings ()
                                         .get_child ("preferences");
                 this.settings.changed.connect (this.on_settings_changed);
             }
 
             if (this.service == null) {
                 this.hold ();
-                this.service = new Pomodoro.Service (connection, this.timer);
+                this.service = new ExTimer.Service (connection, this.timer);
 
                 try {
-                    connection.register_object ("/org/gnome/Pomodoro", this.service);
+                    connection.register_object ("/org/gnome/ExTimer", this.service);
                 }
                 catch (GLib.IOError error) {
                     GLib.warning ("%s", error.message);
@@ -817,7 +817,7 @@ namespace Pomodoro
 
         private void save_timer ()
         {
-            var state_settings = Pomodoro.get_settings ()
+            var state_settings = ExTimer.get_settings ()
                                          .get_child ("state");
 
             this.timer.save (state_settings);
@@ -825,7 +825,7 @@ namespace Pomodoro
 
         private void restore_timer ()
         {
-            var state_settings = Pomodoro.get_settings ()
+            var state_settings = ExTimer.get_settings ()
                                          .get_child ("state");
 
             this.timer.restore (state_settings);
@@ -838,20 +838,20 @@ namespace Pomodoro
 
             switch (key)
             {
-                case "pomodoro-duration":
-                    if (this.timer.state is Pomodoro.PomodoroState) {
+                case "extimer-duration":
+                    if (this.timer.state is ExTimer.ExTimerState) {
                         state_duration = settings.get_double (key);
                     }
                     break;
 
                 case "short-break-duration":
-                    if (this.timer.state is Pomodoro.ShortBreakState) {
+                    if (this.timer.state is ExTimer.ShortBreakState) {
                         state_duration = settings.get_double (key);
                     }
                     break;
 
                 case "long-break-duration":
-                    if (this.timer.state is Pomodoro.LongBreakState) {
+                    if (this.timer.state is ExTimer.LongBreakState) {
                         state_duration = settings.get_double (key);
                     }
                     break;
@@ -876,9 +876,9 @@ namespace Pomodoro
         /**
          * Save timer state, assume user is idle when break is completed.
          */
-        private void on_timer_state_changed (Pomodoro.Timer      timer,
-                                             Pomodoro.TimerState state,
-                                             Pomodoro.TimerState previous_state)
+        private void on_timer_state_changed (ExTimer.Timer      timer,
+                                             ExTimer.TimerState state,
+                                             ExTimer.TimerState previous_state)
         {
             this.hold ();
             this.save_timer ();
@@ -888,9 +888,9 @@ namespace Pomodoro
                 this.timer.resume ();
             }
 
-            if (!(previous_state is Pomodoro.DisabledState))
+            if (!(previous_state is ExTimer.DisabledState))
             {
-                var entry = new Pomodoro.Entry.from_state (previous_state);
+                var entry = new ExTimer.Entry.from_state (previous_state);
                 entry.repository = this.repository;
                 entry.save_async.begin ((obj, res) => {
                     try {

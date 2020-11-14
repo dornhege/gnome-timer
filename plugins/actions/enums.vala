@@ -54,7 +54,7 @@ namespace Actions
             switch (this)
             {
                 case Actions.State.POMODORO:
-                    return "pomodoro";
+                    return "extimer";
 
                 case Actions.State.SHORT_BREAK:
                     return "short-break";
@@ -66,17 +66,17 @@ namespace Actions
             return "";
         }
 
-        public static State from_timer_state (Pomodoro.TimerState timer_state)
+        public static State from_timer_state (ExTimer.TimerState timer_state)
         {
-            if (timer_state is Pomodoro.PomodoroState) {
+            if (timer_state is ExTimer.ExTimerState) {
                 return Actions.State.POMODORO;
             }
 
-            if (timer_state is Pomodoro.ShortBreakState) {
+            if (timer_state is ExTimer.ShortBreakState) {
                 return Actions.State.SHORT_BREAK;
             }
 
-            if (timer_state is Pomodoro.LongBreakState) {
+            if (timer_state is ExTimer.LongBreakState) {
                 return Actions.State.LONG_BREAK;
             }
 
@@ -88,7 +88,7 @@ namespace Actions
             switch (this)
             {
                 case Actions.State.POMODORO:
-                    return _("Pomodoro");
+                    return _("ExTimer");
 
                 case Actions.State.SHORT_BREAK:
                     return _("Short Break");

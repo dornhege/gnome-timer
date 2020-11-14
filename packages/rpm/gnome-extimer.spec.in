@@ -48,11 +48,11 @@ Recommends: gstreamer-plugins-base
 %endif
 
 %if %{defined fedora}
-Obsoletes: gnome-shell-extension-pomodoro
+Obsoletes: gnome-shell-extension-extimer
 %endif
 
 %description
-A GNOME utility that helps managing time according to Pomodoro Technique. It
+A GNOME utility that helps managing time according to ExTimer Technique. It
 intends to improve productivity and focus by taking short breaks after every
 25 minutes of work.
 
@@ -72,7 +72,7 @@ desktop-file-edit $RPM_BUILD_ROOT/%{_datadir}/applications/*.desktop \
 %find_lang %{name}
 
 %check
-desktop-file-validate $RPM_BUILD_ROOT/%{_datadir}/applications/org.gnome.Pomodoro.desktop
+desktop-file-validate $RPM_BUILD_ROOT/%{_datadir}/applications/org.gnome.ExTimer.desktop
 
 %post
 touch --no-create %{_datadir}/icons/hicolor &>/dev/null || :
@@ -90,13 +90,13 @@ glib-compile-schemas %{_datadir}/glib-2.0/schemas &> /dev/null || :
 
 %files -f %{name}.lang
 %doc README.md COPYING NEWS
-%{_bindir}/gnome-pomodoro
-%{_libdir}/gnome-pomodoro
-%{_libdir}/libgnome-pomodoro.so*
-%{_datadir}/metainfo/org.gnome.Pomodoro.appdata.xml
-%{_datadir}/applications/org.gnome.Pomodoro.desktop
-%{_datadir}/dbus-1/services/org.gnome.Pomodoro.service
-%{_datadir}/glib-2.0/schemas/org.gnome.pomodoro.*
-%{_datadir}/gnome-pomodoro
+%{_bindir}/gnome-extimer
+%{_libdir}/gnome-extimer
+%{_libdir}/libgnome-extimer.so*
+%{_datadir}/metainfo/org.gnome.ExTimer.appdata.xml
+%{_datadir}/applications/org.gnome.ExTimer.desktop
+%{_datadir}/dbus-1/services/org.gnome.ExTimer.service
+%{_datadir}/glib-2.0/schemas/org.gnome.extimer.*
+%{_datadir}/gnome-extimer
 %{_datadir}/gnome-shell/extensions/@EXTENSION_UUID@
 %{_datadir}/icons/hicolor/*/apps/*

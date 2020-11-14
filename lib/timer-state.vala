@@ -21,13 +21,13 @@
 using GLib;
 
 
-namespace Pomodoro
+namespace ExTimer
 {
-    /* Minimum time in seconds for pomodoro to get scored. */
+    /* Minimum time in seconds for extimer to get scored. */
     internal const double MIN_POMODORO_TIME = 60.0;
 
-    /* Minimum progress for pomodoro to be considered for a long break. Higer values means
-       the timer is more strict about completing pomodoros. */
+    /* Minimum progress for extimer to be considered for a long break. Higer values means
+       the timer is more strict about completing extimers. */
     internal const double POMODORO_THRESHOLD = 0.90;
 
     /* Acceptable score value that can be missed during cycle. */
@@ -47,7 +47,7 @@ namespace Pomodoro
 
         construct
         {
-            this.timestamp = Pomodoro.get_current_time ();
+            this.timestamp = ExTimer.get_current_time ();
         }
 
         public abstract TimerState create_next_state (double score,
@@ -68,8 +68,8 @@ namespace Pomodoro
 
             switch (name)
             {
-                case "pomodoro":
-                    state = new PomodoroState ();
+                case "extimer":
+                    state = new ExTimerState ();
                     break;
 
                 case "short-break":
@@ -125,18 +125,18 @@ namespace Pomodoro
         }
     }
 
-    public class PomodoroState : TimerState
+    public class ExTimerState : TimerState
     {
         construct
         {
-            this.name = "pomodoro";
+            this.name = "extimer";
 
-            this.duration = Pomodoro.get_settings ()
+            this.duration = ExTimer.get_settings ()
                                     .get_child ("preferences")
-                                    .get_double ("pomodoro-duration");
+                                    .get_double ("extimer-duration");
         }
 
-        public PomodoroState.with_timestamp (double timestamp)
+        public ExTimerState.with_timestamp (double timestamp)
         {
             this.timestamp = timestamp;
         }
@@ -144,7 +144,7 @@ namespace Pomodoro
         public override TimerState create_next_state (double score,
                                                       double timestamp)
         {
-            var score_limit = Pomodoro.get_settings ()
+            var score_limit = ExTimer.get_settings ()
                                       .get_child ("preferences")
                                       .get_double ("long-break-interval");
 
@@ -177,7 +177,7 @@ namespace Pomodoro
         public override TimerState create_next_state (double score,
                                                       double timestamp)
         {
-            return new PomodoroState.with_timestamp (timestamp) as TimerState;
+            return new ExTimerState.with_timestamp (timestamp) as TimerState;
         }
     }
 
@@ -187,7 +187,7 @@ namespace Pomodoro
         {
             this.name = "short-break";
 
-            this.duration = Pomodoro.get_settings ()
+            this.duration = ExTimer.get_settings ()
                                     .get_child ("preferences")
                                     .get_double ("short-break-duration");
         }
@@ -204,7 +204,7 @@ namespace Pomodoro
         {
             this.name = "long-break";
 
-            this.duration = Pomodoro.get_settings ()
+            this.duration = ExTimer.get_settings ()
                                     .get_child ("preferences")
                                     .get_double ("long-break-duration");
         }
@@ -217,7 +217,7 @@ namespace Pomodoro
         public override double calculate_score (double score,
                                                 double timestamp)
         {
-            var short_break_duration = Pomodoro.get_settings ()
+            var short_break_duration = ExTimer.get_settings ()
                                                .get_child ("preferences")
                                                .get_double ("short-break-duration");
             var long_break_duration = this.duration;

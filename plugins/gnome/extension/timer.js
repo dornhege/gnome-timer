@@ -30,14 +30,14 @@ const Utils = Extension.imports.utils;
 
 var State = {
     NULL: 'null',
-    POMODORO: 'pomodoro',
+    POMODORO: 'extimer',
     SHORT_BREAK: 'short-break',
     LONG_BREAK: 'long-break',
 
     label(state) {
         switch (state) {
             case State.POMODORO:
-                return _("Pomodoro");
+                return _("ExTimer");
 
             case State.SHORT_BREAK:
                 return _("Short Break");
@@ -61,14 +61,14 @@ var Timer = class {
         this._propertiesChangedId = 0;
         this._elapsed = 0.0;
 
-        this._proxy = DBus.Pomodoro(this._onInit.bind(this));
+        this._proxy = DBus.ExTimer(this._onInit.bind(this));
 
         this._propertiesChangedId = this._proxy.connect(
                                        'g-properties-changed',
                                        this._onPropertiesChanged.bind(this));
 
         this._nameWatcherId = Gio.DBus.session.watch_name(
-                                       'org.gnome.Pomodoro',
+                                       'org.gnome.ExTimer',
                                        Gio.BusNameWatcherFlags.AUTO_START,
                                        this._onNameAppeared.bind(this),
                                        this._onNameVanished.bind(this));

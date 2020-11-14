@@ -1,9 +1,9 @@
 [Desktop Entry]
-Name=Pomodoro
+Name=ExTimer
 Comment=A simple time management utility
 Keywords=timer;
-Exec=gnome-pomodoro
-Icon=gnome-pomodoro
+Exec=gnome-extimer
+Icon=gnome-extimer
 StartupNotify=false
 Terminal=false
 Type=Application

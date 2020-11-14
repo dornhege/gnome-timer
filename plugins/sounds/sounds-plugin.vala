@@ -53,8 +53,8 @@ namespace SoundsPlugin
         }
     }
 
-    [GtkTemplate (ui = "/org/gnome/pomodoro/plugins/sounds/preferences-sound-page.ui")]
-    public abstract class PreferencesSoundPage : Gtk.Box, Pomodoro.PreferencesPage
+    [GtkTemplate (ui = "/org/gnome/extimer/plugins/sounds/preferences-sound-page.ui")]
+    public abstract class PreferencesSoundPage : Gtk.Box, ExTimer.PreferencesPage
     {
         public double volume { get; set; }
         public string uri { get; set; }
@@ -418,7 +418,7 @@ namespace SoundsPlugin
         {
             this.default_uri = "clock.ogg";
 
-            this.settings = new GLib.Settings ("org.gnome.pomodoro.plugins.sounds");
+            this.settings = new GLib.Settings ("org.gnome.extimer.plugins.sounds");
 
             this.settings.bind ("ticking-sound",
                                 this,
@@ -466,7 +466,7 @@ namespace SoundsPlugin
         }
     }
 
-    public class PreferencesPomodoroEndSoundPage : PreferencesSoundPage
+    public class PreferencesExTimerEndSoundPage : PreferencesSoundPage
     {
         private const Preset[] PRESETS = {
             { "bell.ogg", N_("Bell") },
@@ -479,14 +479,14 @@ namespace SoundsPlugin
         {
             this.default_uri = "bell.ogg";
 
-            this.settings = new GLib.Settings ("org.gnome.pomodoro.plugins.sounds");
+            this.settings = new GLib.Settings ("org.gnome.extimer.plugins.sounds");
 
-            this.settings.bind ("pomodoro-end-sound",
+            this.settings.bind ("extimer-end-sound",
                                 this,
                                 "uri",
                                 GLib.SettingsBindFlags.DEFAULT);
 
-            this.settings.bind ("pomodoro-end-sound-volume",
+            this.settings.bind ("extimer-end-sound-volume",
                                 this,
                                 "volume",
                                 GLib.SettingsBindFlags.DEFAULT);
@@ -505,7 +505,7 @@ namespace SoundsPlugin
         }
     }
 
-    public class PreferencesPomodoroStartSoundPage : PreferencesSoundPage
+    public class PreferencesExTimerStartSoundPage : PreferencesSoundPage
     {
         private const Preset[] PRESETS = {
             { "bell.ogg", N_("Bell") },
@@ -518,14 +518,14 @@ namespace SoundsPlugin
         {
             this.default_uri = "loud-bell.ogg";
 
-            this.settings = new GLib.Settings ("org.gnome.pomodoro.plugins.sounds");
+            this.settings = new GLib.Settings ("org.gnome.extimer.plugins.sounds");
 
-            this.settings.bind ("pomodoro-start-sound",
+            this.settings.bind ("extimer-start-sound",
                                 this,
                                 "uri",
                                 GLib.SettingsBindFlags.DEFAULT);
 
-            this.settings.bind ("pomodoro-start-sound-volume",
+            this.settings.bind ("extimer-start-sound-volume",
                                 this,
                                 "volume",
                                 GLib.SettingsBindFlags.DEFAULT);
@@ -544,7 +544,7 @@ namespace SoundsPlugin
         }
     }
 
-    public class PreferencesDialogExtension : Peas.ExtensionBase, Pomodoro.PreferencesDialogExtension
+    public class PreferencesDialogExtension : Peas.ExtensionBase, ExTimer.PreferencesDialogExtension
     {
         private const string[] VOLUME_ICONS = {
             "audio-volume-muted-symbolic",
@@ -553,16 +553,16 @@ namespace SoundsPlugin
             "audio-volume-medium-symbolic",
         };
 
-        private Pomodoro.PreferencesDialog dialog;
+        private ExTimer.PreferencesDialog dialog;
 
         private GLib.Settings settings;
         private GLib.List<unowned Gtk.ListBoxRow> rows;
 
         construct
         {
-            this.settings = new GLib.Settings ("org.gnome.pomodoro.plugins.sounds");
+            this.settings = new GLib.Settings ("org.gnome.extimer.plugins.sounds");
 
-            this.dialog = Pomodoro.PreferencesDialog.get_default ();
+            this.dialog = ExTimer.PreferencesDialog.get_default ();
 
             this.dialog.add_page ("ticking-sound",
                                   _("Ticking Sound"),
@@ -570,18 +570,18 @@ namespace SoundsPlugin
 
             this.dialog.add_page ("end-of-break-sound",
                                   _("End of Break Sound"),
-                                  typeof (SoundsPlugin.PreferencesPomodoroStartSoundPage));
+                                  typeof (SoundsPlugin.PreferencesExTimerStartSoundPage));
 
             this.dialog.add_page ("start-of-break-sound",
                                   _("Start of Break Sound"),
-                                  typeof (SoundsPlugin.PreferencesPomodoroEndSoundPage));
+                                  typeof (SoundsPlugin.PreferencesExTimerEndSoundPage));
 
             this.setup_main_page ();
         }
 
         ~PreferencesDialogExtension ()
         {
-            var main_page = this.dialog.get_page ("main") as Pomodoro.PreferencesMainPage;
+            var main_page = this.dialog.get_page ("main") as ExTimer.PreferencesMainPage;
             main_page.timer_listbox.row_activated.disconnect (this.on_row_activated);
             main_page.notifications_listbox.row_activated.disconnect (this.on_row_activated);
 
@@ -727,7 +727,7 @@ namespace SoundsPlugin
         {
             Gtk.ListBoxRow row;
 
-            var main_page = this.dialog.get_page ("main") as Pomodoro.PreferencesMainPage;
+            var main_page = this.dialog.get_page ("main") as ExTimer.PreferencesMainPage;
             main_page.timer_listbox.row_activated.connect (this.on_row_activated);
             main_page.notifications_listbox.row_activated.connect (this.on_row_activated);
 
@@ -746,12 +746,12 @@ namespace SoundsPlugin
             main_page.timer_listbox.insert (row, ticking_sound_index);
             this.rows.prepend (row);
 
-            row = this.create_row (_("Start of break sound"), "start-of-break-sound", "pomodoro-end-sound");
+            row = this.create_row (_("Start of break sound"), "start-of-break-sound", "extimer-end-sound");
             main_page.lisboxrow_sizegroup.add_widget (row);
             main_page.notifications_listbox.insert (row, -1);
             this.rows.prepend (row);
 
-            row = this.create_row (_("End of break sound"), "end-of-break-sound", "pomodoro-start-sound");
+            row = this.create_row (_("End of break sound"), "end-of-break-sound", "extimer-start-sound");
             main_page.lisboxrow_sizegroup.add_widget (row);
             main_page.notifications_listbox.insert (row, -1);
             this.rows.prepend (row);
@@ -781,23 +781,23 @@ namespace SoundsPlugin
     public class SoundManager : GLib.Object
     {
         public SoundPlayer ticking_sound { get; private set; }
-        public SoundPlayer pomodoro_start_sound { get; private set; }
-        public SoundPlayer pomodoro_end_sound { get; private set; }
+        public SoundPlayer extimer_start_sound { get; private set; }
+        public SoundPlayer extimer_end_sound { get; private set; }
 
         private GLib.Settings  settings;
-        private Pomodoro.Timer timer;
+        private ExTimer.Timer timer;
         private uint           fade_out_timeout_id;
         private bool           ticking_sound_inhibited;
 
         construct
         {
-            this.timer = Pomodoro.Timer.get_default ();
+            this.timer = ExTimer.Timer.get_default ();
 
-            this.settings = new GLib.Settings ("org.gnome.pomodoro.plugins.sounds");
+            this.settings = new GLib.Settings ("org.gnome.extimer.plugins.sounds");
 
             this.setup_ticking_sound ();
-            this.setup_pomodoro_end_sound ();
-            this.setup_pomodoro_start_sound ();
+            this.setup_extimer_end_sound ();
+            this.setup_extimer_start_sound ();
 
             this.timer.state_changed.connect_after (this.on_timer_state_changed);
             this.timer.notify["is-paused"].connect (this.on_timer_is_paused_notify);
@@ -901,13 +901,13 @@ namespace SoundsPlugin
             }
         }
 
-        private void setup_pomodoro_end_sound ()
+        private void setup_extimer_end_sound ()
         {
             try {
-                this.pomodoro_end_sound = new SoundsPlugin.CanberraPlayer ("pomodoro-end");
+                this.extimer_end_sound = new SoundsPlugin.CanberraPlayer ("extimer-end");
 
-                this.settings.bind_with_mapping ("pomodoro-end-sound",
-                                                 this.pomodoro_end_sound,
+                this.settings.bind_with_mapping ("extimer-end-sound",
+                                                 this.extimer_end_sound,
                                                  "file",
                                                  GLib.SettingsBindFlags.GET,
                                                  (GLib.SettingsBindGetMappingShared) settings_file_getter,
@@ -915,23 +915,23 @@ namespace SoundsPlugin
                                                  null,
                                                  null);
 
-                this.settings.bind ("pomodoro-end-sound-volume",
-                                    this.pomodoro_end_sound,
+                this.settings.bind ("extimer-end-sound-volume",
+                                    this.extimer_end_sound,
                                     "volume",
                                     GLib.SettingsBindFlags.GET);
             }
             catch (SoundsPlugin.SoundPlayerError error) {
-                GLib.critical ("Failed to setup player for \"pomodoro-end\" sound");
+                GLib.critical ("Failed to setup player for \"extimer-end\" sound");
             }
         }
 
-        private void setup_pomodoro_start_sound ()
+        private void setup_extimer_start_sound ()
         {
             try {
-                this.pomodoro_start_sound = new SoundsPlugin.CanberraPlayer ("pomodoro-start");
+                this.extimer_start_sound = new SoundsPlugin.CanberraPlayer ("extimer-start");
 
-                this.settings.bind_with_mapping ("pomodoro-start-sound",
-                                                 this.pomodoro_start_sound,
+                this.settings.bind_with_mapping ("extimer-start-sound",
+                                                 this.extimer_start_sound,
                                                  "file",
                                                  GLib.SettingsBindFlags.GET,
                                                  (GLib.SettingsBindGetMappingShared) settings_file_getter,
@@ -939,13 +939,13 @@ namespace SoundsPlugin
                                                  null,
                                                  null);
 
-                this.settings.bind ("pomodoro-start-sound-volume",
-                                    this.pomodoro_start_sound,
+                this.settings.bind ("extimer-start-sound-volume",
+                                    this.extimer_start_sound,
                                     "volume",
                                     GLib.SettingsBindFlags.GET);
             }
             catch (SoundsPlugin.SoundPlayerError error) {
-                GLib.critical ("Failed to setup player for \"pomodoro-start\" sound");
+                GLib.critical ("Failed to setup player for \"extimer-start\" sound");
             }
         }
 
@@ -1004,7 +1004,7 @@ namespace SoundsPlugin
                 return;
             }
 
-            if (this.timer.state is Pomodoro.PomodoroState && !this.timer.is_paused && !this.ticking_sound_inhibited) {
+            if (this.timer.state is ExTimer.ExTimerState && !this.timer.is_paused && !this.ticking_sound_inhibited) {
                 this.schedule_fade_out ();
 
                 ((Fadeable) this.ticking_sound).fade_in (FADE_IN_TIME);
@@ -1026,23 +1026,23 @@ namespace SoundsPlugin
             this.update_ticking_sound ();
         }
 
-        private void on_timer_state_changed (Pomodoro.TimerState state,
-                                             Pomodoro.TimerState previous_state)
+        private void on_timer_state_changed (ExTimer.TimerState state,
+                                             ExTimer.TimerState previous_state)
         {
             this.update_ticking_sound ();
 
             if (previous_state.elapsed >= previous_state.duration)
             {
-                if (state is Pomodoro.PomodoroState &&
-                    previous_state is Pomodoro.BreakState)
+                if (state is ExTimer.ExTimerState &&
+                    previous_state is ExTimer.BreakState)
                 {
-                    this.pomodoro_start_sound.play ();
+                    this.extimer_start_sound.play ();
                 }
 
-                if (state is Pomodoro.BreakState &&
-                    previous_state is Pomodoro.PomodoroState)
+                if (state is ExTimer.BreakState &&
+                    previous_state is ExTimer.ExTimerState)
                 {
-                    this.pomodoro_end_sound.play ();
+                    this.extimer_end_sound.play ();
                 }
             }
         }
@@ -1056,7 +1056,7 @@ namespace SoundsPlugin
     }
 
 
-    public class ApplicationExtension : Peas.ExtensionBase, Pomodoro.ApplicationExtension
+    public class ApplicationExtension : Peas.ExtensionBase, ExTimer.ApplicationExtension
     {
         public static unowned ApplicationExtension instance;
 
@@ -1086,9 +1086,9 @@ public void peas_register_types (GLib.TypeModule module)
 {
     var object_module = module as Peas.ObjectModule;
 
-    object_module.register_extension_type (typeof (Pomodoro.ApplicationExtension),
+    object_module.register_extension_type (typeof (ExTimer.ApplicationExtension),
                                            typeof (SoundsPlugin.ApplicationExtension));
 
-    object_module.register_extension_type (typeof (Pomodoro.PreferencesDialogExtension),
+    object_module.register_extension_type (typeof (ExTimer.PreferencesDialogExtension),
                                            typeof (SoundsPlugin.PreferencesDialogExtension));
 }

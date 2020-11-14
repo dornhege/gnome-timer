@@ -8,7 +8,7 @@ tests_SOURCES = \
 	test-capability-group.vala \
 	test-capability-manager.vala \
 	test-timer.vala \
-	$(top_builddir)/lib/gnome-pomodoro.vapi
+	$(top_builddir)/lib/gnome-extimer.vapi
 
 tests_VALAFLAGS = \
 	$(GNOME_POMODORO_VALAFLAGS)
@@ -22,7 +22,7 @@ tests_CFLAGS = \
 
 tests_LDADD = \
 	$(GNOME_POMODORO_LIBS) \
-	$(top_builddir)/lib/libgnome-pomodoro.la
+	$(top_builddir)/lib/libgnome-extimer.la
 
 test: tests
 	$(builddir)/$<

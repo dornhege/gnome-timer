@@ -134,7 +134,7 @@
                   </object>
                 </child>
                 <style>
-                  <class name="pomodoro-list"/>
+                  <class name="extimer-list"/>
                 </style>
               </object>
             </child>

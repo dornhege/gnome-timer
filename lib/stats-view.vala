@@ -21,9 +21,9 @@
 using GLib;
 
 
-namespace Pomodoro
+namespace ExTimer
 {
-    [GtkTemplate (ui = "/org/gnome/pomodoro/stats-view.ui")]
+    [GtkTemplate (ui = "/org/gnome/extimer/stats-view.ui")]
     public class StatsView : Gtk.Box, Gtk.Buildable
     {
         public string mode {
@@ -68,7 +68,7 @@ namespace Pomodoro
 
         construct
         {
-            this.repository = Pomodoro.get_repository ();
+            this.repository = ExTimer.get_repository ();
             this.history = new GLib.Queue<unowned Gtk.Widget> ();
 
             this.mode = "none";
@@ -167,7 +167,7 @@ namespace Pomodoro
 
         private void activate_previous ()
         {
-            var page = this.pages.visible_child as Pomodoro.StatsPage;
+            var page = this.pages.visible_child as ExTimer.StatsPage;
 
             if (page != null) {
                 this.select_page (page.get_previous_date ());
@@ -176,7 +176,7 @@ namespace Pomodoro
 
         private void activate_next ()
         {
-            var page = this.pages.visible_child as Pomodoro.StatsPage;
+            var page = this.pages.visible_child as ExTimer.StatsPage;
 
             if (page != null) {
                 this.select_page (page.get_next_date ());
@@ -196,9 +196,9 @@ namespace Pomodoro
             if (this.min_datetime == null)
             {
                 var sorting = (Gom.Sorting) GLib.Object.@new (typeof (Gom.Sorting));
-                sorting.add (typeof (Pomodoro.Entry), "datetime-local-string", Gom.SortingMode.ASCENDING);
+                sorting.add (typeof (ExTimer.Entry), "datetime-local-string", Gom.SortingMode.ASCENDING);
 
-                this.repository.find_sorted_async.begin (typeof (Pomodoro.Entry),
+                this.repository.find_sorted_async.begin (typeof (ExTimer.Entry),
                                                          null,
                                                          sorting,
                                                          (obj, res) => {
@@ -206,7 +206,7 @@ namespace Pomodoro
                         var group = this.repository.find_sorted_async.end (res);
 
                         if (group.count > 0 && group.fetch_sync (0, 1)) {
-                            var first_entry = group.get_index (0) as Pomodoro.Entry;
+                            var first_entry = group.get_index (0) as ExTimer.Entry;
 
                             this.min_datetime = first_entry.get_datetime_local ();
                         }
@@ -290,30 +290,30 @@ namespace Pomodoro
             return "%s:%s".printf (mode, datetime.format ("%s"));
         }
 
-        private Pomodoro.StatsPage? create_page (GLib.DateTime datetime,
+        private ExTimer.StatsPage? create_page (GLib.DateTime datetime,
                                                  string        mode)
         {
             switch (mode) {
                 case "day":
-                    return new Pomodoro.StatsDayPage (this.repository, datetime);
+                    return new ExTimer.StatsDayPage (this.repository, datetime);
 
                 case "week":
-                    return new Pomodoro.StatsWeekPage (this.repository, datetime);
+                    return new ExTimer.StatsWeekPage (this.repository, datetime);
 
                 case "month":
-                    return new Pomodoro.StatsMonthPage (this.repository, datetime);
+                    return new ExTimer.StatsMonthPage (this.repository, datetime);
 
                 default:
                     assert_not_reached ();
             }
         }
 
-        private Pomodoro.StatsPage? get_page (string name)
+        private ExTimer.StatsPage? get_page (string name)
         {
-            return this.pages.get_child_by_name (name) as Pomodoro.StatsPage;
+            return this.pages.get_child_by_name (name) as ExTimer.StatsPage;
         }
 
-        private Pomodoro.StatsPage get_or_create_page (GLib.DateTime datetime,
+        private ExTimer.StatsPage get_or_create_page (GLib.DateTime datetime,
                                                        string        mode)
         {
             var page_name = this.build_page_name (datetime, mode);
@@ -343,7 +343,7 @@ namespace Pomodoro
                 var page = this.get_or_create_page (datetime, mode);
                 var page_transition = Gtk.StackTransitionType.NONE;
 
-                var current_page = this.pages.visible_child as Pomodoro.StatsPage;
+                var current_page = this.pages.visible_child as ExTimer.StatsPage;
                 if (current_page != null) {
                     if (page.get_type () != current_page.get_type ()) {
                         page_transition = Gtk.StackTransitionType.CROSSFADE;

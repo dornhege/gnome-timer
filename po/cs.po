@@ -1,12 +1,12 @@
-# Czech translation for gnome-pomodoro
+# Czech translation for gnome-extimer
 # Copyright (c) 2012 gnome-pomodoro contributors
-# This file is distributed under the same license as the gnome-pomodoro package.
+# This file is distributed under the same license as the gnome-extimer package.
 # Jakub Veverka, 2012.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gnome-pomodoro\n"
-"Report-Msgid-Bugs-To: https://github.com/codito/gnome-pomodoro/issues\n"
+"Project-Id-Version: gnome-extimer\n"
+"Report-Msgid-Bugs-To: https://github.com/codito/gnome-extimer/issues\n"
 "POT-Creation-Date: 2016-10-02 19:50+0200\n"
 "PO-Revision-Date: 2016-10-04 06:18+0200\n"
 "Last-Translator: Petr Hložek <petr@petrhlozek.cz>\n"
@@ -18,54 +18,54 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 "X-Generator: Poedit 1.8.7.1\n"
 
-#: data/org.gnome.Pomodoro.appdata.xml.in:7
-#: data/org.gnome.Pomodoro.desktop.in:3 lib/resources/ui/menus.ui:51
+#: data/org.gnome.ExTimer.appdata.xml.in:7
+#: data/org.gnome.ExTimer.desktop.in:3 lib/resources/ui/menus.ui:51
 #: lib/resources/ui/window.ui:275 lib/about-dialog.vala:31
 #: lib/notifications-capability.vala:106 src/main.vala:30
-msgid "Pomodoro"
-msgstr "Pomodoro"
+msgid "ExTimer"
+msgstr "ExTimer"
 
-#: data/org.gnome.Pomodoro.appdata.xml.in:8
+#: data/org.gnome.ExTimer.appdata.xml.in:8
 msgid "A time management utility for GNOME"
 msgstr "Jednoduchý nástroj pro time management"
 
-#: data/org.gnome.Pomodoro.appdata.xml.in:10
+#: data/org.gnome.ExTimer.appdata.xml.in:10
 msgid ""
-"A GNOME utility that helps managing time according to Pomodoro Technique. It "
+"A GNOME utility that helps managing time according to ExTimer Technique. It "
 "intends to improve productivity and focus by taking short breaks after every "
 "25 minutes of work."
 msgstr ""
 "Nástroj pro Gnome, který vám pomůže se správou času pomocí techniky "
-"Pomodoro. Záměrem je zlepšit vaši produktivitu a koncentraci pomocí krátkých "
+"ExTimer. Záměrem je zlepšit vaši produktivitu a koncentraci pomocí krátkých "
 "přestávek po každých 25 minutách práce."
 
-#: data/org.gnome.Pomodoro.appdata.xml.in:19
+#: data/org.gnome.ExTimer.appdata.xml.in:19
 msgid "Main window"
 msgstr "Hlavní okno"
 
-#: data/org.gnome.Pomodoro.appdata.xml.in:23 lib/preferences-dialog.vala:721
+#: data/org.gnome.ExTimer.appdata.xml.in:23 lib/preferences-dialog.vala:721
 msgid "Preferences"
 msgstr "Předvolby"
 
-#: data/org.gnome.Pomodoro.appdata.xml.in:27
+#: data/org.gnome.ExTimer.appdata.xml.in:27
 msgid "Indicator for GNOME Shell"
 msgstr "Indikátor pro GNOME Shell"
 
-#: data/org.gnome.Pomodoro.appdata.xml.in:32
+#: data/org.gnome.ExTimer.appdata.xml.in:32
 msgid "Kamil Prusko"
 msgstr "Kamil Prusko"
 
-#: data/org.gnome.Pomodoro.desktop.in:4 lib/about-dialog.vala:32
+#: data/org.gnome.ExTimer.desktop.in:4 lib/about-dialog.vala:32
 msgid "A simple time management utility"
 msgstr "Jednoduchý nástroj pro time management "
 
-#: data/org.gnome.Pomodoro.desktop.in:5
+#: data/org.gnome.ExTimer.desktop.in:5
 msgid "timer;"
 msgstr "Časovač;"
 
-#: data/org.gnome.Pomodoro.desktop.in:7
-msgid "gnome-pomodoro"
-msgstr "Pomodoro"
+#: data/org.gnome.ExTimer.desktop.in:7
+msgid "gnome-extimer"
+msgstr "ExTimer"
 
 #: lib/resources/ui/menus.ui:6 lib/resources/ui/menus.ui:68
 msgid "_Timer"
@@ -130,7 +130,7 @@ msgid "Timer"
 msgstr "Časovač"
 
 #: lib/resources/ui/preferences-main-page.ui:112
-msgid "Pomodoro duration"
+msgid "ExTimer duration"
 msgstr "Délka pomodora"
 
 #: lib/resources/ui/preferences-main-page.ui:164
@@ -142,7 +142,7 @@ msgid "Long break duration"
 msgstr "Délka dlouhé přestávky"
 
 #: lib/resources/ui/preferences-main-page.ui:249
-msgid "Pomodoros before a long break"
+msgid "ExTimers before a long break"
 msgstr "Počet pomodor před dlouhou přestávkou"
 
 #: lib/resources/ui/preferences-main-page.ui:298
@@ -204,12 +204,12 @@ msgid "It's time to take a break"
 msgstr "Je čas udělat si přestávku..."
 
 #: lib/resources/ui/window.ui:31
-msgid "Start Pomodoro"
-msgstr "Začni pomodoro"
+msgid "Start ExTimer"
+msgstr "Začni extimer"
 
 #: lib/about-dialog.vala:30
-msgid "About Pomodoro"
-msgstr "O Pomodoro"
+msgid "About ExTimer"
+msgstr "O ExTimer"
 
 #: lib/about-dialog.vala:41
 msgid "translator-credits"
@@ -276,8 +276,8 @@ msgid "Shorten it"
 msgstr "Zkraťte si ji"
 
 #: lib/notifications-capability.vala:166
-msgid "Start pomodoro"
-msgstr "Začni pomodoro"
+msgid "Start extimer"
+msgstr "Začni extimer"
 
 #: lib/preferences-dialog.vala:158
 #, c-format
@@ -400,23 +400,23 @@ msgstr "Zvuk na začátku přestávky"
 msgid "End of break sound"
 msgstr "Zvuk na konci přestávky"
 
-#~ msgid "Pomodoro Timer"
-#~ msgstr "Časovač Pomodoro"
+#~ msgid "ExTimer Timer"
+#~ msgstr "Časovač ExTimer"
 
-#~ msgid "A new pomodoro is starting"
-#~ msgstr "Nové pomodoro začíná"
+#~ msgid "A new extimer is starting"
+#~ msgstr "Nové extimer začíná"
 
 #~ msgid "Hey, you're missing out on a break"
 #~ msgstr "Hej, zapomínáš na přestávku"
 
-#~ msgid "Could not run pomodoro"
-#~ msgstr "Pomodoro nelze spustit"
+#~ msgid "Could not run extimer"
+#~ msgstr "ExTimer nelze spustit"
 
 #~ msgid "Something went badly wrong..."
 #~ msgstr "Stalo se něco moc špatného..."
 
-#~ msgid "Looks like gnome-pomodoro is not installed"
-#~ msgstr "Vypadá to, že jste nenainstalovali gnome-pomodoro"
+#~ msgid "Looks like gnome-extimer is not installed"
+#~ msgstr "Vypadá to, že jste nenainstalovali gnome-extimer"
 
 #~ msgid "Install"
 #~ msgstr "Instalovat"
@@ -430,19 +430,19 @@ msgstr "Zvuk na konci přestávky"
 #~ msgid "Select sound for start of break"
 #~ msgstr "Vyberte zvukový soubor, který se přehraje na začátku přestávky"
 
-#~ msgid "Select sound for pomodoro start"
+#~ msgid "Select sound for extimer start"
 #~ msgstr "Vyberte zvukový soubor, který se přehraje na začátku pomodora"
 
-#~ msgid "Pomodoro start sound"
+#~ msgid "ExTimer start sound"
 #~ msgstr "Zvuk na začátku pomodora"
 
 #~ msgid "Presence"
 #~ msgstr "Dostupnost"
 
-#~ msgid "Postpone pomodoro when idle"
-#~ msgstr "Odložit pomodoro v době nečinnosti"
+#~ msgid "Postpone extimer when idle"
+#~ msgstr "Odložit extimer v době nečinnosti"
 
-#~ msgid "Status during pomodoro"
+#~ msgid "Status during extimer"
 #~ msgstr "Stav během pomodora"
 
 #~ msgid "Status during break"
@@ -450,10 +450,10 @@ msgstr "Zvuk na konci přestávky"
 
 #~ msgid ""
 #~ "System notifications including chat messages won't show up during "
-#~ "pomodoro."
+#~ "extimer."
 #~ msgstr ""
 #~ "Systémová oznámení a zprávy z chatu se nebudou zobrazovat dokud je "
-#~ "pomodoro aktivní."
+#~ "extimer aktivní."
 
 #~ msgid ""
 #~ "System notifications including chat messages won't show up during break."
@@ -587,13 +587,13 @@ msgstr "Zvuk na konci přestávky"
 #~ msgid "Set optimal settings for doing paperwork"
 #~ msgstr "Nastav optimální čas pro papírování"
 
-#~ msgid "Show a dialog message at the end of pomodoro session"
+#~ msgid "Show a dialog message at the end of extimer session"
 #~ msgstr "Ukaž dialogové zprávy na konci pomodora"
 
-#~ msgid "Play a sound at start of pomodoro session"
+#~ msgid "Play a sound at start of extimer session"
 #~ msgstr "Přehraj zvuk na začátku pomodora"
 
-#~ msgid "Pomodoro Finished!"
+#~ msgid "ExTimer Finished!"
 #~ msgstr "Konec pomodora"
 
 #~ msgid "Hide"

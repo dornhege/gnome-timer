@@ -21,7 +21,7 @@
 using GLib;
 
 
-namespace Pomodoro
+namespace ExTimer
 {
     public delegate void CapabilityFunc (Capability capability);
 
@@ -30,14 +30,14 @@ namespace Pomodoro
     {
         public string name { get; set; }
         public bool enabled { get; private set; }
-        public unowned Pomodoro.CapabilityGroup group { get; set; }
+        public unowned ExTimer.CapabilityGroup group { get; set; }
 
-        private Pomodoro.CapabilityFunc enable_func;
-        private Pomodoro.CapabilityFunc disable_func;
+        private ExTimer.CapabilityFunc enable_func;
+        private ExTimer.CapabilityFunc disable_func;
 
         public Capability (string                   name,
-                           owned Pomodoro.CapabilityFunc? enable_func  = null,
-                           owned Pomodoro.CapabilityFunc? disable_func = null)
+                           owned ExTimer.CapabilityFunc? enable_func  = null,
+                           owned ExTimer.CapabilityFunc? disable_func = null)
         {
             this.name = name;
             this.enable_func = (owned) enable_func;

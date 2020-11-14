@@ -1,7 +1,7 @@
 {
   "uuid": "@EXTENSION_UUID@",
-  "name": "Pomodoro",
-  "description": "Desktop integration for Pomodoro application.",
+  "name": "ExTimer",
+  "description": "Desktop integration for ExTimer application.",
   "shell-version": ["3.36", "3.38"],
   "url": "@PACKAGE_URL@",
   "version": "@PACKAGE_VERSION@"

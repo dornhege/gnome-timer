@@ -61,7 +61,7 @@ var IndicatorMenu = class extends PopupMenu.PopupMenu {
         this._timerState = null;
         this._timerUpdateId = 0;
 
-        this.actor.add_style_class_name('extension-pomodoro-indicator-menu');
+        this.actor.add_style_class_name('extension-extimer-indicator-menu');
 
         this._actorMappedId = this.actor.connect('notify::mapped', this._onActorMapped.bind(this));
 
@@ -75,7 +75,7 @@ var IndicatorMenu = class extends PopupMenu.PopupMenu {
                                      can_focus: true,
                                      track_hover: true,
                                      accessible_name: accessibleName,
-                                     style_class: 'system-menu-action extension-pomodoro-indicator-menu-action' });
+                                     style_class: 'system-menu-action extension-extimer-indicator-menu-action' });
         button.child = new St.Icon({ icon_name: iconName });
         return button;
     }
@@ -113,31 +113,31 @@ var IndicatorMenu = class extends PopupMenu.PopupMenu {
     }
 
     _populate() {
-        let toggleItem = new PopupMenu.PopupMenuItem(_("Pomodoro Timer"),
-                                           { style_class: 'extension-pomodoro-indicator-menu-toggle',
+        let toggleItem = new PopupMenu.PopupMenuItem(_("ExTimer Timer"),
+                                           { style_class: 'extension-extimer-indicator-menu-toggle',
                                              reactive: false,
                                              can_focus: false });
         toggleItem.label.y_align = Clutter.ActorAlign.CENTER;
         this.addMenuItem(toggleItem);
 
         let startAction = this._createActionButton('media-playback-start-symbolic', _("Start Timer"));
-        startAction.add_style_class_name('extension-pomodoro-indicator-menu-action-border');
+        startAction.add_style_class_name('extension-extimer-indicator-menu-action-border');
         startAction.connect('clicked', this._onStartClicked.bind(this));
         toggleItem.add_child(startAction);
 
         let timerItem = new PopupMenu.PopupMenuItem("",
-                                           { style_class: 'extension-pomodoro-indicator-menu-timer',
+                                           { style_class: 'extension-extimer-indicator-menu-timer',
                                              reactive: false,
                                              can_focus: false });
         timerItem.label.visible = false;
         this.addMenuItem(timerItem);
 
-        let timerLabel = new St.Label({ style_class: 'extension-pomodoro-indicator-menu-timer-label',
+        let timerLabel = new St.Label({ style_class: 'extension-extimer-indicator-menu-timer-label',
                                         y_align: Clutter.ActorAlign.CENTER });
         let timerLabelButton = new St.Button({ reactive: false,
                                                can_focus: false,
                                                track_hover: false,
-                                               style_class: 'extension-pomodoro-indicator-menu-timer-label-button' });
+                                               style_class: 'extension-extimer-indicator-menu-timer-label-button' });
         timerLabelButton.child = timerLabel;
         timerLabelButton.connect('clicked', this._onTimerClicked.bind(this));
         timerItem.add_child(timerLabelButton);
@@ -161,7 +161,7 @@ var IndicatorMenu = class extends PopupMenu.PopupMenu {
         this.timerLabel = timerLabel;
         this.pauseAction = pauseAction;
 
-        this.addStateMenuItem('pomodoro', _("Pomodoro"));
+        this.addStateMenuItem('extimer', _("ExTimer"));
         this.addStateMenuItem('short-break', _("Short Break"));
         this.addStateMenuItem('long-break', _("Long Break"));
 
@@ -591,14 +591,14 @@ Signals.addSignalMethods(IconIndicator.prototype);
 
 
 var Indicator = GObject.registerClass(
-class PomodoroIndicator extends PanelMenu.Button {
+class ExTimerIndicator extends PanelMenu.Button {
     _init(timer, type) {
-        super._init(St.Align.START, _("Pomodoro"), true);
+        super._init(St.Align.START, _("ExTimer"), true);
 
         this.timer  = timer;
         this.widget = null;
 
-        this.add_style_class_name('extension-pomodoro-indicator');
+        this.add_style_class_name('extension-extimer-indicator');
 
         this._arrow = PopupMenu.arrowIcon(St.Side.BOTTOM);
         this._blinking = false;

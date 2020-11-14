@@ -1,11 +1,11 @@
-# Hungarian translation for gnome-pomodoro
+# Hungarian translation for gnome-extimer
 # Copyright (c) 2012 gnome-pomodoro contributors
-# This file is distributed under the same license as the gnome-pomodoro package.
+# This file is distributed under the same license as the gnome-extimer package.
 # Róbert Nagy <onlyhuman83@gmail.com>, 2013.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gnome-pomodoro\n"
+"Project-Id-Version: gnome-extimer\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-01-10 14:23+0100\n"
 "PO-Revision-Date: 2013-10-29 15:14+0100\n"
@@ -21,8 +21,8 @@ msgstr ""
 
 #. Toggle timer state button */
 #: ../extension/indicator.js:87
-msgid "Pomodoro Timer"
-msgstr "Pomodoro időzítő"
+msgid "ExTimer Timer"
+msgstr "ExTimer időzítő"
 
 #: ../extension/indicator.js:94 ../src/preferences-dialog.vala:129
 #: ../src/preferences-dialog.vala:184
@@ -30,10 +30,10 @@ msgid "Preferences"
 msgstr "Beállítások"
 
 #: ../extension/notifications.js:115 ../src/about-dialog.vala:30
-#: ../data/gnome-pomodoro.desktop.in.h:1
+#: ../data/gnome-extimer.desktop.in.h:1
 #, fuzzy
-msgid "Pomodoro"
-msgstr "Pomodoro"
+msgid "ExTimer"
+msgstr "ExTimer"
 
 #: ../extension/notifications.js:389
 #, fuzzy
@@ -42,8 +42,8 @@ msgstr "Ideje szünetet tartani!"
 
 #: ../extension/notifications.js:574
 #, fuzzy
-msgid "A new pomodoro is starting"
-msgstr "Egy új pomodoro kezdődik!"
+msgid "A new extimer is starting"
+msgstr "Egy új extimer kezdődik!"
 
 #: ../extension/notifications.js:587
 msgid "Take a break!"
@@ -51,8 +51,8 @@ msgstr "Tartson szünetet!"
 
 #: ../extension/notifications.js:610
 #, fuzzy
-msgid "Start pomodoro"
-msgstr "Egy új pomodoro kezdése"
+msgid "Start extimer"
+msgstr "Egy új extimer kezdése"
 
 #: ../extension/notifications.js:652
 msgid "Shorten the break"
@@ -82,7 +82,7 @@ msgid "Hey, you're missing out on a break"
 msgstr "Hé, épp most hagysz ki egy szünetet!"
 
 #: ../extension/notifications.js:772
-msgid "Could not run pomodoro"
+msgid "Could not run extimer"
 msgstr ""
 
 #: ../extension/notifications.js:774
@@ -90,7 +90,7 @@ msgid "Something went badly wrong..."
 msgstr ""
 
 #: ../extension/notifications.js:775
-msgid "Looks like gnome-pomodoro is not installed"
+msgid "Looks like gnome-extimer is not installed"
 msgstr ""
 
 #: ../extension/notifications.js:784
@@ -102,7 +102,7 @@ msgid "Install"
 msgstr ""
 
 #: ../src/about-dialog.vala:29
-msgid "About Pomodoro"
+msgid "About ExTimer"
 msgstr ""
 
 #: ../src/about-dialog.vala:31
@@ -126,8 +126,8 @@ msgid "Timer"
 msgstr "Időzítő"
 
 #: ../src/preferences-dialog.vala:396
-msgid "Pomodoro duration"
-msgstr "Pomodoro időtartam"
+msgid "ExTimer duration"
+msgstr "ExTimer időtartam"
 
 #: ../src/preferences-dialog.vala:399
 #, fuzzy
@@ -139,9 +139,9 @@ msgstr "Rövid szünet időtartam"
 msgid "Long break duration"
 msgstr "Hosszú szünet időtartam"
 
-#. @translators: You can refer it to number of pomodoros in a cycle
+#. @translators: You can refer it to number of extimers in a cycle
 #: ../src/preferences-dialog.vala:411
-msgid "Pomodoros to a long break"
+msgid "ExTimers to a long break"
 msgstr ""
 
 #: ../src/preferences-dialog.vala:418
@@ -203,11 +203,11 @@ msgid "Start of break sound"
 msgstr ""
 
 #: ../src/preferences-dialog.vala:534
-msgid "Select sound for pomodoro start"
+msgid "Select sound for extimer start"
 msgstr ""
 
 #: ../src/preferences-dialog.vala:543
-msgid "Pomodoro start sound"
+msgid "ExTimer start sound"
 msgstr ""
 
 #: ../src/preferences-dialog.vala:575
@@ -228,13 +228,13 @@ msgid "Presence"
 msgstr "Jelenlét"
 
 #: ../src/preferences-dialog.vala:603
-msgid "Postpone pomodoro when idle"
+msgid "Postpone extimer when idle"
 msgstr ""
 
 #: ../src/preferences-dialog.vala:608
 #, fuzzy
-msgid "Status during pomodoro"
-msgstr "Egy új pomodoro kezdése"
+msgid "Status during extimer"
+msgstr "Egy új extimer kezdése"
 
 #: ../src/preferences-dialog.vala:613
 #, fuzzy
@@ -243,7 +243,7 @@ msgstr "Értesítések mutatása a szünetek alatt"
 
 #: ../src/preferences-dialog.vala:686
 msgid ""
-"System notifications including chat messages won't show up during pomodoro."
+"System notifications including chat messages won't show up during extimer."
 msgstr ""
 
 #: ../src/preferences-dialog.vala:690
@@ -317,11 +317,11 @@ msgstr "Semmi"
 msgid "Supported audio files"
 msgstr ""
 
-#: ../data/gnome-pomodoro.desktop.in.h:2
+#: ../data/gnome-extimer.desktop.in.h:2
 msgid "Manage your time and tasks"
 msgstr ""
 
-#: ../data/gnome-pomodoro.desktop.in.h:3
+#: ../data/gnome-extimer.desktop.in.h:3
 msgid "time;timer;tasks;manage;organize;"
 msgstr ""
 

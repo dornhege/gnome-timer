@@ -1,12 +1,12 @@
-# Chinese (simplified) translation for gnome-pomodoro
+# Chinese (simplified) translation for gnome-extimer
 # Copyright (c) 2020 gnome-pomodoro contributors
-# This file is distributed under the same license as the gnome-pomodoro package.
+# This file is distributed under the same license as the gnome-extimer package.
 # Meng Zhuo <mengzhuo1203@gmail.com>, 2012.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gnome-pomodoro 0.14.0\n"
-"Report-Msgid-Bugs-To: https://github.com/codito/gnome-pomodoro/issues\n"
+"Project-Id-Version: gnome-extimer 0.14.0\n"
+"Report-Msgid-Bugs-To: https://github.com/codito/gnome-extimer/issues\n"
 "POT-Creation-Date: 2017-09-22 20:00+0200\n"
 "PO-Revision-Date: 2020-05-03 10:54+0800\n"
 "Language-Team: \n"
@@ -18,8 +18,8 @@ msgstr ""
 "Last-Translator: wffger <wffger@163.com>\n"
 "Language: zh_CN\n"
 
-#: data/org.gnome.Pomodoro.appdata.xml.in:7
-#: data/org.gnome.Pomodoro.desktop.in:3 data/resources/menus.ui:57
+#: data/org.gnome.ExTimer.appdata.xml.in:7
+#: data/org.gnome.ExTimer.desktop.in:3 data/resources/menus.ui:57
 #: data/resources/window.ui:287 lib/about-dialog.vala:31
 #: lib/notifications-capability.vala:129 lib/stats-page.vala:558
 #: lib/window.vala:44 plugins/actions/enums.vala:91
@@ -28,50 +28,50 @@ msgstr ""
 #: plugins/gnome/extension/notifications.js:218
 #: plugins/gnome/extension/notifications.js:244
 #: plugins/gnome/extension/timer.js:41 src/main.vala:50
-msgid "Pomodoro"
+msgid "ExTimer"
 msgstr "番茄计时器"
 
-#: data/org.gnome.Pomodoro.appdata.xml.in:8
+#: data/org.gnome.ExTimer.appdata.xml.in:8
 msgid "A time management utility for GNOME"
 msgstr "一个GNOME下的时间管理工具"
 
-#: data/org.gnome.Pomodoro.appdata.xml.in:10
+#: data/org.gnome.ExTimer.appdata.xml.in:10
 msgid ""
-"A GNOME utility that helps managing time according to Pomodoro Technique. It "
+"A GNOME utility that helps managing time according to ExTimer Technique. It "
 "intends to improve productivity and focus by taking short breaks after every "
 "25 minutes of work."
 msgstr ""
 "一个基于番茄时间管理法的GNOME应用，利用每工作25分钟后一个短暂停的方法，提高工"
 "作效率以及专注度。"
 
-#: data/org.gnome.Pomodoro.appdata.xml.in:19
+#: data/org.gnome.ExTimer.appdata.xml.in:19
 msgid "Timer window"
 msgstr "计时器窗口"
 
-#: data/org.gnome.Pomodoro.appdata.xml.in:23 lib/preferences-dialog.vala:798
+#: data/org.gnome.ExTimer.appdata.xml.in:23 lib/preferences-dialog.vala:798
 #: plugins/gnome/extension/indicator.js:182
 msgid "Preferences"
 msgstr "首选项"
 
-#: data/org.gnome.Pomodoro.appdata.xml.in:27
+#: data/org.gnome.ExTimer.appdata.xml.in:27
 msgid "Indicator for GNOME Shell"
 msgstr "GNOME Shell下的程序指示器"
 
-#: data/org.gnome.Pomodoro.appdata.xml.in:32
+#: data/org.gnome.ExTimer.appdata.xml.in:32
 msgid "Kamil Prusko"
 msgstr "Kamil Prusko"
 
-#: data/org.gnome.Pomodoro.desktop.in:4 lib/about-dialog.vala:32
+#: data/org.gnome.ExTimer.desktop.in:4 lib/about-dialog.vala:32
 msgid "A simple time management utility"
 msgstr "一个简易的时间管理工具"
 
-#: data/org.gnome.Pomodoro.desktop.in:5
+#: data/org.gnome.ExTimer.desktop.in:5
 msgid "timer;"
 msgstr "计时器;"
 
-#: data/org.gnome.Pomodoro.desktop.in:7
-msgid "gnome-pomodoro"
-msgstr "gnome-pomodoro"
+#: data/org.gnome.ExTimer.desktop.in:7
+msgid "gnome-extimer"
+msgstr "gnome-extimer"
 
 #: data/resources/menus.ui:6 data/resources/menus.ui:74
 msgid "_Timer"
@@ -140,7 +140,7 @@ msgid "Timer"
 msgstr "计时器"
 
 #: data/resources/preferences-main-page.ui:108
-msgid "Pomodoro duration"
+msgid "ExTimer duration"
 msgstr "番茄时间时长"
 
 #: data/resources/preferences-main-page.ui:160
@@ -152,7 +152,7 @@ msgid "Long break duration"
 msgstr "长休息时长"
 
 #: data/resources/preferences-main-page.ui:245
-msgid "Pomodoros before a long break"
+msgid "ExTimers before a long break"
 msgstr "进入长休息前的番茄时间数目"
 
 #: data/resources/preferences-main-page.ui:294
@@ -226,11 +226,11 @@ msgid "Today"
 msgstr "今天"
 
 #: data/resources/window.ui:36
-msgid "Start Pomodoro"
+msgid "Start ExTimer"
 msgstr "启动番茄计时器"
 
 #: lib/about-dialog.vala:30
-msgid "About Pomodoro"
+msgid "About ExTimer"
 msgstr "关于番茄计时器"
 
 #: lib/about-dialog.vala:41
@@ -298,7 +298,7 @@ msgid "Shorten it"
 msgstr "缩短"
 
 #: lib/notifications-capability.vala:189
-msgid "Start pomodoro"
+msgid "Start extimer"
 msgstr "开始番茄时间"
 
 #: lib/preferences-dialog.vala:158
@@ -415,7 +415,7 @@ msgid "Name"
 msgstr "名称"
 
 #: plugins/actions/resources/action-page.ui:88
-msgid "_Pomodoro"
+msgid "_ExTimer"
 msgstr "番茄计时器"
 
 #: plugins/actions/resources/action-page.ui:102
@@ -449,7 +449,7 @@ msgstr "流逝时间"
 #: plugins/gnome/extension/indicator.js:129
 #: plugins/gnome/extension/notifications.js:75
 #: plugins/gnome/extension/notifications.js:489
-msgid "Pomodoro Timer"
+msgid "ExTimer Timer"
 msgstr "番茄计时器"
 
 #: plugins/gnome/extension/indicator.js:136
@@ -502,7 +502,7 @@ msgid "+1 Minute"
 msgstr "+1 分钟"
 
 #: plugins/gnome/extension/notifications.js:380
-msgid "Pomodoro is about to end"
+msgid "ExTimer is about to end"
 msgstr "番茄时间即将结束"
 
 #: plugins/gnome/extension/notifications.js:432

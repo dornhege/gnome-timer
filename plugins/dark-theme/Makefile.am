@@ -8,7 +8,7 @@ libdark_theme_la_plugindata_DATA = \
 
 libdark_theme_la_VALASOURCES = \
 	dark-theme-plugin.vala \
-	$(top_builddir)/lib/gnome-pomodoro.vapi
+	$(top_builddir)/lib/gnome-extimer.vapi
 
 libdark_theme_la_SOURCES = \
 	$(libdark_theme_la_VALASOURCES)
@@ -28,7 +28,7 @@ libdark_theme_la_LDFLAGS = \
 
 libdark_theme_la_LIBADD = \
 	$(PLUGIN_LIBS) \
-	$(top_builddir)/lib/libgnome-pomodoro.la
+	$(top_builddir)/lib/libgnome-extimer.la
 
 
 CLEANFILES = \

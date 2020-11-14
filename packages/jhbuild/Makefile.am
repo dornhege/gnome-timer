@@ -1,19 +1,19 @@
 noinst_SCRIPTS = \
-	gnome-pomodoro-jhbuild
+	gnome-extimer-jhbuild
 
 SUBST=sed \
 	-e "s|[@]abs_srcdir[@]|$(abs_srcdir)|g" \
 	-e "s|[@]abs_top_srcdir[@]|$(abs_top_srcdir)|g"
 
-gnome-pomodoro-jhbuild: gnome-pomodoro-jhbuild.in
+gnome-extimer-jhbuild: gnome-extimer-jhbuild.in
 	$(AM_V_GEN) $(SUBST) < $< > $@
 	chmod +x $@
 
 EXTRA_DIST = \
-	gnome-pomodoro-jhbuild.in
+	gnome-extimer-jhbuild.in
 
 CLEANFILES = \
-	gnome-pomodoro-jhbuild
+	gnome-extimer-jhbuild
 
 -include $(top_srcdir)/git.mk
 

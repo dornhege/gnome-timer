@@ -21,14 +21,14 @@
 using GLib;
 
 
-namespace Pomodoro
+namespace ExTimer
 {
     public class AboutDialog : Gtk.AboutDialog
     {
         public AboutDialog ()
         {
-            this.title = _("About Pomodoro");
-            this.program_name = _("Pomodoro");
+            this.title = _("About ExTimer");
+            this.program_name = _("ExTimer");
             this.comments = _("A simple time management utility");
             this.logo_icon_name = Config.PACKAGE_NAME;
             this.version = Config.PACKAGE_VERSION;

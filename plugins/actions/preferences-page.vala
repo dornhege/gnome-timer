@@ -36,8 +36,8 @@ namespace Actions
     }
 
 
-    [GtkTemplate (ui = "/org/gnome/pomodoro/plugins/actions/preferences-page.ui")]
-    public class PreferencesPage : Gtk.Box, Pomodoro.PreferencesPage
+    [GtkTemplate (ui = "/org/gnome/extimer/plugins/actions/preferences-page.ui")]
+    public class PreferencesPage : Gtk.Box, ExTimer.PreferencesPage
     {
         [GtkChild]
         private Gtk.ListBox actions_listbox;

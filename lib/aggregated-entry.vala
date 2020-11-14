@@ -21,7 +21,7 @@
 using GLib;
 
 
-namespace Pomodoro
+namespace ExTimer
 {
     /**
      * Aggregate daily entries so that it's easier to display / analyse data.

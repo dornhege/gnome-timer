@@ -3,26 +3,26 @@ SUBDIRS = \
 	sounds
 
 desktopdir = $(datadir)/applications
-desktop_in_files = org.gnome.Pomodoro.desktop.in
+desktop_in_files = org.gnome.ExTimer.desktop.in
 desktop_DATA = $(desktop_in_files:.desktop.in=.desktop)
 
 $(desktop_DATA): $(desktop_in_files)
 	$(AM_V_GEN) $(MSGFMT) --desktop -d $(top_srcdir)/po --template $< -o $@
 
 gsettings_SCHEMAS = \
-	org.gnome.pomodoro.gschema.xml
+	org.gnome.extimer.gschema.xml
 @GSETTINGS_RULES@
 
 servicedir = $(datadir)/dbus-1/services
 service_in_files = \
-	org.gnome.Pomodoro.service.in
+	org.gnome.ExTimer.service.in
 service_DATA = $(service_in_files:.service.in=.service)
 
 $(service_DATA): $(service_in_files)
 	$(AM_V_GEN) sed -e "s|@bindir[@]|$(bindir)|g" $< > $@
 
 appstream_in_files = \
-	org.gnome.Pomodoro.appdata.xml.in
+	org.gnome.ExTimer.appdata.xml.in
 appstream_XML = $(appstream_in_files:.xml.in=.xml)
 @APPSTREAM_XML_RULES@
 

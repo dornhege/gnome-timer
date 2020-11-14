@@ -20,7 +20,7 @@
 using GLib;
 
 
-namespace Pomodoro
+namespace ExTimer
 {
     public enum AnimationMode
     {
@@ -165,7 +165,7 @@ namespace Pomodoro
             return true;
         }
 
-        private static AnimationFunc? get_func (Pomodoro.AnimationMode mode)
+        private static AnimationFunc? get_func (ExTimer.AnimationMode mode)
         {
             switch (mode)
             {

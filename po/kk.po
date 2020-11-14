@@ -1,12 +1,12 @@
-# Kazakh translation for gnome-pomodoro.
+# Kazakh translation for gnome-extimer.
 # Copyright (c) 2017 gnome-pomodoro contributors.
-# This file is distributed under the same license as the gnome-pomodoro package.
+# This file is distributed under the same license as the gnome-extimer package.
 # Baurzhan Muftakhidinov <baurthefirst@gmail.com>, 2017.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gnome-pomodoro 0.13.0\n"
-"Report-Msgid-Bugs-To: https://github.com/codito/gnome-pomodoro/issues\n"
+"Project-Id-Version: gnome-extimer 0.13.0\n"
+"Report-Msgid-Bugs-To: https://github.com/codito/gnome-extimer/issues\n"
 "POT-Creation-Date: 2017-03-24 12:06+0500\n"
 "PO-Revision-Date: 2017-03-24 12:32+0500\n"
 "Last-Translator: Baurzhan Muftakhidinov <baurthefirst@gmail.com>\n"
@@ -18,8 +18,8 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Poedit 1.8.11\n"
 
-#: data/org.gnome.Pomodoro.appdata.xml.in:7
-#: data/org.gnome.Pomodoro.desktop.in:3 data/resources/menus.ui:51
+#: data/org.gnome.ExTimer.appdata.xml.in:7
+#: data/org.gnome.ExTimer.desktop.in:3 data/resources/menus.ui:51
 #: data/resources/window.ui:278 lib/about-dialog.vala:31
 #: lib/notifications-capability.vala:106 src/main.vala:50
 #: plugins/actions/enums.vala:91 plugins/gnome/extension/indicator.js:171
@@ -27,16 +27,16 @@ msgstr ""
 #: plugins/gnome/extension/notifications.js:86
 #: plugins/gnome/extension/notifications.js:202
 #: plugins/gnome/extension/notifications.js:432
-msgid "Pomodoro"
-msgstr "Pomodoro"
+msgid "ExTimer"
+msgstr "ExTimer"
 
-#: data/org.gnome.Pomodoro.appdata.xml.in:8
+#: data/org.gnome.ExTimer.appdata.xml.in:8
 msgid "A time management utility for GNOME"
 msgstr "GNOME үшін уақытты басқару утилитасы"
 
-#: data/org.gnome.Pomodoro.appdata.xml.in:10
+#: data/org.gnome.ExTimer.appdata.xml.in:10
 msgid ""
-"A GNOME utility that helps managing time according to Pomodoro Technique. It "
+"A GNOME utility that helps managing time according to ExTimer Technique. It "
 "intends to improve productivity and focus by taking short breaks after every "
 "25 minutes of work."
 msgstr ""
@@ -44,35 +44,35 @@ msgstr ""
 "жұмыстың әр 25 минут сайын қысқа үзілістерді жасау арқылы өнімділікті және "
 "назарды жақсартуға көмектесуге арналған."
 
-#: data/org.gnome.Pomodoro.appdata.xml.in:19
+#: data/org.gnome.ExTimer.appdata.xml.in:19
 #: data/resources/preferences-main-page.ui:45
 msgid "Timer"
 msgstr "Таймер"
 
-#: data/org.gnome.Pomodoro.appdata.xml.in:23 lib/preferences-dialog.vala:805
+#: data/org.gnome.ExTimer.appdata.xml.in:23 lib/preferences-dialog.vala:805
 #: plugins/gnome/extension/indicator.js:83
 msgid "Preferences"
 msgstr "Баптаулар"
 
-#: data/org.gnome.Pomodoro.appdata.xml.in:27
+#: data/org.gnome.ExTimer.appdata.xml.in:27
 msgid "Indicator for GNOME Shell"
 msgstr "GNOME Shell үшін индикатор"
 
-#: data/org.gnome.Pomodoro.appdata.xml.in:32
+#: data/org.gnome.ExTimer.appdata.xml.in:32
 msgid "Kamil Prusko"
 msgstr "Kamil Prusko"
 
-#: data/org.gnome.Pomodoro.desktop.in:4 lib/about-dialog.vala:32
+#: data/org.gnome.ExTimer.desktop.in:4 lib/about-dialog.vala:32
 msgid "A simple time management utility"
 msgstr "Уақытты басқарудың қарапайым утилитасы"
 
-#: data/org.gnome.Pomodoro.desktop.in:5
+#: data/org.gnome.ExTimer.desktop.in:5
 msgid "timer;"
 msgstr "timer;таймер;"
 
-#: data/org.gnome.Pomodoro.desktop.in:7
-msgid "gnome-pomodoro"
-msgstr "gnome-pomodoro"
+#: data/org.gnome.ExTimer.desktop.in:7
+msgid "gnome-extimer"
+msgstr "gnome-extimer"
 
 #: data/resources/menus.ui:6 data/resources/menus.ui:68
 msgid "_Timer"
@@ -141,8 +141,8 @@ msgid "Disable"
 msgstr "Сөндіру"
 
 #: data/resources/preferences-main-page.ui:108
-msgid "Pomodoro duration"
-msgstr "Pomodoro ұзақтығы"
+msgid "ExTimer duration"
+msgstr "ExTimer ұзақтығы"
 
 #: data/resources/preferences-main-page.ui:160
 msgid "Break duration"
@@ -153,7 +153,7 @@ msgid "Long break duration"
 msgstr "Ұзақ үзіліс ұзақтығы"
 
 #: data/resources/preferences-main-page.ui:245
-msgid "Pomodoros before a long break"
+msgid "ExTimers before a long break"
 msgstr "Ұзақ үзіліске дейінгі помодоро саны"
 
 #: data/resources/preferences-main-page.ui:294
@@ -190,12 +190,12 @@ msgid "It's time to take a break"
 msgstr "Үзіліс алатын уақыт келді"
 
 #: data/resources/window.ui:31
-msgid "Start Pomodoro"
-msgstr "Pomodoro іске қосу"
+msgid "Start ExTimer"
+msgstr "ExTimer іске қосу"
 
 #: lib/about-dialog.vala:30
-msgid "About Pomodoro"
-msgstr "Pomodoro туралы"
+msgid "About ExTimer"
+msgstr "ExTimer туралы"
 
 #: lib/about-dialog.vala:41
 msgid "translator-credits"
@@ -263,8 +263,8 @@ msgstr "Оны қысқарту"
 
 #: lib/notifications-capability.vala:166
 #: plugins/gnome/extension/notifications.js:300
-msgid "Start pomodoro"
-msgstr "Pomodoro іске қосу"
+msgid "Start extimer"
+msgstr "ExTimer іске қосу"
 
 #: lib/preferences-dialog.vala:158
 #, c-format
@@ -325,8 +325,8 @@ msgid "Name"
 msgstr "Аты"
 
 #: plugins/actions/resources/action-page.ui:88
-msgid "_Pomodoro"
-msgstr "_Pomodoro"
+msgid "_ExTimer"
+msgstr "_ExTimer"
 
 #: plugins/actions/resources/action-page.ui:102
 msgid "_Short Break"
@@ -387,8 +387,8 @@ msgid_plural "%d new messages"
 msgstr[0] "%d жаңа хабарлама"
 
 #: plugins/gnome/extension/indicator.js:132
-msgid "Pomodoro Timer"
-msgstr "Pomodoro таймері"
+msgid "ExTimer Timer"
+msgstr "ExTimer таймері"
 
 #: plugins/gnome/extension/indicator.js:150
 msgid "Start Timer"
@@ -413,14 +413,14 @@ msgstr "Үзілісті алыңыз!"
 
 #: plugins/gnome/extension/notifications.js:260
 #, javascript-format
-msgid "You have %d minute until next pomodoro."
-msgid_plural "You have %d minutes until next pomodoro."
+msgid "You have %d minute until next extimer."
+msgid_plural "You have %d minutes until next extimer."
 msgstr[0] "Сізде келесі помодороға дейін %d минут бар."
 
 #: plugins/gnome/extension/notifications.js:262
 #, javascript-format
-msgid "You have %d second until next pomodoro."
-msgid_plural "You have %d seconds until next pomodoro."
+msgid "You have %d second until next extimer."
+msgid_plural "You have %d seconds until next extimer."
 msgstr[0] "Сізде келесі помодороға дейін %d секунд бар."
 
 #: plugins/gnome/extension/notifications.js:415

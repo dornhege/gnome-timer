@@ -25,9 +25,9 @@
     </section>
     <section>
       <item>
-        <attribute name="label" translatable="yes">Pomodoro</attribute>
+        <attribute name="label" translatable="yes">ExTimer</attribute>
         <attribute name="action">timer.state</attribute>
-        <attribute name="target">pomodoro</attribute>
+        <attribute name="target">extimer</attribute>
       </item>
       <item>
         <attribute name="label" translatable="yes">Short Break</attribute>

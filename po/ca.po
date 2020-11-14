@@ -1,12 +1,12 @@
-# Catalan translation for gnome-pomodoro
+# Catalan translation for gnome-extimer
 # Copyright (c) 2012 gnome-pomodoro contributors
-# This file is distributed under the same license as the gnome-pomodoro package.
+# This file is distributed under the same license as the gnome-extimer package.
 # Ecron <ecron_89@hotmail.com>, 2014.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gnome-pomodoro\n"
-"Report-Msgid-Bugs-To: https://github.com/codito/gnome-pomodoro/issues\n"
+"Project-Id-Version: gnome-extimer\n"
+"Report-Msgid-Bugs-To: https://github.com/codito/gnome-extimer/issues\n"
 "POT-Creation-Date: 2017-09-22 20:00+0200\n"
 "PO-Revision-Date: 2019-11-19 09:45+0100\n"
 "Last-Translator: Antonio Vicién Faure <antonio@antonio.cat>\n"
@@ -18,8 +18,8 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
 "X-Generator: Poedit 2.0.6\n"
 
-#: data/org.gnome.Pomodoro.appdata.xml.in:7
-#: data/org.gnome.Pomodoro.desktop.in:3 data/resources/menus.ui:57
+#: data/org.gnome.ExTimer.appdata.xml.in:7
+#: data/org.gnome.ExTimer.desktop.in:3 data/resources/menus.ui:57
 #: data/resources/window.ui:287 lib/about-dialog.vala:31
 #: lib/notifications-capability.vala:129 lib/stats-page.vala:558
 #: lib/window.vala:44 plugins/actions/enums.vala:91
@@ -28,51 +28,51 @@ msgstr ""
 #: plugins/gnome/extension/notifications.js:218
 #: plugins/gnome/extension/notifications.js:244
 #: plugins/gnome/extension/timer.js:41 src/main.vala:50
-msgid "Pomodoro"
-msgstr "Pomodoro"
+msgid "ExTimer"
+msgstr "ExTimer"
 
-#: data/org.gnome.Pomodoro.appdata.xml.in:8
+#: data/org.gnome.ExTimer.appdata.xml.in:8
 msgid "A time management utility for GNOME"
 msgstr "Una utilitat de gestió del temps per al GNOME"
 
-#: data/org.gnome.Pomodoro.appdata.xml.in:10
+#: data/org.gnome.ExTimer.appdata.xml.in:10
 msgid ""
-"A GNOME utility that helps managing time according to Pomodoro Technique. It "
+"A GNOME utility that helps managing time according to ExTimer Technique. It "
 "intends to improve productivity and focus by taking short breaks after every "
 "25 minutes of work."
 msgstr ""
 "Una utilitat del GNOME que ajuda a gestionar el temps seguint la Tècnica "
-"Pomodoro. Pretén millorar la productivitat i la concentració fent petits "
+"ExTimer. Pretén millorar la productivitat i la concentració fent petits "
 "descansos cada 25 minuts de treball."
 
-#: data/org.gnome.Pomodoro.appdata.xml.in:19
+#: data/org.gnome.ExTimer.appdata.xml.in:19
 msgid "Timer window"
 msgstr "Finestra del temporitzador"
 
-#: data/org.gnome.Pomodoro.appdata.xml.in:23 lib/preferences-dialog.vala:798
+#: data/org.gnome.ExTimer.appdata.xml.in:23 lib/preferences-dialog.vala:798
 #: plugins/gnome/extension/indicator.js:182
 msgid "Preferences"
 msgstr "Preferències"
 
-#: data/org.gnome.Pomodoro.appdata.xml.in:27
+#: data/org.gnome.ExTimer.appdata.xml.in:27
 msgid "Indicator for GNOME Shell"
 msgstr "Indicador del GNOME Shell"
 
-#: data/org.gnome.Pomodoro.appdata.xml.in:32
+#: data/org.gnome.ExTimer.appdata.xml.in:32
 msgid "Kamil Prusko"
 msgstr "Kamil Prusko"
 
-#: data/org.gnome.Pomodoro.desktop.in:4 lib/about-dialog.vala:32
+#: data/org.gnome.ExTimer.desktop.in:4 lib/about-dialog.vala:32
 msgid "A simple time management utility"
 msgstr "Una senzilla utilitat de gestió del temps"
 
-#: data/org.gnome.Pomodoro.desktop.in:5
+#: data/org.gnome.ExTimer.desktop.in:5
 msgid "timer;"
 msgstr "temporitzador;"
 
-#: data/org.gnome.Pomodoro.desktop.in:7
-msgid "gnome-pomodoro"
-msgstr "gnome-pomodoro"
+#: data/org.gnome.ExTimer.desktop.in:7
+msgid "gnome-extimer"
+msgstr "gnome-extimer"
 
 #: data/resources/menus.ui:6 data/resources/menus.ui:74
 msgid "_Timer"
@@ -143,8 +143,8 @@ msgid "Timer"
 msgstr "Temporitzador"
 
 #: data/resources/preferences-main-page.ui:108
-msgid "Pomodoro duration"
-msgstr "Durada del pomodoro"
+msgid "ExTimer duration"
+msgstr "Durada del extimer"
 
 #: data/resources/preferences-main-page.ui:160
 msgid "Break duration"
@@ -155,8 +155,8 @@ msgid "Long break duration"
 msgstr "Durada del descans llarg"
 
 #: data/resources/preferences-main-page.ui:245
-msgid "Pomodoros before a long break"
-msgstr "Pomodoros fins a un descans llarg"
+msgid "ExTimers before a long break"
+msgstr "ExTimers fins a un descans llarg"
 
 #: data/resources/preferences-main-page.ui:294
 msgid "Keyboard shortcut"
@@ -229,12 +229,12 @@ msgid "Today"
 msgstr "Avui"
 
 #: data/resources/window.ui:36
-msgid "Start Pomodoro"
-msgstr "Inicia el Pomodoro"
+msgid "Start ExTimer"
+msgstr "Inicia el ExTimer"
 
 #: lib/about-dialog.vala:30
-msgid "About Pomodoro"
-msgstr "Quant a Pomodoro"
+msgid "About ExTimer"
+msgstr "Quant a ExTimer"
 
 #: lib/about-dialog.vala:41
 msgid "translator-credits"
@@ -300,8 +300,8 @@ msgid "Shorten it"
 msgstr "Escurça'l"
 
 #: lib/notifications-capability.vala:189
-msgid "Start pomodoro"
-msgstr "Inicia el Pomodoro"
+msgid "Start extimer"
+msgstr "Inicia el ExTimer"
 
 #: lib/preferences-dialog.vala:158
 #, c-format
@@ -420,8 +420,8 @@ msgid "Name"
 msgstr "Nom"
 
 #: plugins/actions/resources/action-page.ui:88
-msgid "_Pomodoro"
-msgstr "_Pomodoro"
+msgid "_ExTimer"
+msgstr "_ExTimer"
 
 #: plugins/actions/resources/action-page.ui:102
 msgid "_Short Break"
@@ -454,8 +454,8 @@ msgstr "Temps transcorregut"
 #: plugins/gnome/extension/indicator.js:129
 #: plugins/gnome/extension/notifications.js:75
 #: plugins/gnome/extension/notifications.js:489
-msgid "Pomodoro Timer"
-msgstr "Temporitzador del Pomodoro"
+msgid "ExTimer Timer"
+msgstr "Temporitzador del ExTimer"
 
 #: plugins/gnome/extension/indicator.js:136
 msgid "Start Timer"
@@ -509,8 +509,8 @@ msgid "+1 Minute"
 msgstr "+1 minut"
 
 #: plugins/gnome/extension/notifications.js:380
-msgid "Pomodoro is about to end"
-msgstr "El Pomodoro està a punt de finalitzar"
+msgid "ExTimer is about to end"
+msgstr "El ExTimer està a punt de finalitzar"
 
 #: plugins/gnome/extension/notifications.js:432
 msgid "Skip Break"
@@ -606,20 +606,20 @@ msgstr "So de l'inici del descans"
 msgid "End of break sound"
 msgstr "So del final del descans"
 
-#~ msgid "A new pomodoro is starting"
-#~ msgstr "La pausa ha finalitzat, comença un nou pomodoro"
+#~ msgid "A new extimer is starting"
+#~ msgstr "La pausa ha finalitzat, comença un nou extimer"
 
 #~ msgid "Hey, you're missing out on a break"
 #~ msgstr "No esteu aprofitant el descans"
 
-#~ msgid "Could not run pomodoro"
-#~ msgstr "Pomodoro no s'ha pogut executar"
+#~ msgid "Could not run extimer"
+#~ msgstr "ExTimer no s'ha pogut executar"
 
 #~ msgid "Something went badly wrong..."
 #~ msgstr "Alguna cosa ha anat malament..."
 
-#~ msgid "Looks like gnome-pomodoro is not installed"
-#~ msgstr "Sembla que gnome-pomodoro no està instal·lat"
+#~ msgid "Looks like gnome-extimer is not installed"
+#~ msgstr "Sembla que gnome-extimer no està instal·lat"
 
 #~ msgid "Install"
 #~ msgstr "Instaŀla"
@@ -650,26 +650,26 @@ msgstr "So del final del descans"
 #~ msgid "Select sound for start of break"
 #~ msgstr "Trieu un so per iniciar un descans"
 
-#~ msgid "Select sound for pomodoro start"
-#~ msgstr "Trieu un so per iniciar un pomodoro"
+#~ msgid "Select sound for extimer start"
+#~ msgstr "Trieu un so per iniciar un extimer"
 
 #~ msgid "Presence"
 #~ msgstr "Presència"
 
-#~ msgid "Postpone pomodoro when idle"
-#~ msgstr "Posposa el pomodoro en estar inactiu"
+#~ msgid "Postpone extimer when idle"
+#~ msgstr "Posposa el extimer en estar inactiu"
 
-#~ msgid "Status during pomodoro"
-#~ msgstr "Estat durant el pomodoro"
+#~ msgid "Status during extimer"
+#~ msgstr "Estat durant el extimer"
 
 #~ msgid "Status during break"
 #~ msgstr "Estat durant el descans"
 
 #~ msgid ""
 #~ "System notifications including chat messages won't show up during "
-#~ "pomodoro."
+#~ "extimer."
 #~ msgstr ""
-#~ "Durant el pomodoro no es mostraran les notificacions del sistema, "
+#~ "Durant el extimer no es mostraran les notificacions del sistema, "
 #~ "inclosos els missatges de xat."
 
 #~ msgid ""
@@ -743,19 +743,19 @@ msgstr "So del final del descans"
 #~ msgid "Show Dialog Messages"
 #~ msgstr "Mostra missatges de diàleg"
 
-#~ msgid "Show a dialog message at the end of pomodoro session"
-#~ msgstr "Mostra un missatge de diàleg al final de la sessió de pomodoro"
+#~ msgid "Show a dialog message at the end of extimer session"
+#~ msgstr "Mostra un missatge de diàleg al final de la sessió de extimer"
 
-#~ msgid "Play a sound at start of pomodoro session"
-#~ msgstr "Reprodueix un so al començar la sessió de pomodoro"
+#~ msgid "Play a sound at start of extimer session"
+#~ msgstr "Reprodueix un so al començar la sessió de extimer"
 
 #~ msgid "%d Completed Session"
 #~ msgid_plural "%d Completed Sessions"
 #~ msgstr[0] "%d sessió completada"
 #~ msgstr[1] "%d sessions completades"
 
-#~ msgid "Pomodoro Finished!"
-#~ msgstr "El pomodoro ha finalitzat!"
+#~ msgid "ExTimer Finished!"
+#~ msgstr "El extimer ha finalitzat!"
 
 #~ msgid "Hide"
 #~ msgstr "Oculta"

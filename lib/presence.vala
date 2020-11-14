@@ -20,7 +20,7 @@
 using GLib;
 
 
-namespace Pomodoro
+namespace ExTimer
 {
     public enum PresenceStatus
     {

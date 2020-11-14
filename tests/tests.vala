@@ -23,7 +23,7 @@
 using GLib;
 
 
-namespace Pomodoro
+namespace ExTimer
 {
     public delegate void TestCaseFunc ();
 
@@ -33,12 +33,12 @@ namespace Pomodoro
     {
         public string name;
 
-        private Pomodoro.TestCaseFunc func;
-        private Pomodoro.TestSuite test_suite;
+        private ExTimer.TestCaseFunc func;
+        private ExTimer.TestSuite test_suite;
 
         public TestSuiteAdaptor (string                      name,
-                                 owned Pomodoro.TestCaseFunc test_case_func,
-                                 Pomodoro.TestSuite          test_suite)
+                                 owned ExTimer.TestCaseFunc test_case_func,
+                                 ExTimer.TestSuite          test_suite)
         {
             this.name = name;
             this.func = (owned) test_case_func;
@@ -82,7 +82,7 @@ namespace Pomodoro
             return this.g_test_suite;
         }
 
-        public void add_test (string name, owned Pomodoro.TestCaseFunc func)
+        public void add_test (string name, owned ExTimer.TestCaseFunc func)
         {
             var adaptor = new TestSuiteAdaptor (name, (owned) func, this);
             this.adaptors += adaptor;
@@ -101,7 +101,7 @@ namespace Pomodoro
     {
         private GLib.TestSuite root_suite;
         private GLib.File tmp_dir;
-        private const string SCHEMA_FILE_NAME = "org.gnome.pomodoro.gschema.xml";
+        private const string SCHEMA_FILE_NAME = "org.gnome.extimer.gschema.xml";
 
         public TestRunner (GLib.TestSuite? root_suite = null)
         {
@@ -112,7 +112,7 @@ namespace Pomodoro
             }
         }
 
-        public void add (Pomodoro.TestSuite test_suite) {
+        public void add (ExTimer.TestSuite test_suite) {
             this.root_suite.add_suite (test_suite.get_g_test_suite ());
         }
 
@@ -163,7 +163,7 @@ namespace Pomodoro
 
             try {
                 this.tmp_dir = GLib.File.new_for_path (
-                        GLib.DirUtils.make_tmp ("gnome-pomodoro-test-XXXXXX"));
+                        GLib.DirUtils.make_tmp ("gnome-extimer-test-XXXXXX"));
 
 
             }
@@ -252,12 +252,12 @@ public static int main (string[] args)
     Gtk.init (ref args);
     Test.init (ref args);
 
-    var tests = new Pomodoro.TestRunner ();
-    tests.add (new Pomodoro.ApplicationTest ());
-    tests.add (new Pomodoro.TimerTest ());
-    tests.add (new Pomodoro.CapabilityTest ());
-    tests.add (new Pomodoro.CapabilityGroupTest ());
-    tests.add (new Pomodoro.CapabilityManagerTest ());
+    var tests = new ExTimer.TestRunner ();
+    tests.add (new ExTimer.ApplicationTest ());
+    tests.add (new ExTimer.TimerTest ());
+    tests.add (new ExTimer.CapabilityTest ());
+    tests.add (new ExTimer.CapabilityGroupTest ());
+    tests.add (new ExTimer.CapabilityManagerTest ());
 
     GLib.Idle.add (() => {
         exit_status = tests.run ();

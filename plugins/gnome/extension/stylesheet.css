@@ -15,76 +15,76 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-.extension-pomodoro-indicator .system-status-icon {
+.extension-extimer-indicator .system-status-icon {
     padding: 0;
 }
 
-.extension-pomodoro-indicator-menu {
+.extension-extimer-indicator-menu {
     max-width: 400px;
 }
 
-.extension-pomodoro-indicator-menu .state-item.active {
+.extension-extimer-indicator-menu .state-item.active {
     font-weight: bold;
 }
 
-.extension-pomodoro-indicator-menu-toggle,
-.extension-pomodoro-indicator-menu-timer {
+.extension-extimer-indicator-menu-toggle,
+.extension-extimer-indicator-menu-timer {
     color: inherit;
     padding-top: 0;
     padding-bottom: 0;
 }
 
-.extension-pomodoro-indicator-menu-toggle .extension-pomodoro-indicator-menu-action {
+.extension-extimer-indicator-menu-toggle .extension-extimer-indicator-menu-action {
     margin-left: 10px;
 }
 
-.extension-pomodoro-indicator-menu-timer {
+.extension-extimer-indicator-menu-timer {
     margin-bottom: 8px;
     spacing: 0;
 }
 
-.extension-pomodoro-indicator-menu-timer > StBoxLayout {
+.extension-extimer-indicator-menu-timer > StBoxLayout {
     margin-left: 10px;
     spacing: 4px;
 }
 
-.extension-pomodoro-indicator-menu-timer-label {
+.extension-extimer-indicator-menu-timer-label {
     color: inherit;
     font-size: 1.5em;
     text-align: left;
 }
 
-.extension-pomodoro-indicator-menu-timer-label-button {
+.extension-extimer-indicator-menu-timer-label-button {
     padding: 0;
     margin: 0;
     border: 0;
     background: none;
 }
 
-.extension-pomodoro-indicator-menu-action,
-.extension-pomodoro-indicator-menu-action:hover,
-.extension-pomodoro-indicator-menu-action:focus,
-.extension-pomodoro-indicator-menu-action:active {
+.extension-extimer-indicator-menu-action,
+.extension-extimer-indicator-menu-action:hover,
+.extension-extimer-indicator-menu-action:focus,
+.extension-extimer-indicator-menu-action:active {
     padding: 10px;
     border-width: 0px;
 }
 
-.extension-pomodoro-indicator-menu-action > StIcon {
+.extension-extimer-indicator-menu-action > StIcon {
     icon-size: 16px;
 }
 
-.extension-pomodoro-indicator-menu-action-border {
+.extension-extimer-indicator-menu-action-border {
     padding: 9px;
     border-width: 1px;
 }
-.extension-pomodoro-indicator-menu-action-border:hover,
-.extension-pomodoro-indicator-menu-action-border:focus,
-.extension-pomodoro-indicator-menu-action-border:active {
+.extension-extimer-indicator-menu-action-border:hover,
+.extension-extimer-indicator-menu-action-border:focus,
+.extension-extimer-indicator-menu-action-border:active {
     padding: 10px;
     border-width: 0px;
 }
 
-.message .extension-pomodoro-message-action {
+.message .extension-extimer-message-action {
     font-size: 10pt;
     font-weight: bold;
     padding: 10px 10px 10px 3px;
@@ -92,36 +92,36 @@
     background-color: transparent;
 }
 
-.message .extension-pomodoro-message-action:last-child {
+.message .extension-extimer-message-action:last-child {
     border-radius: 0 3px 3px 0;
     padding-right: 18px;
 }
 
-.extension-pomodoro-lightbox {
+.extension-extimer-lightbox {
     background-color: black;
 }
 
-.extension-pomodoro-dialog .extension-pomodoro-dialog-box {
+.extension-extimer-dialog .extension-extimer-dialog-box {
     spacing: 5px;
     padding-bottom: 15px;
     width: 250pt;
 }
 
-.extension-pomodoro-dialog .extension-pomodoro-dialog-timer {
+.extension-extimer-dialog .extension-extimer-dialog-timer {
     font-size: 70pt;
     font-weight: normal;
     color: white;
 }
 
-.extension-pomodoro-dialog .extension-pomodoro-dialog-timer > StLabel:first-child {
+.extension-extimer-dialog .extension-extimer-dialog-timer > StLabel:first-child {
     text-align: right;
 }
 
-.extension-pomodoro-dialog .extension-pomodoro-dialog-timer > StLabel:last-child {
+.extension-extimer-dialog .extension-extimer-dialog-timer > StLabel:last-child {
     text-align: left;
 }
 
-.extension-pomodoro-dialog .extension-pomodoro-dialog-description {
+.extension-extimer-dialog .extension-extimer-dialog-description {
     font-size: 13pt;
     font-weight: normal;
     color: white;
